@@ -1,38 +1,60 @@
 # Given a string s, return the longest palindromic substring in s
 
 class Solution:
-    def isPalindrome(self, s: str) -> bool:
-        if len(s) < 2:
-            return True
-        
-        for i in range(len(s) // 2):
-            if s[i] != s[-1 - i]:
-                return False
-            
-        return True
+    # General idea: Loop over all characters in the string
     
+    # That character can either be the middle of an odd-count palindrome, or middle-left of an
+    # even palindrome. In both cases, we can write functions that perform an O(n) search for the 
+    # palindrome
+    
+    
+    # Odd:
+    # abcba
+    #   ^
+    # Even:
+    # abba
+    #  ^
+    
+    # Therefore, we should be able to find every single palindrome in the string with just
+    # one loop
     def longestPalindrome(self, s: str) -> str:
         result = s[0]
-    
-        start_idx: int = 0
-        end_idx: int = len(s) 
         
-        # Advance end pointer
-        for i in range(1, len(s)):
-            substr: str = s[start_idx: i+1]
-            if self.isPalindrome(substr):
-                result = substr if len(substr) > len(result) else result
+        for i in  range(len(s)):
+            oddPalindrome: str = self.getLongestOddPalindrome(s, i)
+            evenPalindrome: str = self.getLongestEvenPalindrome(s, i)
             
-        # Advance start pointer
-        for i in range(1, len(s)):
-            substr: str = s[i: end_idx]
-            if self.isPalindrome(substr):
-                result = substr if len(substr) > len(result) else result
+            result = oddPalindrome if len(oddPalindrome) > len(result) else result
+            result = evenPalindrome if len(evenPalindrome) > len(result) else result
         
         return result
+    
+    # Return the longest odd-counted palindrome of <s> with <i> as its centre
+    def getLongestOddPalindrome(self, s: str, i: int) -> str:
+        result = s[i]
+        count: int = 1
+        matching: bool = True
         
-
-# if __name__ == "__main__":
-#     print(Solution.isPalindrome("hello"))
-#     print(Solution.isPalindrome("abba"))
-#     print(Solution.isPalindrome("abcelecba"))
+        while i - count >= 0 and i + count < len(s) and matching:
+            if s[i-count] == s[i+count]:
+                result = s[i-count: i+count+1]
+            else:
+                matching = False
+            count += 1
+    
+        return result
+    
+    # Return the longest even-counted palindrome of <s> with <i> as the centre-left character
+    def getLongestEvenPalindrome(self, s: str, i: int) -> str:
+        result = s[i]
+        count: int = 0
+        matching: bool = True
+        
+        while i - count >= 0 and i + count + 1 < len(s) and matching:
+            if s[i-count] == s[i+count+1]:
+                result = s[i-count: i+count+2]
+            else:
+                matching = False
+            count += 1
+        
+        return result
