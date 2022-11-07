@@ -13,7 +13,7 @@ class Solution:
     # 1) Move end pointer forward to increase volume
     # 2) Move start pointer back to increase volume
 
-    def maxArea(self, height: List[int]) -> int:
+    def maxArea(self, height: list[int]) -> int:
         # Base case
         start: int = 0
         end: int = 1
