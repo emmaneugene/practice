@@ -1,21 +1,15 @@
-#!/bin/python3
-
-import math
-import os
-import random
-import re
-import sys
-
-
 # You are given lottery tickets numbered from 1 ... n.
-# We take the sum of digits of each lottery ticket (e.g. "12" -> 3, "3" -> 3) as the actual prize number
-# Find the count of prize numbers for which there are the most number of winning tickets
+# We take the sum of digits of each lottery ticket (e.g. "12" -> 3, "3" -> 3) as
+# the actual prize number
+# 
+# Find the count of prize numbers for which there are the most number of winning
+# tickets
 #
 # Complete the 'lotteryCoupons' function below.
 #
 # The function is expected to return an INTEGER.
 # The function accepts INTEGER n as parameter.
-#
+
 def compute_digit_sum(i: int) -> int:
     total: int = 0
     while i > 0:

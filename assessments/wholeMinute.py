@@ -1,13 +1,5 @@
-#!/bin/python3
-
-import math
-import os
-import random
-import re
-import sys
-
-# You are given a playlist of songs with durations in seconds. Return all the song pairs 
-# which add up to a multiple of 60 (a minute)
+# You are given a playlist of songs with durations in seconds. Return all the
+# song pairs which add up to a multiple of 60 (a minute)
 # 
 # Complete the 'playlist' function below.
 #
@@ -29,8 +21,6 @@ def playlist(songs) -> int:
     
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
-
     songs_count = int(input().strip())
 
     songs = []
@@ -41,6 +31,4 @@ if __name__ == '__main__':
 
     result = playlist(songs)
 
-    fptr.write(str(result) + '\n')
-
-    fptr.close()
+    print(result)

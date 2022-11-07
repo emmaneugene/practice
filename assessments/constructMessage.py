@@ -2,18 +2,19 @@
 #   S - an array of chars
 #   A - an array of ints
 #  
-#   In this problem, we have people numbered 0 ... N-1, a char array S of size N, and an int array A of size N. Each 
-#   person is assigned a letter in array S which is indexed by their number. They are also assigned the index of the 
+#   In this problem, we have people numbered 0 ... N-1, a char array S of size 
+#   N, and an int array A of size N. Each person is assigned a letter in array S
+#   which is indexed by their number. They are also assigned the index of the 
 #   next person in the sequence in array A. 
 # 
-#   Starting from the first person, we continuously append characters to a message string until the 0th person is
-#   reached. Then, return the constructed string
+#   Starting from the first person, we continuously append characters to a 
+#   message string until the 0th person isreached. Then, return the constructed
+#   string
 #
 #   The algorithm will be evaluated only on *correctness*
 
 
 def solution(S, A) -> str:
-    # write your code in Python 3.6
     message = S[0]
     next_person_idx = A[0]
 
