@@ -19,7 +19,7 @@ import sys
 # To get the maximum number of distinct elements in array a, we can swap:
 # - a[2] and b[0]
 # - a[4] and b[3]
-# to end up with [2,3,1,2,4] with 4 distinct elements (this is not the only solution) 
+# to end up with [2,3,1,2,4] with 4 distinct elements (this is not the only solution)
 
 # Complete the 'getMaximumDistinctCount' function below.
 #
@@ -30,26 +30,28 @@ import sys
 #  3. INTEGER k
 #
 
-def get_distinct_values_and_duplicates(arr: list[int]) -> tuple[list[int], int]: 
+
+def get_distinct_values_and_duplicates(arr: list[int]) -> tuple[list[int], int]:
     '''Returns a list of unique values and duplicates in a sorted list
     '''
     unique_vals: list[int] = []
     dupl: int = 0
-    
+
     if len(arr) == 0:
         return unique_vals, dupl
-    
+
     curr: int = arr[0]
     unique_vals.append(curr)
-    
+
     for i in range(1, len(arr)):
         if arr[i] != curr:
             curr = arr[i]
             unique_vals.append(curr)
         else:
             dupl += 1
-    
+
     return unique_vals, dupl
+
 
 def get_unique_count(src: list[int], dst: list[int]) -> int:
     '''Given sorted lists src and dst, return number of elements in src not present in dst
@@ -57,7 +59,7 @@ def get_unique_count(src: list[int], dst: list[int]) -> int:
 
     if len(src) == 0 or len(dst) == 0:
         return len(src)
-    
+
     # TODO: Make this code more efficient. Since the lists are sorted, it should
     # be possible to run in O(n) time instead of O(n^2)
     # src_idx: int = 0
@@ -68,6 +70,7 @@ def get_unique_count(src: list[int], dst: list[int]) -> int:
         if i not in dst:
             count += 1
 
+
 def getMaximumDistinctCount(a: list[int], b: list[int], k: int) -> int:
     # Sort for efficiency: O(n*log(n))
     a.sort()
@@ -75,16 +78,14 @@ def getMaximumDistinctCount(a: list[int], b: list[int], k: int) -> int:
     a_unique, a_dupl = get_distinct_values_and_duplicates(a)
     b_unique, b_dupl = get_distinct_values_and_duplicates(b)
 
-    
     # Find out how many unique elements can be swapped in from b
     b_swappable_count: int = get_unique_count(b_unique, a_unique)
-    
+
     # Number of elements we can swap into a to increase the number of distinct elements
     swappable = min(a_dupl, k, b_swappable_count)
 
     return len(a_unique) + swappable
-    
-    
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

@@ -1,6 +1,6 @@
 # You are given a playlist of songs with durations in seconds. Return all the
 # song pairs which add up to a multiple of 60 (a minute)
-# 
+#
 # Complete the 'playlist' function below.
 #
 # The function is expected to return a LONG_INTEGER.
@@ -9,16 +9,16 @@
 
 def playlist(songs) -> int:
     songs = list(map(lambda x: x % 60, songs))
-    
+
     num_pairs: int = 0
-    
+
     for i in range(len(songs)):
-        for j in range(i+1, len(songs)):
+        for j in range(i+1, """  """ len(songs)):
             if (songs[i] + songs[j]) % 60 == 0:
                 num_pairs += 1
 
     return num_pairs
-    
+
 
 if __name__ == '__main__':
     songs_count = int(input().strip())
