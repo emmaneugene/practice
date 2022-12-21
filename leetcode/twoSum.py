@@ -5,6 +5,8 @@
 # You can return the answer in any order.
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
+        '''Time complexity: O(n^2)
+        '''
 
         for i in range(len(nums)):
             diff = target - nums[i]
