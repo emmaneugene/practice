@@ -25,8 +25,7 @@ def solution(S, A) -> str:
 
     return message
 
-
-if __name__ == '__main__':
+def main():
     S = 'cdeo'
     A = [3, 2, 0, 1]
     print('Expected: code')
@@ -41,3 +40,6 @@ if __name__ == '__main__':
     A = [4, 3, 0, 1, 2, 5]
     print('Expected: bat')
     print(f'Actual  : {solution(S, A)}')
+
+if __name__ == '__main__':
+    main()

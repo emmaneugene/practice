@@ -28,8 +28,7 @@ def solution(S: str) -> int:
     # Subtract 1 because we do not need to divide once we subtract from the MSB
     return count-1
 
-
-if __name__ == '__main__':
+def main():
     print('Expected: 7')
     print(f'Actual  : {solution("011100")}')
 
@@ -38,3 +37,7 @@ if __name__ == '__main__':
 
     print('Expected: 0')
     print(f'Actual  : {solution("0000")}')
+
+
+if __name__ == '__main__':
+    main()

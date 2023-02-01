@@ -1,3 +1,4 @@
+import os
 # You are given lottery tickets numbered from 1 ... n.
 # We take the sum of digits of each lottery ticket (e.g. "12" -> 3, "3" -> 3) as
 # the actual prize number
