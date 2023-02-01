@@ -1,10 +1,9 @@
 # Problem: https://leetcode.com/problems/3sum/
 
-from typing import List
 
 class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
-        output: List[List[int]] = []
+    def threeSum(self, nums: list[int]) -> list[list[int]]:
+        output: list[list[int]] = []
         size: int = len(nums)
         nums.sort()
         

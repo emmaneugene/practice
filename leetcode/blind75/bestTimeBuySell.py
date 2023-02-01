@@ -1,0 +1,37 @@
+# Problem: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+
+# Complexity: O(n)
+# Dynamic programming with sliding window technique
+class Solution:
+    def maxProfit(self, prices: list[int]) -> int:
+        profit: int = 0
+
+        start: int = 0
+        end: int = 0
+
+        for idx, val in enumerate(prices):
+            if val < prices[start]:
+                # Reset window
+                if prices[end] - prices[start] > profit:
+                    profit = prices[end] - prices[start]
+                start = idx
+                end = idx
+            if val > prices[end]:
+                end = idx
+
+        if prices[end] - prices[start] > profit:
+            profit = prices[end] - prices[start]
+        return profit
+
+
+def main():
+    s = Solution()
+    print("Expected: 5")
+    print(f"Output  : {s.maxProfit([7,1,5,3,6,4])}")
+
+    print("Expected: 0")
+    print(f"Output  : {s.maxProfit([7,6,4,3,1])}")
+
+
+if __name__ == "__main__":
+    main()
