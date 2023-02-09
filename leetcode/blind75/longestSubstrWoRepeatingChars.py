@@ -12,39 +12,33 @@ class Solution:
         longest: int = 0
         start: int = 0
         end: int = 1
-        chars: dict = {
-            s[0]: 0
-        }
         for i in range(1, len(s)):
-            if s[i] in chars:
+            if s[i] in s[start:i]:
                 # Check length of string
                 if i - start > longest:
-                    print(f'Found string {s[start:i]} with length {i - start}')
                     longest = i - start
                 # Update window start
-                start = chars.get(s[i]) + 1
-                chars = dict(filter(lambda x: x[1] >= start, chars.items()))
+                start += s[start:i].find(s[i]) + 1
+                
             
-            chars[s[i]] = i
-            
-        print("Outside loop")
         if len(s) - start > longest:
-            print(f'Found string {s[start:len(s)]} with length {len(s) - start}')
             longest = len(s) - start
         return longest 
 
 def main():
     s = Solution()
-    print(f'Actual  : {s.lengthOfLongestSubstring("abcabcbb")}')
     print('Expected: 3')
-    print(f'Actual  : {s.lengthOfLongestSubstring("bbbbb")}')
+    print(f'Output  : {s.lengthOfLongestSubstring("abcabcbb")}')
     print('Expected: 1')
-    print(f'Actual  : {s.lengthOfLongestSubstring("pwwkew")}')
+    print(f'Output  : {s.lengthOfLongestSubstring("bbbbb")}')
     print('Expected: 3')
-    print(f'Actual  : {s.lengthOfLongestSubstring("")}')
+    print(f'Output  : {s.lengthOfLongestSubstring("pwwkew")}')
     print('Expected: 0')
-    print(f'Actual  : {s.lengthOfLongestSubstring("abba")}')
+    print(f'Output  : {s.lengthOfLongestSubstring("")}')
     print('Expected: 2')
+    print(f'Output  : {s.lengthOfLongestSubstring("abba")}')
+    print('Expected: 2')
+    print(f'Output  : {s.lengthOfLongestSubstring("aab")}')
 
 if __name__ == '__main__':
     main()
