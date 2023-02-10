@@ -19,11 +19,11 @@ class Solution:
                     longest = i - start
                 # Update window start
                 start += s[start:i].find(s[i]) + 1
-                
-            
+
         if len(s) - start > longest:
             longest = len(s) - start
-        return longest 
+        return longest
+
 
 def main():
     s = Solution()
@@ -39,6 +39,7 @@ def main():
     print(f'Output  : {s.lengthOfLongestSubstring("abba")}')
     print('Expected: 2')
     print(f'Output  : {s.lengthOfLongestSubstring("aab")}')
+
 
 if __name__ == '__main__':
     main()
