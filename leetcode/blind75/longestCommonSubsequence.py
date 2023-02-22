@@ -22,6 +22,9 @@ class Match:
 
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        if text1 in text2 or text2 in text1:
+            return min(len(text1), len(text2))
+        
         occurrences: Dict[str, List[int]] = {}
 
         for i2, ch2 in enumerate(text2):
