@@ -4,8 +4,10 @@
 
 from typing import Optional, List
 
-# Definition for a binary tree node.
+
 class TreeNode:
+    '''Definition for a binary tree node
+    '''
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
@@ -40,20 +42,19 @@ class Solution:
 
         return output
 
+
 def main():
     s: Solution = Solution()
-    
+
     right: TreeNode = TreeNode(20, TreeNode(15), TreeNode(7))
     root: TreeNode = TreeNode(3, TreeNode(9), right)
-    print(s.levelOrder(root)) # Expected: [[3],[9,20],[15,7]]
+    print(s.levelOrder(root))  # Expected: [[3],[9,20],[15,7]]
 
     root: TreeNode = TreeNode(1)
-    print(s.levelOrder(root)) # Expected: [[1]]
+    print(s.levelOrder(root))  # Expected: [[1]]
 
     root: Optional[TreeNode] = None
-    print(s.levelOrder(root)) # Expected: []
-
-
+    print(s.levelOrder(root))  # Expected: []
 
 
 if __name__ == '__main__':

@@ -1,13 +1,18 @@
 #  Problem: https://leetcode.com/problems/merge-k-sorted-lists/
+
+
+# Complexity: O(k * n)
 from typing import Optional
 
-# Definition for singly-linked list.
+
 class ListNode:
+    '''Definition for singly-linked list.
+    '''
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
-# Complexity: O(k * n)
+
 class Solution:
     def getSmallest(self, lists: list[Optional[ListNode]]) -> int:
         '''Returns the smallest element of a list of linked lists
@@ -27,8 +32,7 @@ class Solution:
             lists.pop(idxMin)
 
         return val
-                
-    
+
     def mergeKLists(self, lists: list[Optional[ListNode]]) -> Optional[ListNode]:
         lists = list(filter(lambda x: x is not None, lists))
 
@@ -45,7 +49,7 @@ class Solution:
             val = self.getSmallest(lists)
             current.next = ListNode(val)
             current = current.next
-        
+
         return head
 
 

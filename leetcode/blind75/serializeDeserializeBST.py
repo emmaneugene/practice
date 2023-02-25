@@ -3,7 +3,7 @@
 # Breadth-first search solution
 # Time complexity: O(n)
 # Space complexity: O(depth)
-from typing import Optional
+from typing import List, Optional
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -15,13 +15,13 @@ class TreeNode:
 
 class Codec:
     def serialize(self, root: Optional[TreeNode]) -> str:
-        """Encodes a tree to a string
-        """
+        '''Encodes a tree to a string
+        '''
         if root is None or root.val is None:
             return ""
         # Parse to array
-        treeArr = []
-        toExplore = [root]
+        treeArr: List[int] = []
+        toExplore: List[TreeNode] = [root]
 
         while len(toExplore) > 0:
 
@@ -45,8 +45,8 @@ class Codec:
         return serialized.replace(' ', '')
 
     def deserialize(self, data: str) -> Optional[TreeNode]:
-        """Decodes your encoded data to tree.
-        """
+        '''Decodes your encoded data to tree.
+        '''
         if len(data) == 0:
             return None
 
@@ -56,9 +56,9 @@ class Codec:
         return self.constructNode(arr, rootVal)
 
     def constructNode(self, arr: list[int], val: int) -> Optional[TreeNode]:
-        """Recursive function that constructs a TreeNode given an input array 
+        '''Recursive function that constructs a TreeNode given an input array 
         `arr` and node value `val`
-        """
+        '''
         node: TreeNode = TreeNode(val)
 
         leftVal: int = arr.pop(0)
@@ -75,7 +75,7 @@ class Codec:
 
 def inorderTraverse(node: TreeNode) -> str:
     output: list[int] = []
-    
+
     inOrderVisit(node, output)
 
     return output
@@ -84,7 +84,7 @@ def inorderTraverse(node: TreeNode) -> str:
 def inOrderVisit(node: TreeNode, output: list[int]) -> None:
     if node is None:
         return
-    
+
     inOrderVisit(node.left, output)
     output.append(node.val)
     inOrderVisit(node.right, output)
@@ -111,13 +111,13 @@ def main():
     print(s := ser.serialize(root))
     # Deserialization
     print(inorderTraverse(deser.deserialize(s)))
-    
+
     print("Test 2")
     print(s := ser.serialize(None))
     print(inorderTraverse(deser.deserialize(s)))
 
     print("Test 3")
-    
+
     left: TreeNode = TreeNode(100)
     left.left = TreeNode(50)
     left.right = TreeNode(150)
@@ -132,7 +132,7 @@ def main():
     print(inorderTraverse(deser.deserialize(s)))
 
     print("Test 4")
-    
+
     left: TreeNode = TreeNode(100)
 
     right: TreeNode = TreeNode(300)
@@ -145,7 +145,6 @@ def main():
 
     print(s := ser.serialize(root))
     print(inorderTraverse(deser.deserialize(s)))
-
 
 
 if __name__ == "__main__":

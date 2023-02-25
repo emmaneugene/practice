@@ -2,9 +2,12 @@
 
 # Sorting each word is nlog(n), iterating m words gives overall time complexity
 # of O(mnlog(n))
+
+from typing import List
+
 class Solution:
-    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
-        mappings: dict[str, list[str]] = {}
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        mappings: dict[str, List[str]] = {}
 
         for _, s in enumerate(strs):
             sSorted = ''.join(sorted(s))

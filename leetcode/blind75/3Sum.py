@@ -1,12 +1,14 @@
 # Problem: https://leetcode.com/problems/3sum/
 
+from typing import List
+
 
 class Solution:
-    def threeSum(self, nums: list[int]) -> list[list[int]]:
-        output: list[list[int]] = []
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        output: List[List[int]] = []
         size: int = len(nums)
         nums.sort()
-        
+
         # Handle corner cases (empty, all +ve, all -ve)
         if (size == 0 or nums[0] > 0 or nums[-1] < 0):
             return []
@@ -29,8 +31,8 @@ class Solution:
         # if sum -ve, look to boundary right for 3rd value (positive values)
         # if sum +ve, look to boundary left for 3rd value (negative values)
 
-        for pos_idx in range(boundary+1, size): # >= 0
-            for neg_idx in range(boundary+1): # <= 0
+        for pos_idx in range(boundary+1, size):  # >= 0
+            for neg_idx in range(boundary+1):  # <= 0
                 intermed = nums[pos_idx] + nums[neg_idx]
                 if intermed < 0:
                     # Search right
@@ -55,6 +57,17 @@ class Solution:
 
         # Last corner case: look for an occurence of [0,0,0]
         if boundary+3 <= size and nums[boundary] == 0 and sum(nums[boundary: boundary+3]) == 0:
-            output.append([0,0,0])
+            output.append([0, 0, 0])
 
         return output
+
+
+def main():
+    s: Solution = Solution()
+    print(s.threeSum([-1, 0, 1, 2, -1, -4]))  # Expected: [[-1,-1,2].[-1,0,1]]
+    print(s.threeSum([0, 1, 1]))  # Expected: []
+    print(s.threeSum([0, 0, 0]))  # Expected: [0,0,0]
+
+
+if __name__ == '__main__':
+    main()

@@ -2,6 +2,7 @@
 
 # Dynamic programming - start with first candidates, compute and store all
 # possible combinations
+
 from copy import deepcopy
 
 
@@ -16,7 +17,7 @@ class Solution:
 
             for mlti in range(1, (target//n) + 1):
                 remainder: int = target - (n * mlti)
-                
+
                 for val in range(remainder+1):
                     if val in sumsCombis:
                         prevCombis: list[list[int]] = sumsCombis[val]
@@ -35,22 +36,19 @@ class Solution:
                         sumsCombis[val].append(combi)
                 else:
                     sumsCombis[val] = combis
-                    
-            
+
         return sumsCombis.get(target, [])
-                
 
 
 def main():
     s: Solution = Solution()
 
-    print(s.combinationSum([2,3,6,7], 7)) # Expected: [[2,2,3], [7]]
-    
-    print(s.combinationSum([2,3,5], 8)) # Expected: [[2,2,2,2],[2,3,3],[3,5]]
-    
-    print(s.combinationSum([2], 1)) # Expected: []
+    print(s.combinationSum([2, 3, 6, 7], 7))  # Expected: [[2,2,3], [7]]
 
-    
+    # Expected: [[2,2,2,2],[2,3,3],[3,5]]
+    print(s.combinationSum([2, 3, 5], 8))
+
+    print(s.combinationSum([2], 1))  # Expected: []
 
 
 if __name__ == '__main__':

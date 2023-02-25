@@ -1,8 +1,10 @@
 # Problem: https://leetcode.com/problems/longest-increasing-subsequence/
+# Complexity: O(nlogn)
 
 from bisect import bisect_left
+from typing import List, Tuple
 
-# Complexity: O(nlogn)
+
 class Tracker:
     '''Tracks last element of a subsequence and its length
     '''
@@ -16,14 +18,14 @@ class Tracker:
 
 
 class Solution:
-    def binSearch(self, subseqs: list[Tracker], val) -> tuple[int, bool]:
+    def binSearch(self, subseqs: List[Tracker], val) -> Tuple[int, bool]:
         # Same function as bisect_left, which we imported
         pass
 
-    def lengthOfLIS(self, nums: list[int]) -> int:
+    def lengthOfLIS(self, nums: List[int]) -> int:
         longest: int = 1
 
-        trackers: list[Tracker] = [Tracker(nums[0], 1)]
+        trackers: List[Tracker] = [Tracker(nums[0], 1)]
 
         for i in range(1, len(nums)):
             idx: int = bisect_left(trackers, nums[i], key=lambda x: x.val)
@@ -33,21 +35,20 @@ class Solution:
                     trackers.pop(0)
 
                 trackers.insert(0, Tracker(nums[i], 1))
-                 
+
             else:
                 smaller: Tracker = trackers[idx-1]
                 new: Tracker = Tracker(nums[i], smaller.length+1)
-                
+
                 # Replace next tracker entry if length is not greater
                 if idx < len(trackers) and trackers[idx].length <= new.length:
                     trackers.pop(idx)
-                
+
                 trackers.insert(idx, new)
 
                 if new.length > longest:
                     longest = new.length
 
-        
         for tracker in trackers:
             print(tracker, end=' ')
         print('')
@@ -58,7 +59,7 @@ def main():
     s = Solution()
 
     print(s.lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))  # [2,3,7,101]
-    print(s.lengthOfLIS([0, 1, 0, 3, 2, 3]))  # [0,1,2,3] 
+    print(s.lengthOfLIS([0, 1, 0, 3, 2, 3]))  # [0,1,2,3]
     print(s.lengthOfLIS([7, 7, 7, 7, 7, 7, 7]))  # [7]
     print(s.lengthOfLIS([4, 10, 4, 3, 8, 9]))  # [3,8,9]
     print(s.lengthOfLIS([1, 3, 6, 7, 9, 4, 10, 5, 6]))  # [1,3,6,7,9,10]

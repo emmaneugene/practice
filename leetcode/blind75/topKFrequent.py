@@ -2,8 +2,12 @@
 
 # Time complexity: O(nlogn)
 # Space complexity: O(n)
+
+from typing import List
+
+
 class Solution:
-    def topKFrequent(self, nums: list[int], k: int) -> list[int]:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         counts: dict[int, int] = {}
 
         for n in nums:
@@ -12,14 +16,14 @@ class Solution:
             else:
                 counts[n] += 1
 
-        countsList: list[tuple[int, int]] = []
+        countsList: List[tuple[int, int]] = []
 
         for val, count in counts.items():
             countsList.append((val, count))
 
         countsList.sort(key=lambda x: x[1], reverse=True)
 
-        result: list[int] = []
+        result: List[int] = []
 
         for i in range(k):
             result.append(countsList[i][0])

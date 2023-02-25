@@ -1,10 +1,11 @@
-from typing import Optional
 # Problem: https://leetcode.com/problems/validate-binary-search-tree/submissions/897211926/
 
-# Definition for a binary tree node.
+from typing import Optional, Tuple
 
 
 class TreeNode:
+    ''' Definition for a binary tree node.
+    '''
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
@@ -12,8 +13,6 @@ class TreeNode:
 
 # Time complexity: O(n)
 # Space complexity: O(n) due to recursive stack frames
-
-
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         if root is None:
@@ -21,7 +20,7 @@ class Solution:
 
         return self.checkNode(root)[0]
 
-    def checkNode(self, node: TreeNode) -> tuple[bool, int, int]:
+    def checkNode(self, node: TreeNode) -> Tuple[bool, int, int]:
         '''Recursively checks whether this node is a valid BST, and returns
         the min and max values of the BST in question
         '''

@@ -1,8 +1,10 @@
 # Problem: https://leetcode.com/problems/rotate-image/
 # Complexity: O(n^2)
+from typing import List
+
 
 class Solution:
-    def rotate(self, matrix: list[list[int]]) -> None:
+    def rotate(self, matrix: List[List[int]]) -> None:
         '''Rotate a n*n matrix 90 degrees clockwise in-place
         '''
 

@@ -23,15 +23,16 @@ class Solution:
                     break
                 tmp += 1
             count += tmp
-        
+
         return count
 
 
 def main():
     s: Solution = Solution()
 
-    print(s.countSubstrings('abc')) # Expected: 3
-    print(s.countSubstrings('aaa')) # Expected: 6
+    print(s.countSubstrings('abc'))  # Expected: 3
+    print(s.countSubstrings('aaa'))  # Expected: 6
+
 
 if __name__ == '__main__':
     main()

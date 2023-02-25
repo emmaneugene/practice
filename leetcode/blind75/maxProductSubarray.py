@@ -1,8 +1,10 @@
 # Problem: https://leetcode.com/problems/maximum-product-subarray/
 
+from typing import List
+
 # Complexity: O(n)
 class Solution:
-    def getHighestProduct(self, nums: list[int]) -> int:
+    def getHighestProduct(self, nums: List[int]) -> int:
         '''Returns highest product possible from `nums`
         '''
         if len(nums) == 1:
@@ -34,7 +36,7 @@ class Solution:
         divisor = max(leftNeg, rightNeg)
         return int(result / divisor)
 
-    def maxProduct(self, nums: list[int]) -> int:
+    def maxProduct(self, nums: List[int]) -> int:
         if len(nums) == 1:
             return nums[0]
 
@@ -52,7 +54,7 @@ class Solution:
 
         # Split array where 0s are encountered
         # [2,0,1,4,0,8] becomes [[2], [1,4], [8]]
-        subarrs: list[list[int]] = []
+        subarrs: List[List[int]] = []
         start: int = 0
         reset: bool = nums[0] == 0
 

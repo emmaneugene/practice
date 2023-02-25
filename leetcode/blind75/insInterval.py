@@ -1,10 +1,12 @@
 # Problem: https://leetcode.com/problems/insert-interval/
 
+# Time complexity: O(n)
+# Space complexity: O(n)
+
 from typing import List
 from bisect import bisect
 
-# Time complexity: O(n)
-# Space complexity: O(n)
+
 class Solution:
     def overlap(self, i1: List[int], i2: List[int]) -> bool:
         return (i1[0] <= i2[0] and i1[1] >= i2[0]) \
@@ -21,7 +23,7 @@ class Solution:
             if self.overlap(ivl, add):
                 add = [min(add[0], ivl[0]), max(add[1], ivl[1])]
             else:
-                out.append(ivl)                
+                out.append(ivl)
 
         print(out)
         print(add)
@@ -30,11 +32,12 @@ class Solution:
 
         return out
 
+
 def main():
     s: Solution = Solution()
-    print(s.insert([[1,3],[6,9]], [2,5]))
-    print(s.insert([[1,2],[3,5],[6,7],[8,10],[12,16]], [4,8]))
+    print(s.insert([[1, 3], [6, 9]], [2, 5]))
+    print(s.insert([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8]))
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()

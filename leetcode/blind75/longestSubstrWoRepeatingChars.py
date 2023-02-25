@@ -3,6 +3,7 @@
 
 # Sliding window technique
 # Complexity O(n)
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         # Corner case

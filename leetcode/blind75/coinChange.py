@@ -3,10 +3,14 @@
 # Dynamic programming, find optimal selection of m possible coins for amounts (1...n)
 # Time complexity: O(m*n)
 # Space complexity: O(m+n)
-class Solution:
-    def coinChange(self, coins: list[int], amount: int) -> int:
 
-        optimalCounts: list[int] = [-1] * (amount+1)
+from typing import List
+
+
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+
+        optimalCounts: List[int] = [-1] * (amount+1)
         optimalCounts[0] = 0
 
         for i in range(1, amount+1):
