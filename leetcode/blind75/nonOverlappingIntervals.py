@@ -1,11 +1,11 @@
 # Problem: https://leetcode.com/problems/non-overlapping-intervals/
 
-# Idea: Sort by start time, collect sets of overlapping intervals, find best to remove, recursively iterate
+# Dynamic programming, sort and binary search
 
 from typing import List
 
 class Grouping:
-    '''Class that represents a grouping of intervals, with start time, end time,
+    '''Class that represents a grouping of intervals, with end time
     and interval count
     '''
     def __init__(self, end: int, count: int=1) -> None:
@@ -68,9 +68,15 @@ class Solution:
             else:
                 groupings.insert(insIdx, toAdd)
 
-            # Update maxIntervals
-            if maxIntervals < toAdd.count: maxIntervals = toAdd.count
+            filtered: List[Grouping] = []
+            for g in groupings:
+                if g.end < toAdd.end or g.count >= toAdd.count:
+                    filtered.append(g)
             
+            groupings = filtered
+
+            # Update maxIntervals
+            if maxIntervals < toAdd.count: maxIntervals = toAdd.count            
 
         result += len(intervals) - maxIntervals
         return result
