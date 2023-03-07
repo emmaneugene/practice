@@ -1,14 +1,16 @@
 # Problem: https://leetcode.com/problems/word-break/
 
 # Dynamic programming
+# Time: O(n)
+# Space: O(n)
 
 from typing import List
 
+
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        wordDict.sort(key=lambda x: len(x))
         matchedToChar: List[bool] = [False] * len(s)
-
-        wordDict.sort()
 
         for word in wordDict:
             if len(word) > len(s):
@@ -25,12 +27,15 @@ class Solution:
 
         return matchedToChar[-1]
 
+
 def main():
     s: Solution = Solution()
 
-    print(s.wordBreak('leetcode', ['leet', 'code'])) # Expected: True
-    print(s.wordBreak('applepenapple', ['apple', 'pen'])) # Expected: True
-    print(s.wordBreak('catsandog', ['cats', 'dog', 'sand', 'and', 'cat'])) # Expected: False
+    print(s.wordBreak('leetcode', ['leet', 'code']))  # Expected: True
+    print(s.wordBreak('applepenapple', ['apple', 'pen']))  # Expected: True
+    # Expected: False
+    print(s.wordBreak('catsandog', ['cats', 'dog', 'sand', 'and', 'cat']))
+
 
 if __name__ == '__main__':
     main()
