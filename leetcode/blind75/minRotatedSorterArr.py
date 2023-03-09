@@ -18,7 +18,7 @@ class Solution:
             return nums[mid]
 
         # Condition to search left
-        if nums[0] > nums[mid] or nums[mid] <= nums[-1]:
+        if nums[mid] <= nums[-1]:
             return self.findMin(nums[:mid])
 
         return self.findMin(nums[mid+1:])
