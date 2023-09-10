@@ -1,6 +1,7 @@
 # Problem: https://leetcode.com/problems/binary-tree-level-order-traversal/
 
-# Complexity: O(n)
+# Time complexity: O(n)
+# Space complexity: O(n)
 
 from typing import Optional, List
 

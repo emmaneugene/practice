@@ -3,26 +3,30 @@
 # Dynamic programming - start with first candidates, compute and store all
 # possible combinations
 
+# Time complexity: O(n^2)
+# Space complexity: O(n^2)
+
 from copy import deepcopy
+from typing import Dict, List
 
 
 class Solution:
-    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         # Dict of sums to possible combinations
-        sumsCombis: dict[int, list[list[int]]] = {}
+        sumsCombis: Dict[int, List[List[int]]] = {}
         sumsCombis[0] = [[]]
 
         for n in candidates:
-            toAdd: dict[int, list[list[int]]] = {}
+            toAdd: Dict[int, List[List[int]]] = {}
 
             for mlti in range(1, (target//n) + 1):
                 remainder: int = target - (n * mlti)
 
                 for val in range(remainder+1):
                     if val in sumsCombis:
-                        prevCombis: list[list[int]] = sumsCombis[val]
+                        prevCombis: List[List[int]] = sumsCombis[val]
                         for combi in prevCombis:
-                            newCombi: list[int] = deepcopy(combi)
+                            newCombi: List[int] = deepcopy(combi)
                             newCombi += [n] * mlti
                             newVal = val + (n * mlti)
                             if newVal in toAdd:
@@ -43,12 +47,14 @@ class Solution:
 def main():
     s: Solution = Solution()
 
-    print(s.combinationSum([2, 3, 6, 7], 7))  # Expected: [[2,2,3], [7]]
+    print('Expected: [[2,2,3], [7]]')
+    print(f'Actual  :{s.combinationSum([2, 3, 6, 7], 7)}')
 
-    # Expected: [[2,2,2,2],[2,3,3],[3,5]]
-    print(s.combinationSum([2, 3, 5], 8))
+    print('Expected: [[2,2,2,2],[2,3,3],[3,5]]')
+    print(f'Actual  : {s.combinationSum([2, 3, 5], 8)}')
 
-    print(s.combinationSum([2], 1))  # Expected: []
+    print('Expected: []')
+    print(f'Actual  :{s.combinationSum([2], 1)}') 
 
 
 if __name__ == '__main__':

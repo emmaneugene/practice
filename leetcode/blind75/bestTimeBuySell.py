@@ -1,6 +1,7 @@
 # Problem: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
-# Complexity: O(n)
+# Time complexity: O(n)
+# Space complexity: O(1)
 # Dynamic programming with sliding window technique
 
 from typing import List
