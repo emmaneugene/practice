@@ -2,6 +2,9 @@
 
 from typing import List
 
+# Time Complexity: O()
+# Space Complexity: O()
+
 class Solution:
     def countBits(self, n: int) -> List[int]:
         out: List[int] = [self.getBitCount(i) for i in range(n+1)]

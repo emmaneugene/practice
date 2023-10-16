@@ -1,30 +1,20 @@
 # Problem: https://leetcode.com/problems/longest-consecutive-sequence/
 
-from typing import Dict, List
-
+# Time complexity: O(n)
+# Space complexity: O(n)
 
 class Solution:
-    def longestConsecutive(self,  nums: List[int]) -> int:
-        if len(nums) == 0:
-            return 0
-
-        toCheck: Dict[int, bool] = {}
+    def longestConsecutive(self,  nums: list[int]) -> int:
+        numSet = set(nums)
+        longest: int = 0
 
         for n in nums:
-            toCheck[n] = True
-
-        longest: int = 1
-
-        for n in nums:
-            if toCheck.get(n, False):
-                curr: int = n
-                comp: int = 0
-                while toCheck.get(curr, False):
-                    comp += 1
-                    curr += 1
-
-                longest = max(comp, longest)
-
+            if n-1 not in numSet:
+                length: int = 1
+                while n + length in numSet:
+                    length += 1
+                longest = max(length, longest)
+        
         return longest
 
 

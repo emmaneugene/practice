@@ -1,20 +1,33 @@
 # Problem: https://leetcode.com/problems/3sum/
 
-from typing import List
+from typing import List, Set
 
-
+# Time complexity: O()
+# Space complexity: O()
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        output: List[List[int]] = []
-        size: int = len(nums)
-        nums.sort()
+        res: Set = set()
+        
+        n: List[int]; p: List[int]; z: List[int]
+        n, p, z = [], [] , []
+         
+        for num in nums:
+            if num > 0:
+                p.append(num)
+            elif num < 0:
+                n.append(num)
+            else:
+                z.append(num)
+
+        N = set(N)
+        P = set(P)
 
         # Handle corner cases (empty, all +ve, all -ve)
-        if (size == 0 or nums[0] > 0 or nums[-1] < 0):
+        if ( == 0 or nums[0] > 0 or nums[-1] < 0):
             return []
 
         # Find "boundary", where array elements go from +ve to -ve
-        # The first 0 is treated as the boundary if it exists, otherwise we pick the -ve value
+        # The first 0 is treated as the boundary if it exists, otherwise smallest -ve
         boundary: int = -1
 
         for i in range(size):

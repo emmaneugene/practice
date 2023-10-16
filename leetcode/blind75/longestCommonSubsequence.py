@@ -6,7 +6,8 @@
 # Somewhat similar to longestIncrSubsequence
 from typing import List, Dict
 
-# Complexity: O(n^2)
+# Time complexity: O(n^2)
+# Space complexity: O(n)
 
 
 class Match:
