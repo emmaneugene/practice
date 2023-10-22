@@ -1,5 +1,7 @@
 # Problem: https://leetcode.com/problems/longest-increasing-subsequence/
-# Complexity: O(nlogn)
+
+# Time complexity: O(nlogn)
+# Space complexity: O(n)
 
 from bisect import bisect_left
 from typing import List, Tuple
@@ -18,10 +20,6 @@ class Tracker:
 
 
 class Solution:
-    def binSearch(self, subseqs: List[Tracker], val) -> Tuple[int, bool]:
-        # Same function as bisect_left, which we imported
-        pass
-
     def lengthOfLIS(self, nums: List[int]) -> int:
         longest: int = 1
 
