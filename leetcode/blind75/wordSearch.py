@@ -1,71 +1,63 @@
 # Problem: https://leetcode.com/problems/word-search/
 
-from copy import deepcopy
-from typing import Dict, List, Set, Tuple
+# Time complexity:
+# Space complexity:
 
-# General idea: perform a recursive search, storing coords of previously visited
-# locations so we don't revisit
+# Create a hashmap of character-coordinates
+# Perform BFS/DFS to find valid sequence
+
+from copy import deepcopy
 
 
 class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
-        tracker: Dict[str, int] = {}
-        searchStarts: List[Tuple[int, int]] = []
+    def exist(self, board: list[list[str]], word: str) -> bool:
+        tracker: dict[str, list[tuple[int, int]]] = {}
 
         rows: int = len(board)
         cols: int = len(board[0])
-        startCh: str = word[0]
 
+        # Create hashmap O(mn)
         for i in range(rows):
             for j in range(cols):
                 ch: str = board[i][j]
                 if ch in tracker:
-                    tracker[ch] += 1
+                    tracker[ch].append((i,j))
                 else:
-                    tracker[ch] = 1
-
-                if ch == startCh:
-                    searchStarts.append((i,j))
+                    tracker[ch] = [(i,j)]
 
         for ch in word:
-            if ch not in tracker:
-                return False
-            else:
-                tracker[ch] -= 1
-                if tracker[ch] < 0:
-                    return False
+            if ch not in tracker: return False
 
-        for coord in searchStarts:
-            visited: Set[Tuple[int, int]] = {coord}
-            if self.search(board, word[1:], coord, visited):
+        toSearch: list[tuple(int, int)] = tracker[word[0]]
+        
+        # Search
+        for coord in toSearch:
+            visited: set = {coord}
+            if self.DFS(tracker, visited, word[1:], coord):
                 return True
 
         return False
 
-    
-    def search(self, board: List[List[str]], word: str, curr: Tuple[int, int], visited: Set[Tuple[int, int]]) -> bool:
-        '''Recursive function that searches for the next character of a word adjacent to coordinates `curr`
+    def DFS(self, tracker: dict[str, list], visited: set[tuple],  word: str, prev: tuple[int, int]) -> bool:
+        '''Recursively search for next character in word, and add it to a set of visited coordinates
         '''
-        if len(word) == 0:
-            return True
+        if len(word) == 0: return True
         
-        r: int = curr[0]
-        c: int = curr[1]
-        toCheck: List[Tuple[int, int]] = [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]
+        nextCh: str = word[0]
+        if nextCh not in tracker: return  False
+
+        toSearch: list[tuple(int, int)] = list(filter(lambda x: x not in visited and self.isAdjacent(prev, x), tracker[nextCh]))
         
-        for coord in toCheck:
-            if self.isValid(board, coord) and coord not in visited:
-                if board[coord[0]][coord[1]] == word[0]:
-                    newVisited = deepcopy(visited)
-                    newVisited.add(coord)
-                    if self.search(board, word[1:], coord, newVisited):
-                        return True
+        for coord in toSearch:
+            newVisited = deepcopy(visited)
+            newVisited.add(coord)
+            if self.DFS(tracker, newVisited, word[1:], coord): return True
 
         return False
 
-
-    def isValid(self, board: List[List[str]], coord: Tuple[int, int]) -> bool:
-        return not (coord[0] < 0 or coord[0] == len(board) or coord[1] < 0 or coord[1] == len(board[0]))
+    def isAdjacent(self, coord1: tuple[int, int], coord2: tuple[int, int]) -> bool:
+        return coord1[0] == coord2[0] and abs(coord1[1] - coord2[1]) == 1\
+            or coord1[1] == coord2[1] and abs(coord1[0] - coord2[0]) == 1
 
 
 def main():
@@ -73,35 +65,51 @@ def main():
 
     print(s.exist(
         [
-            ['A','B','C','E'],
-            ['S','F','C','S'],
-            ['A','D','E','E']
+            ['A', 'B', 'C', 'E'],
+            ['S', 'F', 'C', 'S'],
+            ['A', 'D', 'E', 'E']
         ], 'ABCCED'
-    )) # Expected: True
+    ))  # Expected: True
 
     print(s.exist(
         [
-            ['A','B','C','E'],
-            ['S','F','C','S'],
-            ['A','D','E','E']
+            ['A', 'B', 'C', 'E'],
+            ['S', 'F', 'C', 'S'],
+            ['A', 'D', 'E', 'E']
         ], 'SEE'
-    )) # Expected: True
+    ))  # Expected: True
 
     print(s.exist(
         [
-            ['A','B','C','E'],
-            ['S','F','C','S'],
-            ['A','D','E','E']
+            ['A', 'B', 'C', 'E'],
+            ['S', 'F', 'C', 'S'],
+            ['A', 'D', 'E', 'E']
+        ], 'ABCS'
+    ))  # Expected: False
+
+    print(s.exist(
+        [
+            ['A', 'B', 'C', 'E'],
+            ['S', 'F', 'C', 'S'],
+            ['A', 'D', 'E', 'E']
         ], 'ABCB'
-    )) # Expected: False
+    ))  # Expected: False
 
     print(s.exist(
         [
-            ['A','B','C','E'],
-            ['S','F','E','S'],
-            ['A','D','E','E']
+            ['A', 'B', 'C', 'E'],
+            ['S', 'F', 'E', 'S'],
+            ['A', 'D', 'E', 'E']
         ], 'ABCESEEEFS'
-    )) # Expected: True
+    ))  # Expected: True
+
+    print(s.exist(
+        [
+            ['A', 'B', 'C', 'E'],
+            ['S', 'F', 'E', 'S'],
+            ['A', 'D', 'E', 'E']
+        ], 'Z'
+    ))  # Expected: False
 
 
 if __name__ == '__main__':
