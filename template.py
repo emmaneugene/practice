@@ -1,7 +1,7 @@
 # Problem:
 
-# Time complexity:
-# Space complexity:
+# Time complexity: O()
+# Space complexity: O()
 
 
 class Solution:
@@ -12,5 +12,5 @@ def main():
     s: Solution = Solution()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
