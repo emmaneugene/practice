@@ -2,11 +2,11 @@
 
 from typing import List
 
+
 # Complexity: O(n)
 class Solution:
     def getHighestProduct(self, nums: List[int]) -> int:
-        '''Returns highest product possible from `nums`
-        '''
+        """Returns highest product possible from `nums`"""
         if len(nums) == 1:
             return nums[0]
 
@@ -27,7 +27,7 @@ class Solution:
             idx += 1
 
         rightNeg: int = nums[-1]
-        idx = len(nums)-2
+        idx = len(nums) - 2
 
         while rightNeg > 0:
             rightNeg *= nums[idx]
@@ -47,10 +47,10 @@ class Solution:
         while nums[stripStart] == 0:
             stripStart += 1
         stripEnd: int = len(nums)
-        while nums[stripEnd-1] == 0:
+        while nums[stripEnd - 1] == 0:
             stripEnd -= 1
 
-        nums = nums[stripStart: stripEnd]
+        nums = nums[stripStart:stripEnd]
 
         # Split array where 0s are encountered
         # [2,0,1,4,0,8] becomes [[2], [1,4], [8]]
@@ -87,5 +87,5 @@ def main():
     print(s.maxProduct([0, 0, -2, -3, 0, 0, 0, -1, 0]))  # Expected: 6
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -8,15 +8,14 @@ from typing import List, Tuple
 
 
 class Tracker:
-    '''Tracks last element of a subsequence and its length
-    '''
+    """Tracks last element of a subsequence and its length"""
 
     def __init__(self, val: int, length: int) -> None:
         self.val = val
         self.length = length
 
     def __str__(self) -> str:
-        return f'[{self.val}, {self.length}]'
+        return f"[{self.val}, {self.length}]"
 
 
 class Solution:
@@ -35,8 +34,8 @@ class Solution:
                 trackers.insert(0, Tracker(nums[i], 1))
 
             else:
-                smaller: Tracker = trackers[idx-1]
-                new: Tracker = Tracker(nums[i], smaller.length+1)
+                smaller: Tracker = trackers[idx - 1]
+                new: Tracker = Tracker(nums[i], smaller.length + 1)
 
                 # Replace next tracker entry if length is not greater
                 if idx < len(trackers) and trackers[idx].length <= new.length:
@@ -48,8 +47,8 @@ class Solution:
                     longest = new.length
 
         for tracker in trackers:
-            print(tracker, end=' ')
-        print('')
+            print(tracker, end=" ")
+        print("")
         return longest
 
 

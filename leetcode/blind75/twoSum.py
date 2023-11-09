@@ -9,13 +9,14 @@
 
 from typing import Dict, List
 
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         tracker: Dict[int, int] = {}
 
         for i, n in enumerate(nums):
             if target - n in tracker:
-                return [tracker[target-n], i]
+                return [tracker[target - n], i]
             tracker[n] = i
 
         return [-1, -1]  # Should not get here
@@ -29,5 +30,5 @@ def main():
     print(s.twoSum([3, 3], 6))  # Expected: [0,1]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

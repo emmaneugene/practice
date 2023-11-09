@@ -6,8 +6,8 @@ from typing import Optional
 
 
 class ListNode:
-    '''Definition for singly-linked list.
-    '''
+    """Definition for singly-linked list."""
+
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
@@ -15,10 +15,10 @@ class ListNode:
 
 class Solution:
     def getSmallest(self, lists: list[Optional[ListNode]]) -> int:
-        '''Returns the smallest element of a list of linked lists
+        """Returns the smallest element of a list of linked lists
         and advances the corresponding pointer. If the next element is null,
         this function pops the empty linked list
-        '''
+        """
         idxMin: int = 0
 
         for i in range(len(lists)):
@@ -57,5 +57,5 @@ def main():
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

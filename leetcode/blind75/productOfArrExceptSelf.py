@@ -16,15 +16,15 @@ class Solution:
 
         # Multiply from left
         pdt: int = 1
-        for i in range(len(nums)-1):
+        for i in range(len(nums) - 1):
             pdt *= nums[i]
-            out[i+1] *= pdt 
+            out[i + 1] *= pdt
 
         # Multiply from right
         pdt = 1
-        for i in range(len(nums)-1, 0, -1):
+        for i in range(len(nums) - 1, 0, -1):
             pdt *= nums[i]
-            out[i-1] *= pdt
+            out[i - 1] *= pdt
 
         return out
 
@@ -36,5 +36,5 @@ def main():
     print(s.productExceptSelf([-1, 1, 0, -3, 3]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

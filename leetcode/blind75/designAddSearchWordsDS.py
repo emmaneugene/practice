@@ -5,6 +5,7 @@
 
 from typing import Optional
 
+
 class TrieNode:
     def __init__(self) -> None:
         self.isTerminal: bool = False
@@ -29,13 +30,13 @@ class TrieNode:
         if nextCh == ".":
             for k, v in self.children.items():
                 result: TrieNode = self.children[k].lookup(word[1:])
-                if result is not None and result.isTerminal: return result
+                if result is not None and result.isTerminal:
+                    return result
 
         if nextCh not in self.children:
             return None
 
         return self.children[nextCh].lookup(word[1:])
-
 
 
 class WordDictionary:
@@ -44,7 +45,7 @@ class WordDictionary:
 
     def addWord(self, word: str) -> None:
         self.root.insert(word)
-    
+
     def search(self, word: str) -> bool:
         result: Optional[TrieNode] = self.root.lookup(word)
         return result is not None and result.isTerminal
@@ -56,10 +57,10 @@ def main():
     wordDict.addWord("bad")
     wordDict.addWord("dad")
     wordDict.addWord("mad")
-    print(wordDict.search("pad")) # False
-    print(wordDict.search("bad")) # True
-    print(wordDict.search(".ad")) # True
-    print(wordDict.search("b..")) # True
+    print(wordDict.search("pad"))  # False
+    print(wordDict.search("bad"))  # True
+    print(wordDict.search(".ad"))  # True
+    print(wordDict.search("b.."))  # True
 
     print("------------------------------------------------------")
 
@@ -68,16 +69,16 @@ def main():
     wordDict.addWord("and")
     wordDict.addWord("an")
     wordDict.addWord("add")
-    print(wordDict.search("a")) # False
-    print(wordDict.search(".at")) # False
+    print(wordDict.search("a"))  # False
+    print(wordDict.search(".at"))  # False
     wordDict.addWord("bat")
-    print(wordDict.search(".at")) # True
-    print(wordDict.search("an.")) # True
-    print(wordDict.search("a.d.")) # False
-    print(wordDict.search("b.")) # False
-    print(wordDict.search("a.d")) # True
-    print(wordDict.search(".")) # False
+    print(wordDict.search(".at"))  # True
+    print(wordDict.search("an."))  # True
+    print(wordDict.search("a.d."))  # False
+    print(wordDict.search("b."))  # False
+    print(wordDict.search("a.d"))  # True
+    print(wordDict.search("."))  # False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

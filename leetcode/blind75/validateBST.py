@@ -4,12 +4,13 @@ from typing import Optional, Tuple
 
 
 class TreeNode:
-    ''' Definition for a binary tree node.
-    '''
+    """Definition for a binary tree node."""
+
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
 
 # Time complexity: O(n)
 # Space complexity: O(n) due to recursive stack frames
@@ -21,9 +22,9 @@ class Solution:
         return self.checkNode(root)[0]
 
     def checkNode(self, node: TreeNode) -> Tuple[bool, int, int]:
-        '''Recursively checks whether this node is a valid BST, and returns
+        """Recursively checks whether this node is a valid BST, and returns
         the min and max values of the BST in question
-        '''
+        """
         if node.left is None and node.right is None:
             return True, node.val, node.val
         elif node.right is None:
@@ -37,8 +38,9 @@ class Solution:
         else:
             leftIsBST, leftMin, leftMax = self.checkNode(node.left)
             rightIsBST, rightMin, rightMax = self.checkNode(node.right)
-            isBST: bool = leftIsBST and leftMax < node.val \
-                and rightIsBST and rightMin > node.val
+            isBST: bool = (
+                leftIsBST and leftMax < node.val and rightIsBST and rightMin > node.val
+            )
             return isBST, leftMin, rightMax
 
 

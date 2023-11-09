@@ -14,14 +14,14 @@ class Solution:
 
         mid: int = len(nums) // 2
 
-        if nums[mid-1] > nums[mid]:
+        if nums[mid - 1] > nums[mid]:
             return nums[mid]
 
         # Condition to search left
         if nums[mid] <= nums[-1]:
             return self.findMin(nums[:mid])
 
-        return self.findMin(nums[mid+1:])
+        return self.findMin(nums[mid + 1 :])
 
 
 def main():
@@ -33,5 +33,5 @@ def main():
     print(s.findMin([5, 1, 2, 3, 4]))  # Expected: 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -4,19 +4,20 @@
 
 from typing import Dict, List, Set
 
+
 class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
         # Maps each node to a group of connected nodes
         nodeConnections: Dict[int, Set[int]] = {}
         unvisited: Set[int] = {i for i in range(n)}
-        
+
         count: int = 0
         for n1, n2 in edges:
             if n1 not in nodeConnections and n2 not in nodeConnections:
                 # New connected group
                 newGroup: List[int] = {n1, n2}
                 nodeConnections[n1] = newGroup
-                nodeConnections[n2] = newGroup 
+                nodeConnections[n2] = newGroup
                 count += 1
             elif n1 not in nodeConnections:
                 # Add to existing group
@@ -42,12 +43,14 @@ class Solution:
 
         return count + len(unvisited)
 
+
 def main():
     s: Solution = Solution()
 
-    print(s.countComponents(5, [[0,1],[1,2],[3,4]])) # Expected: 2
-    print(s.countComponents(5, [[0,1],[1,2],[2,3],[3,4]])) # Expected: 1
-    print(s.countComponents(5, [[0,1],[1,2],[0,2],[3,4]])) # Expected: 2
+    print(s.countComponents(5, [[0, 1], [1, 2], [3, 4]]))  # Expected: 2
+    print(s.countComponents(5, [[0, 1], [1, 2], [2, 3], [3, 4]]))  # Expected: 1
+    print(s.countComponents(5, [[0, 1], [1, 2], [0, 2], [3, 4]]))  # Expected: 2
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

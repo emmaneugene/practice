@@ -5,6 +5,7 @@
 
 from typing import Optional
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -12,9 +13,11 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if root == None: return root
+        if root == None:
+            return root
 
         self.swapChildren(root)
 
@@ -23,7 +26,7 @@ class Solution:
     def swapChildren(self, node: TreeNode) -> None:
         if node.left:
             self.swapChildren(node.left)
-        
+
         if node.right:
             self.swapChildren(node.right)
 
@@ -32,8 +35,7 @@ class Solution:
 
 def main():
     s: Solution = Solution()
-    
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

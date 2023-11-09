@@ -12,7 +12,7 @@ class Solution:
         for n in nums:
             keys[n] = 1
 
-        for i in range(len(nums)+1):
+        for i in range(len(nums) + 1):
             if i not in keys:
                 return i
 

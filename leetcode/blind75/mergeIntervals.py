@@ -36,5 +36,5 @@ def main():
     print(s.merge([[1, 4], [4, 5]]))  # Expected: [[1,5]]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

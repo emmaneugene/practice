@@ -7,8 +7,8 @@ from typing import Optional, List
 
 
 class TreeNode:
-    '''Definition for a binary tree node
-    '''
+    """Definition for a binary tree node"""
+
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
@@ -58,5 +58,5 @@ def main():
     print(s.levelOrder(root))  # Expected: []
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

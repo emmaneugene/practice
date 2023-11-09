@@ -5,7 +5,7 @@
 
 
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
+    def search(self, nums: list[int], target: int) -> int:
         """
         We need to find the two elements a,b that are not in ascending order, as the
         right element will be at index n - k. We can then derive k trivially.

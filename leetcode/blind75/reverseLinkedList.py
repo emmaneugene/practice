@@ -3,11 +3,12 @@ from typing import Optional
 
 
 class ListNode:
-    '''Definition for a singly-linked list
-    '''
+    """Definition for a singly-linked list"""
+
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 # Complexity: O(n)
 

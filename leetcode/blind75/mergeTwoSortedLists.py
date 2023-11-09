@@ -5,6 +5,7 @@
 
 from typing import Optional
 
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -13,11 +14,16 @@ class ListNode:
 
 
 class Solution:
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoLists(
+        self, list1: Optional[ListNode], list2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         # Corner case
-        if list1 is None and list2 is None: return None
-        elif list1 is None: return list2
-        elif list2 is None: return list1
+        if list1 is None and list2 is None:
+            return None
+        elif list1 is None:
+            return list2
+        elif list2 is None:
+            return list1
 
         track1 = list1
         track2 = list2
@@ -55,33 +61,32 @@ class Solution:
 
 
 def printList(x: Optional[ListNode]) -> None:
-    if x == None: 
+    if x == None:
         print("<empty list>")
         return
-    
-    print(f"{x.val}", end='')
+
+    print(f"{x.val}", end="")
     x = x.next
 
     while x is not None:
-        print(f", {x.val}", end='')
+        print(f", {x.val}", end="")
         x = x.next
 
     print("")
 
 
-
 def main():
     s: Solution = Solution()
-    
+
     l1 = ListNode(1, ListNode(2, ListNode(4)))
     l2 = ListNode(1, ListNode(3, ListNode(4)))
-    
-    printList(s.mergeTwoLists(l1, l2)) # Expected: 1, 1, 2, 3, 4, 4
 
-    printList(s.mergeTwoLists(None, None)) # Expected: <empty list>
+    printList(s.mergeTwoLists(l1, l2))  # Expected: 1, 1, 2, 3, 4, 4
 
-    printList(s.mergeTwoLists(None, ListNode(0))) # Expected: 0
+    printList(s.mergeTwoLists(None, None))  # Expected: <empty list>
+
+    printList(s.mergeTwoLists(None, ListNode(0)))  # Expected: 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

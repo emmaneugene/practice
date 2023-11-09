@@ -9,16 +9,15 @@ from typing import List
 
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-
-        optimalCounts: List[int] = [-1] * (amount+1)
+        optimalCounts: List[int] = [-1] * (amount + 1)
         optimalCounts[0] = 0
 
-        for i in range(1, amount+1):
+        for i in range(1, amount + 1):
             foundValid: bool = False
             toAdd: int = -1
             for c in coins:
-                if c <= i and optimalCounts[i-c] != -1:
-                    temp = optimalCounts[i-c] + 1
+                if c <= i and optimalCounts[i - c] != -1:
+                    temp = optimalCounts[i - c] + 1
                     if not foundValid:
                         toAdd = temp
                         foundValid = True
@@ -39,5 +38,5 @@ def main():
     print(s.coinChange([1], 0))  # Expected: 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

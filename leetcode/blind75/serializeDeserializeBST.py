@@ -5,6 +5,7 @@
 # Space complexity: O(depth)
 from typing import List, Optional
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -15,8 +16,7 @@ class TreeNode:
 
 class Codec:
     def serialize(self, root: Optional[TreeNode]) -> str:
-        '''Encodes a tree to a string
-        '''
+        """Encodes a tree to a string"""
         if root is None or root.val is None:
             return ""
         # Parse to array
@@ -24,7 +24,6 @@ class Codec:
         toExplore: List[TreeNode] = [root]
 
         while len(toExplore) > 0:
-
             node: TreeNode = toExplore.pop(0)
             treeArr.append(node.val)
 
@@ -42,23 +41,22 @@ class Codec:
                 toExplore.append(node.right)
 
         serialized: str = str(treeArr)
-        return serialized.replace(' ', '')
+        return serialized.replace(" ", "")
 
     def deserialize(self, data: str) -> Optional[TreeNode]:
-        '''Decodes your encoded data to tree.
-        '''
+        """Decodes your encoded data to tree."""
         if len(data) == 0:
             return None
 
-        arr: list[int] = [int(i) for i in data[1:-1].split(',')]
+        arr: list[int] = [int(i) for i in data[1:-1].split(",")]
 
         rootVal = arr.pop(0)
         return self.constructNode(arr, rootVal)
 
     def constructNode(self, arr: list[int], val: int) -> Optional[TreeNode]:
-        '''Recursive function that constructs a TreeNode given an input array 
+        """Recursive function that constructs a TreeNode given an input array
         `arr` and node value `val`
-        '''
+        """
         node: TreeNode = TreeNode(val)
 
         leftVal: int = arr.pop(0)

@@ -1,5 +1,6 @@
 # Given a string s, return the longest palindromic substring in s
 
+
 class Solution:
     # General idea: Loop over all characters in the string
 
@@ -23,10 +24,8 @@ class Solution:
             oddPalindrome: str = self.getLongestOddPalindrome(s, i)
             evenPalindrome: str = self.getLongestEvenPalindrome(s, i)
 
-            result = oddPalindrome if len(
-                oddPalindrome) > len(result) else result
-            result = evenPalindrome if len(
-                evenPalindrome) > len(result) else result
+            result = oddPalindrome if len(oddPalindrome) > len(result) else result
+            result = evenPalindrome if len(evenPalindrome) > len(result) else result
 
         return result
 
@@ -37,8 +36,8 @@ class Solution:
         matching: bool = True
 
         while i - count >= 0 and i + count < len(s) and matching:
-            if s[i-count] == s[i+count]:
-                result = s[i-count: i+count+1]
+            if s[i - count] == s[i + count]:
+                result = s[i - count : i + count + 1]
             else:
                 matching = False
             count += 1
@@ -52,8 +51,8 @@ class Solution:
         matching: bool = True
 
         while i - count >= 0 and i + count + 1 < len(s) and matching:
-            if s[i-count] == s[i+count+1]:
-                result = s[i-count: i+count+2]
+            if s[i - count] == s[i + count + 1]:
+                result = s[i - count : i + count + 2]
             else:
                 matching = False
             count += 1

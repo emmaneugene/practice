@@ -1,7 +1,7 @@
 # Problem: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 
 # Time complexity: O(n) - but shorter in practice
-# Space complexity: O(n) - but shorter in practice 
+# Space complexity: O(n) - but shorter in practice
 
 # Perform inorder traversal, select array index
 
@@ -22,12 +22,12 @@ class Solution:
         if root.left:
             self.inorderTraverseAndFind(root.left, values, k)
         if len(values) >= k:
-            return    
-        
+            return
+
         values.append(root.val)
         if len(values) >= k:
             return
-            
+
         if root.right:
             self.inorderTraverseAndFind(root.right, values, k)
 
@@ -48,11 +48,12 @@ def main():
 
     print(s.kthSmallest(tree1, 1))  # 1
 
-    tree2: TreeNode = TreeNode(5, TreeNode(3, TreeNode(
-        2, TreeNode(1)), TreeNode(4)), TreeNode(6))
+    tree2: TreeNode = TreeNode(
+        5, TreeNode(3, TreeNode(2, TreeNode(1)), TreeNode(4)), TreeNode(6)
+    )
 
     print(s.kthSmallest(tree2, 3))  # 3
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

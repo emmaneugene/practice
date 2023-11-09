@@ -11,17 +11,17 @@ from typing import List, Dict
 
 
 class Match:
-    '''For a reference text (text2), tracks the index of a matched character in the source text (text1) which gives the 
+    """For a reference text (text2), tracks the index of a matched character in the source text (text1) which gives the
     longest sequence so far. Not necessary for us to track the character itself, but this can be included if we want to
     return the string
-    '''
+    """
 
     def __init__(self, matchedAt: int = -1, length: int = 0) -> None:
         self.matchedAt = matchedAt
         self.length = length
 
     def __str__(self) -> str:
-        return f'[{self.matchedAt}, {self.length}]'
+        return f"[{self.matchedAt}, {self.length}]"
 
 
 class Solution:
@@ -45,7 +45,6 @@ class Solution:
 
         for i1, ch1 in enumerate(text1):
             if ch1 in occurrences:
-
                 # Create new set of matches
                 newMatches: Dict[int, Match] = {}
                 i2s: List[int] = occurrences[ch1]
@@ -70,10 +69,10 @@ class Solution:
 def main():
     s: Solution = Solution()
 
-    print(s.longestCommonSubsequence('abcde', 'ace'))  # Expected: 3
-    print(s.longestCommonSubsequence('abc', 'abd'))  # Expected: 2
-    print(s.longestCommonSubsequence('abc', 'def'))  # Expected: 0
+    print(s.longestCommonSubsequence("abcde", "ace"))  # Expected: 3
+    print(s.longestCommonSubsequence("abc", "abd"))  # Expected: 2
+    print(s.longestCommonSubsequence("abc", "def"))  # Expected: 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

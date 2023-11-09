@@ -16,8 +16,8 @@ class Solution:
 def main():
     s: Solution = Solution()
 
-    print(s.canAttendMeetings([[0, 30], [5, 10], [15, 20]])) # False
-    print(s.canAttendMeetings([[7, 10], [2, 4]])) # True
+    print(s.canAttendMeetings([[0, 30], [5, 10], [15, 20]]))  # False
+    print(s.canAttendMeetings([[7, 10], [2, 4]]))  # True
 
 
 if __name__ == "__main__":

@@ -17,11 +17,11 @@ class Solution:
 
 def main():
     s = Solution()
-    print('Expected: 964176192')
-    print(f'Output  : {s.reverseBits(43261596)}')
+    print("Expected: 964176192")
+    print(f"Output  : {s.reverseBits(43261596)}")
 
-    print('Expected: 3221225471')
-    print(f'Output  : {s.reverseBits(4294967293)}')
+    print("Expected: 3221225471")
+    print(f"Output  : {s.reverseBits(4294967293)}")
 
 
 if __name__ == "__main__":

@@ -29,9 +29,9 @@ class Solution:
 def main():
     s: Solution = Solution()
 
-    print(s.isAnagram('anagram', 'nagaram'))  # True
-    print(s.isAnagram('rat', 'car'))  # False
+    print(s.isAnagram("anagram", "nagaram"))  # True
+    print(s.isAnagram("rat", "car"))  # False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

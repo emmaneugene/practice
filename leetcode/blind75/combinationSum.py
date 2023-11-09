@@ -19,10 +19,10 @@ class Solution:
         for n in candidates:
             toAdd: Dict[int, List[List[int]]] = {}
 
-            for mlti in range(1, (target//n) + 1):
+            for mlti in range(1, (target // n) + 1):
                 remainder: int = target - (n * mlti)
 
-                for val in range(remainder+1):
+                for val in range(remainder + 1):
                     if val in sumsCombis:
                         prevCombis: List[List[int]] = sumsCombis[val]
                         for combi in prevCombis:
@@ -30,9 +30,9 @@ class Solution:
                             newCombi += [n] * mlti
                             newVal = val + (n * mlti)
                             if newVal in toAdd:
-                                toAdd[(n*mlti)+val].append(newCombi)
+                                toAdd[(n * mlti) + val].append(newCombi)
                             else:
-                                toAdd[(n*mlti)+val] = [newCombi]
+                                toAdd[(n * mlti) + val] = [newCombi]
 
             for val, combis in toAdd.items():
                 if val in sumsCombis:
@@ -47,15 +47,15 @@ class Solution:
 def main():
     s: Solution = Solution()
 
-    print('Expected: [[2,2,3], [7]]')
-    print(f'Actual  :{s.combinationSum([2, 3, 6, 7], 7)}')
+    print("Expected: [[2,2,3], [7]]")
+    print(f"Actual  :{s.combinationSum([2, 3, 6, 7], 7)}")
 
-    print('Expected: [[2,2,2,2],[2,3,3],[3,5]]')
-    print(f'Actual  : {s.combinationSum([2, 3, 5], 8)}')
+    print("Expected: [[2,2,2,2],[2,3,3],[3,5]]")
+    print(f"Actual  : {s.combinationSum([2, 3, 5], 8)}")
 
-    print('Expected: []')
-    print(f'Actual  :{s.combinationSum([2], 1)}') 
+    print("Expected: []")
+    print(f"Actual  :{s.combinationSum([2], 1)}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
