@@ -1,5 +1,6 @@
 # Problem: https://leetcode.com/problems/median-of-two-sorted-arrays/
 
+
 # Algorithm should run in O(log(m+n))
 # Solution 1: Merging both arrays is O(m+n), which is not optimal
 # Solution 2: Divide and conquer - recursively find medians of each array (?)
@@ -28,14 +29,16 @@ class Solution:
 
         mid: int = len(merged) // 2
         if len(merged) % 2 == 0:
-            return (merged[mid] + merged[mid-1]) / 2
+            return (merged[mid] + merged[mid - 1]) / 2
 
         return merged[mid]
 
+
 def main():
     s: Solution = Solution()
-    print(s.findMedianSortedArrays([1,3], [2])) # Expected: 2
-    print(s.findMedianSortedArrays([1,2], [3,4])) # Expected: 2.5
+    print(s.findMedianSortedArrays([1, 3], [2]))  # Expected: 2
+    print(s.findMedianSortedArrays([1, 2], [3, 4]))  # Expected: 2.5
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

@@ -3,6 +3,7 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+
 class Solution:
     def evalRPN(self, tokens: list[str]) -> int:
         operands: list[int] = []
@@ -32,10 +33,12 @@ class Solution:
 def main():
     s: Solution = Solution()
 
-    print(s.evalRPN(["2", "1", "+", "3", "*"])) # 9
-    print(s.evalRPN(["4","13","5","/","+"])) # 6
-    print(s.evalRPN(["10","6","9","3","+","-11","*","/","*","17","+","5","+"]))
+    print(s.evalRPN(["2", "1", "+", "3", "*"]))  # 9
+    print(s.evalRPN(["4", "13", "5", "/", "+"]))  # 6
+    print(
+        s.evalRPN(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"])
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

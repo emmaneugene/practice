@@ -3,7 +3,7 @@
 # Pattern: Keep track of 2 stacks - 1 for all the values, and 1 for all the
 # minimum values
 
-# Time complexity: O(1) per operations 
+# Time complexity: O(1) per operations
 # Space complexity: O(n)
 
 
@@ -21,10 +21,10 @@ class MinStack:
         removed: int = self.items.pop()
         if self.mins[-1] == removed:
             self.mins.pop()
-    
+
     def top(self) -> int:
         return self.items[-1]
-    
+
     def getMin(self) -> int:
         return self.mins[-1]
 
@@ -35,11 +35,11 @@ def main():
     minStack.push(-2)
     minStack.push(0)
     minStack.push(-3)
-    print(minStack.getMin()) # Expected: -3
+    print(minStack.getMin())  # Expected: -3
     minStack.pop()
-    print(minStack.top()) # Expected: 0
-    print(minStack.getMin()) # Expected: -2
+    print(minStack.top())  # Expected: 0
+    print(minStack.getMin())  # Expected: -2
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

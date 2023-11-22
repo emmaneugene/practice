@@ -10,7 +10,7 @@ class Solution:
         end: int = len(nums)
 
         while start < end:
-            mid: int = start + (end-start)//2
+            mid: int = start + (end - start) // 2
 
             print(f"Lookup {nums[mid]}")
 
@@ -19,20 +19,20 @@ class Solution:
             elif target < nums[mid]:
                 end = mid
             else:
-                start = mid+1
-        
+                start = mid + 1
+
         return -1
 
 
 def main():
     s: Solution = Solution()
 
-    print(s.search([-1,0,3,4,9,12], 9)) # Expected: 4
-    print(s.search([-1,0,3,4,9,12], 2)) # Expected: -1
-    print(s.search([-1,0,3], 0)) # Expected: 1
-    print(s.search([-1,0], -1)) # Expected: 0
-    print(s.search([-1,0], 0)) # Expected: 1
+    print(s.search([-1, 0, 3, 4, 9, 12], 9))  # Expected: 4
+    print(s.search([-1, 0, 3, 4, 9, 12], 2))  # Expected: -1
+    print(s.search([-1, 0, 3], 0))  # Expected: 1
+    print(s.search([-1, 0], -1))  # Expected: 0
+    print(s.search([-1, 0], 0))  # Expected: 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

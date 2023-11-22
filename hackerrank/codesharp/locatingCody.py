@@ -15,6 +15,7 @@ from typing import List
 # The function accepts INTEGER_ARRAY street as parameter.
 #
 
+
 def search_street(street: List[int]):
     startingPoints: List[int] = []
     for i, n in enumerate(street):
@@ -25,26 +26,26 @@ def search_street(street: List[int]):
 
     for i in startingPoints:
         # Search behind
-        tmpI: int = i 
+        tmpI: int = i
         backCount: int = 0
         backValid: bool = False
-        while tmpI > 0 and street[tmpI-1] == 0:
+        while tmpI > 0 and street[tmpI - 1] == 0:
             backCount += 1
             tmpI -= 1
-            if tmpI > 0 and street[tmpI-1] == -1:
+            if tmpI > 0 and street[tmpI - 1] == -1:
                 backValid = True
                 break
 
         tmpI = i
         forwardCount: int = 0
         forwardValid: int = False
-        while tmpI < len(street)-1 and street[tmpI+1] == 0:
+        while tmpI < len(street) - 1 and street[tmpI + 1] == 0:
             forwardCount += 1
             tmpI += 1
-            if tmpI < len(street)-1 and street[tmpI+1] == -1:
+            if tmpI < len(street) - 1 and street[tmpI + 1] == -1:
                 forwardValid = True
                 break
-        
+
         if backValid:
             longest = max(backCount, longest)
 
@@ -53,11 +54,13 @@ def search_street(street: List[int]):
 
     return longest
 
-def main():
-    print(search_street([1,0,0,-1,0,0,0,0,1])) # Expected: 4
-    print(search_street([0,0,1,-1])) # Expected: 0
 
-if __name__ == '__main__':
+def main():
+    print(search_street([1, 0, 0, -1, 0, 0, 0, 0, 1]))  # Expected: 4
+    print(search_street([0, 0, 1, -1]))  # Expected: 0
+
+
+if __name__ == "__main__":
     main()
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 

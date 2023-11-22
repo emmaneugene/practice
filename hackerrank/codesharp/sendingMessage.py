@@ -18,6 +18,7 @@ from typing import Dict, List
 #  2. STRING send_message
 #
 
+
 def getCounts(s: str) -> Dict[str, int]:
     counts: Dict[str, int] = {}
 
@@ -29,6 +30,7 @@ def getCounts(s: str) -> Dict[str, int]:
 
     return counts
 
+
 def countSubstitutable(clipping: Dict[str, int], message: Dict[str, int]) -> int:
     subCount: int = 0
 
@@ -38,15 +40,18 @@ def countSubstitutable(clipping: Dict[str, int], message: Dict[str, int]) -> int
 
     return subCount
 
+
 def removeChars(clipping: Dict[str, int], message: Dict[str, int]) -> None:
     for ch in message.keys():
         if ch in clipping:
             message[ch] -= min(message[ch], clipping[ch])
 
+
 def charsRemaining(message: Dict[str, int]) -> bool:
     for _, v in message.items():
-        if v > 0: return True
-    
+        if v > 0:
+            return True
+
     return False
 
 
@@ -58,35 +63,36 @@ def min_stickers(newspaper_clippings: List[str], send_message: str) -> int:
     print(msg)
 
     clipCount: int = 0
-    
+
     while charsRemaining(msg):
         foundClip: bool = False
         rmvCount: int = 0
         toRemove: Dict[str, int] = {}
-        
+
         for c in clips:
             tmpCount: int = countSubstitutable(c, msg)
             if tmpCount > 0:
                 foundClip = True
-                print('Found clip')
+                print("Found clip")
                 if tmpCount > rmvCount:
                     rmvCount = tmpCount
                     toRemove = c
-        
+
         if not foundClip:
             return -1
-     
+
         removeChars(toRemove, msg)
         clipCount += 1
 
-
     return clipCount
 
-def main():
-    print(min_stickers(['whale', 'tick', 'bonus'], 'watchout')) # Expected: 3
-    print(min_stickers(['extravagant', 'small'], 'biased')) # Expected: -1
 
-if __name__ == '__main__':
+def main():
+    print(min_stickers(["whale", "tick", "bonus"], "watchout"))  # Expected: 3
+    print(min_stickers(["extravagant", "small"], "biased"))  # Expected: -1
+
+
+if __name__ == "__main__":
     main()
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 

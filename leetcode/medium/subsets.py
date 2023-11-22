@@ -5,6 +5,7 @@
 
 import copy
 
+
 class Solution:
     def subsets(self, nums: list[int]) -> list[list[int]]:
         result: list[list[int]] = [[]]
@@ -22,8 +23,8 @@ class Solution:
 
 def main():
     s: Solution = Solution()
-    print(s.subsets([1,2,3]))
+    print(s.subsets([1, 2, 3]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

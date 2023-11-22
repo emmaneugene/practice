@@ -15,25 +15,25 @@ from typing import Dict
 # The function accepts STRING s as parameter.
 #
 
+
 def encrypt(s: str) -> str:
-    out: str = ''
-    
+    out: str = ""
+
     charToInt: Dict[str, int] = {}
     intToChar: Dict[int, str] = {}
 
-    for i, ch in enumerate('abcdefghijklmnopqrstuvwxyz'):
+    for i, ch in enumerate("abcdefghijklmnopqrstuvwxyz"):
         charToInt[ch] = i
         intToChar[i] = ch
 
     for i, ch in enumerate(s):
-
         if ch.isalpha():
             shift: int = (charToInt[ch.lower()] + i + 1) % 26
             encrypted: str = intToChar[shift]
 
             if ch.isupper():
                 encrypted = encrypted.upper()
-            
+
             out += encrypted
         else:
             out += ch
@@ -42,10 +42,11 @@ def encrypt(s: str) -> str:
 
 
 def main():
-    print(encrypt('ABC DE')) # Expected: BDF IK
-    print(encrypt('abcDE')) # Expected: bdfHJ
+    print(encrypt("ABC DE"))  # Expected: BDF IK
+    print(encrypt("abcDE"))  # Expected: bdfHJ
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 

@@ -18,8 +18,9 @@ from typing import Dict, List
 #  3. 2D_INTEGER_ARRAY accusations
 #
 
+
 def suspect(n: int, num_accusations: int, accusations: List[List[int]]):
-    # person: 
+    # person:
     accGiven: Dict[int, int] = {}
     accRcvd: Dict[int, int] = {}
 
@@ -51,16 +52,19 @@ def suspect(n: int, num_accusations: int, accusations: List[List[int]]):
             else:
                 majorityAccused = k
                 majorityAccusedFound = True
-    
 
     return majorityAccused
 
-def main():
-    print(suspect(4, 5, [[1,2],[2,3],[3,2],[3,4],[4,2]])) # Expected: 2
-    print(suspect(6, 8, [[1,2],[2,1],[3,1],[4,2],[5,1],[5,2],[6,1],[6,2]])) # Expected: 0
-    print(suspect(3, 4, [[1,2],[1,3],[2,3],[3,2]])) # Expected: 1
 
-if __name__ == '__main__':
+def main():
+    print(suspect(4, 5, [[1, 2], [2, 3], [3, 2], [3, 4], [4, 2]]))  # Expected: 2
+    print(
+        suspect(6, 8, [[1, 2], [2, 1], [3, 1], [4, 2], [5, 1], [5, 2], [6, 1], [6, 2]])
+    )  # Expected: 0
+    print(suspect(3, 4, [[1, 2], [1, 3], [2, 3], [3, 2]]))  # Expected: 1
+
+
+if __name__ == "__main__":
     main()
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 

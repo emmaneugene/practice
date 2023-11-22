@@ -5,13 +5,14 @@
 
 import copy
 
+
 class Solution:
     def permute(self, nums: list[int]) -> list[list[int]]:
         results: list[list[int]] = []
 
         if len(nums) > 0:
             results.append([nums[0]])
-        
+
         for i in range(1, len(nums)):
             prevCount: int = len(results)
 
@@ -24,16 +25,16 @@ class Solution:
 
             for j in range(prevCount):
                 results[j].append(nums[i])
-            
+
         return results
 
 
 def main():
     s: Solution = Solution()
 
-    print(s.permute([1,2,3]))
-    print(s.permute([1,2,3,4]))
+    print(s.permute([1, 2, 3]))
+    print(s.permute([1, 2, 3, 4]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

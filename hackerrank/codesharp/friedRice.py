@@ -15,6 +15,7 @@ from typing import List
 # The function accepts 2D_INTEGER_ARRAY dishes as parameter.
 #
 
+
 def fuiyoh(dishes: List[List[int]]) -> int:
     dishes.sort(key=lambda x: (x[0], x[1]))
     count: int = 0
@@ -25,15 +26,16 @@ def fuiyoh(dishes: List[List[int]]) -> int:
         if d[0] > lowestMsg and d[1] > lowestGarlic:
             count += 1
 
-
     return count
 
-def main():
-    print(fuiyoh([[6,5],[3,2]])) # Expected: 1
-    print(fuiyoh([[6,5],[3,2],[3,3]])) # Expected: 1
-    print(fuiyoh([[6,5]])) # Expected: 1
 
-if __name__ == '__main__':
+def main():
+    print(fuiyoh([[6, 5], [3, 2]]))  # Expected: 1
+    print(fuiyoh([[6, 5], [3, 2], [3, 3]]))  # Expected: 1
+    print(fuiyoh([[6, 5]]))  # Expected: 1
+
+
+if __name__ == "__main__":
     main()
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 

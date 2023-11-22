@@ -40,7 +40,6 @@ class LRUCache:
             node.prev.next = node.next
             node.next.prev = node.prev
 
-
         node.prev = None
         node.next = self.head
         self.head.prev = node
@@ -56,7 +55,7 @@ class LRUCache:
             self.length += 1
             self.items[key] = self.head
             return
-        
+
         # Corner case - single entry update
         if self.length == 1 and key in self.items:
             self.head.val = value
@@ -75,7 +74,7 @@ class LRUCache:
             else:
                 node.prev.next = node.next
                 node.next.prev = node.prev
-            
+
             del node
             self.length -= 1
 
@@ -99,11 +98,10 @@ class LRUCache:
             return "<empty cache>"
 
         track: ListNode = self.head
-        out: str = ''
+        out: str = ""
         while track:
             out += f"{track.key}:{track.val} <-> "
             track = track.next
-
 
         return out
 
@@ -128,10 +126,10 @@ def main():
 
     print(f"get(2): {c.get(2)}")  # -1
     print(f"cache: {c}")
-    
+
     c.put(4, 4)
     print(f"put(4,4): {c}")
-    
+
     print(f"get(1): {c.get(1)}")  # -1
     print(f"cache: {c}")
 
@@ -142,5 +140,5 @@ def main():
     print(f"cache: {c}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
