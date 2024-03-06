@@ -22,6 +22,9 @@ function addItem(e) {
   deleteBtn.appendChild(document.createTextNode("X"));
   li.appendChild(deleteBtn);
   itemList.appendChild(li);
+
+  // Clear text
+  document.getElementById("item").value = "";
 }
 
 // Remove item on click
