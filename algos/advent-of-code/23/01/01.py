@@ -66,7 +66,7 @@ def getSum2(s: str) -> int:
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Please provide a file path")
-        exit
+        exit(1)
 
     sum1, sum2 = 0, 0
 

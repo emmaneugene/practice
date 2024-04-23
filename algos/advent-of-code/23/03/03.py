@@ -110,7 +110,7 @@ def rTraceNum(s: str) -> str:
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Please provide a file path")
-        exit
+        exit(1)
 
     f = open(sys.argv[1])
     matr: list[str] = ["." + line.strip() + "." for line in f]
