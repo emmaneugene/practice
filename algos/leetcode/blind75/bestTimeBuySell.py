@@ -9,10 +9,10 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        profit: int = 0
+        profit = 0
 
-        start: int = 0
-        end: int = 0
+        start = 0
+        end = 0
 
         for idx, val in enumerate(prices):
             if val < prices[start]:

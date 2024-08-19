@@ -6,7 +6,7 @@
 
 class Solution:
     def hammingWeight(self, n: int) -> int:
-        count: int = 0
+        count = 0
         while n > 0:
             count += n % 2
             n //= 2

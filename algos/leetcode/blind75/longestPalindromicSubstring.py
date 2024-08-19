@@ -1,24 +1,28 @@
-# Given a string s, return the longest palindromic substring in s
+# Problem: https://leetcode.com/problems/longest-consecutive-sequence/
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+
+# General idea: Loop over all characters in the string
+
+# That character can either be the middle of an odd-count palindrome, or middle-left of an
+# even palindrome. In both cases, we can write functions that perform an O(n) search for the
+# palindrome
+
+# Odd:
+# abcba
+#   ^
+# Even:
+# abba
+#  ^
+
+# Therefore, we should be able to find every single palindrome in the string with just
+# one loop
 
 
 class Solution:
-    # General idea: Loop over all characters in the string
-
-    # That character can either be the middle of an odd-count palindrome, or middle-left of an
-    # even palindrome. In both cases, we can write functions that perform an O(n) search for the
-    # palindrome
-
-    # Odd:
-    # abcba
-    #   ^
-    # Even:
-    # abba
-    #  ^
-
-    # Therefore, we should be able to find every single palindrome in the string with just
-    # one loop
     def longestPalindrome(self, s: str) -> str:
-        result = s[0]
+        result: str = s[0]
 
         for i in range(len(s)):
             oddPalindrome: str = self.getLongestOddPalindrome(s, i)

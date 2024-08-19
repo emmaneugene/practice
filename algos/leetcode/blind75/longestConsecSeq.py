@@ -7,11 +7,11 @@
 class Solution:
     def longestConsecutive(self, nums: list[int]) -> int:
         numSet = set(nums)
-        longest: int = 0
+        longest = 0
 
         for n in nums:
             if n - 1 not in numSet:
-                length: int = 1
+                length = 1
                 while n + length in numSet:
                     length += 1
                 longest = max(length, longest)

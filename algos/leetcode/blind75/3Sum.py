@@ -11,7 +11,7 @@ class Solution:
 
         posCounts: dict[int, int] = {}
         negCounts: dict[int, int] = {}
-        zeroCounts: int = 0
+        zeroCounts = 0
 
         for n in nums:
             if n > 0:
