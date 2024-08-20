@@ -1,7 +1,8 @@
-# Problem: https://leetcode.com/problems/clone-graph/
+# Problem: https://leetcode.com/problems/clone-graph
 
 # Time complexity: O(V+E)
 # Space complexity: O(V)
+# Clone using BFS
 
 from typing import Optional
 import collections
@@ -15,7 +16,7 @@ class Node:
 
 
 class Solution:
-    def cloneGraph(self, node: "Node") -> "Node":
+    def cloneGraph(self, node: Optional[Node]) -> Node:
         if not node:
             return node
 

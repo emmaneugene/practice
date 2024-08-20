@@ -1,60 +1,57 @@
-# Problem: https://leetcode.com/problems/combination-sum/
-
-# Dynamic programming - start with first candidates, compute and store all
-# possible combinations
+# Problem: https://leetcode.com/problems/combination-sum
 
 # Time complexity: O(n^2)
 # Space complexity: O(n^2)
 
-from copy import deepcopy
-from typing import Dict, List
+
+import copy
 
 
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        # Dict of sums to possible combinations
-        sumsCombis: Dict[int, List[List[int]]] = {}
-        sumsCombis[0] = [[]]
+    # DP-iterative: Compute all possible sum combinations
+    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
+        solns: dict[int, list[list[int]]] = {}
+        solns[0] = [[]]
 
-        for n in candidates:
-            toAdd: Dict[int, List[List[int]]] = {}
+        for c in candidates:
+            newSolns = self.getNewSums(solns, target, c)
 
-            for mlti in range(1, (target // n) + 1):
-                remainder: int = target - (n * mlti)
-
-                for val in range(remainder + 1):
-                    if val in sumsCombis:
-                        prevCombis: List[List[int]] = sumsCombis[val]
-                        for combi in prevCombis:
-                            newCombi: List[int] = deepcopy(combi)
-                            newCombi += [n] * mlti
-                            newVal = val + (n * mlti)
-                            if newVal in toAdd:
-                                toAdd[(n * mlti) + val].append(newCombi)
-                            else:
-                                toAdd[(n * mlti) + val] = [newCombi]
-
-            for val, combis in toAdd.items():
-                if val in sumsCombis:
-                    for combi in combis:
-                        sumsCombis[val].append(combi)
+            for k, v in newSolns.items():
+                if k in solns:
+                    solns[k] += v
                 else:
-                    sumsCombis[val] = combis
+                    solns[k] = v
 
-        return sumsCombis.get(target, [])
+        return solns.get(target, [])
+
+    def getNewSums(
+        self, prev: dict[int, list[list[int]]], target: int, c: int
+    ) -> dict[int, list[list[int]]]:
+        newSums: dict[int, list[list[int]]] = {}
+        for val, combis in prev.items():
+            mult = (target - val) // c
+            for m in range(1, mult + 1):
+                newVal = val + c * m
+                newCombis = [copy.deepcopy(combi) + ([c] * m) for combi in combis]
+                if newVal in newSums:
+                    newSums[newVal] += newCombis
+                else:
+                    newSums[newVal] = newCombis
+
+        return newSums
 
 
 def main():
     s: Solution = Solution()
 
-    print("Expected: [[2,2,3], [7]]")
-    print(f"Actual  :{s.combinationSum([2, 3, 6, 7], 7)}")
+    print("Expected: [[2, 2, 3], [7]]")
+    print(f"Actual  : {s.combinationSum([2, 3, 6, 7], 7)}")
 
-    print("Expected: [[2,2,2,2],[2,3,3],[3,5]]")
+    print("Expected: [[2, 2, 2, 2], [2, 3, 3], [3, 5]]")
     print(f"Actual  : {s.combinationSum([2, 3, 5], 8)}")
 
     print("Expected: []")
-    print(f"Actual  :{s.combinationSum([2], 1)}")
+    print(f"Actual  : {s.combinationSum([2], 1)}")
 
 
 if __name__ == "__main__":

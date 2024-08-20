@@ -1,33 +1,31 @@
 # Problem: https://leetcode.com/problems/coin-change
 
-# Dynamic programming, find optimal selection of m possible coins for amounts (1...n)
 # Time complexity: O(m*n)
 # Space complexity: O(m+n)
-
-from typing import List
+# Dynamic programming, find optimal selection of m possible coins for amounts (1...n)
 
 
 class Solution:
-    def coinChange(self, coins: List[int], amount: int) -> int:
-        optimalCounts: List[int] = [-1] * (amount + 1)
-        optimalCounts[0] = 0
+    def coinChange(self, coins: list[int], amount: int) -> int:
+        amtCounts: list[int] = [-1] * (amount + 1)
+        amtCounts[0] = 0
 
-        for i in range(1, amount + 1):
-            foundValid: bool = False
-            toAdd: int = -1
+        for amt in range(1, amount + 1):
+            found = False
+            amtCount = -1
             for c in coins:
-                if c <= i and optimalCounts[i - c] != -1:
-                    temp = optimalCounts[i - c] + 1
-                    if not foundValid:
-                        toAdd = temp
-                        foundValid = True
+                if c <= amt and amtCounts[amt - c] != -1:
+                    tmp = amtCounts[amt - c] + 1
+                    if not found:
+                        amtCount = tmp
+                        found = True
                     else:
-                        if temp < toAdd:
-                            toAdd = temp
+                        if tmp < amtCount:
+                            amtCount = tmp
 
-            optimalCounts[i] = toAdd
+            amtCounts[amt] = amtCount
 
-        return optimalCounts[amount]
+        return amtCounts[amount]
 
 
 def main():

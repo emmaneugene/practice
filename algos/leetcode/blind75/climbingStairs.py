@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/climbing-stairs/
+# Problem: https://leetcode.com/problems/climbing-stairs
 
 # Effectively computing fibonacci
 

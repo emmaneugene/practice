@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/contains-duplicate/
+# Problem: https://leetcode.com/problems/contains-duplicate
 
 # Time complexity: O(n)
 # Space complexity: O(n)
@@ -6,7 +6,7 @@
 
 class Solution:
     def containsDuplicate(self, nums: list[int]) -> bool:
-        unique: set = set()
+        unique = set()
         for n in nums:
             if n in unique:
                 return True

@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/binary-tree-level-order-traversal/
+# Problem: https://leetcode.com/problems/binary-tree-level-order-traversal
 
 # Time complexity: O(n)
 # Space complexity: O(n)

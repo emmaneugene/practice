@@ -1,9 +1,8 @@
-# Problem: https://leetcode.com/problems/course-schedule/
-
-# Use a 2D array(adjacency matrix) to store courses and their dependencies/dependents
+# Problem: https://leetcode.com/problems/course-schedule
 
 # Time complexity: O(n^2)
 # Space complexity: O(n^3)
+# Use a 2D array(adjacency matrix) to store courses and their dependencies/dependents
 
 
 class Solution:

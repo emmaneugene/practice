@@ -19,13 +19,13 @@ class Solution:
         if head is None:
             return False
 
-        curr: ListNode = head
+        curr = head
 
-        while curr.next is not None:
+        while curr.next:
             if curr.next == head:
                 return True
 
-            tmp: ListNode = curr
+            tmp = curr
             curr = curr.next
             tmp.next = head
 

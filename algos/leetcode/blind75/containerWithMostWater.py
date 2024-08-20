@@ -1,18 +1,17 @@
 # Problem: https://leetcode.com/problems/container-with-most-water
-# Double pointers
-
-from typing import List
-
 
 # Time complexity: O(n)
 # Space complexity: O(1)
-class Solution:
-    def maxArea(self, height: List[int]) -> int:
-        # Base case
-        left: int = 0
-        right: int = len(height) - 1
+# Double pointers
 
-        maxArea: int = (right - left) * min(height[left], height[right])
+
+class Solution:
+    def maxArea(self, height: list[int]) -> int:
+        # Base case
+        left = 0
+        right = len(height) - 1
+
+        maxArea = (right - left) * min(height[left], height[right])
 
         while left < right:
             # Collapse smaller of left/right inwards

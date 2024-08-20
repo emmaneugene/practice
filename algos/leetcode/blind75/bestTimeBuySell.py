@@ -1,16 +1,13 @@
-# Problem: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+# Problem: https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 
 # Time complexity: O(n)
 # Space complexity: O(1)
 # Dynamic programming with sliding window technique
 
-from typing import List
-
 
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
+    def maxProfit(self, prices: list[int]) -> int:
         profit = 0
-
         start = 0
         end = 0
 
