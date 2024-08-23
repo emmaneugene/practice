@@ -1,17 +1,17 @@
 # Problem: https://leetcode.com/problems/longest-repeating-character-replacement/
 
-# Sliding window technique
-# for each index:
-#    for sequences starting at this string index, what is the max available length?
 
 # Time complexity: O(n^2)
 # Space complexity: O(n^2)
+# Sliding window technique
+# for each index:
+#    for sequences starting at this string index, what is the max available length?
 
 
 class Tracker:
     """Convenience class that tracks the first character of a repeating sequence, its length, and number of replacements left"""
 
-    # TODO: Some way of dealing with wildcar
+    # TODO: Some way of dealing with wildcard
     def __init__(self, char: str, length: int, replacements: int) -> None:
         self.char: str = char
         self.length: int = length

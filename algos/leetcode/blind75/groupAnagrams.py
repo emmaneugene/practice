@@ -1,14 +1,14 @@
 # Problem:  https://leetcode.com/problems/group-anagrams/description/
 
-# Sorting each word is nlog(n), iterating m words gives overall time complexity
-# of O(mnlog(n))
-
-from typing import List
+# Time complexity: O(nmlog(m))
+# Space complexity: O(n)
+# Sorting each word of average length m is mlog(m), iterating n words gives overall time complexity
+# of O(nmlog(m))
 
 
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        mappings: dict[str, List[str]] = {}
+    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
+        mappings: dict[str, list[str]] = {}
 
         for _, s in enumerate(strs):
             sSorted = "".join(sorted(s))

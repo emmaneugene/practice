@@ -3,24 +3,23 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
-from typing import List
 from bisect import bisect
 
 
 class Solution:
-    def overlap(self, i1: List[int], i2: List[int]) -> bool:
+    def overlap(self, i1: list[int], i2: list[int]) -> bool:
         return (i1[0] <= i2[0] and i1[1] >= i2[0]) or (
             i2[0] <= i1[0] and i2[1] >= i1[0]
         )
 
     def insert(
-        self, intervals: List[List[int]], newInterval: List[int]
-    ) -> List[List[int]]:
+        self, intervals: list[list[int]], newInterval: list[int]
+    ) -> list[list[int]]:
         if len(intervals) == 0:
             return [newInterval]
 
-        out: List[List[int]] = []
-        add: List[int] = newInterval
+        out: list[list[int]] = []
+        add: list[int] = newInterval
 
         for ivl in intervals:
             if self.overlap(ivl, add):
@@ -28,8 +27,6 @@ class Solution:
             else:
                 out.append(ivl)
 
-        print(out)
-        print(add)
         idx: int = bisect(out, add)
         out.insert(idx, add)
 

@@ -4,7 +4,6 @@
 # Space complexity: O(n)
 
 from bisect import bisect_left
-from typing import List, Tuple
 
 
 class Tracker:
@@ -19,13 +18,13 @@ class Tracker:
 
 
 class Solution:
-    def lengthOfLIS(self, nums: List[int]) -> int:
-        longest: int = 1
+    def lengthOfLIS(self, nums: list[int]) -> int:
+        longest = 1
 
-        trackers: List[Tracker] = [Tracker(nums[0], 1)]
+        trackers: list[Tracker] = [Tracker(nums[0], 1)]
 
         for i in range(1, len(nums)):
-            idx: int = bisect_left(trackers, nums[i], key=lambda x: x.val)
+            idx = bisect_left(trackers, nums[i], key=lambda x: x.val)
 
             if idx == 0:
                 if trackers[0].length == 1:
@@ -46,9 +45,6 @@ class Solution:
                 if new.length > longest:
                     longest = new.length
 
-        for tracker in trackers:
-            print(tracker, end=" ")
-        print("")
         return longest
 
 

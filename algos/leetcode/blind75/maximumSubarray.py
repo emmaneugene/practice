@@ -8,15 +8,15 @@ class Solution:
     def maxSubArray(self, nums: list[int]) -> int:
         maxSum = nums[0]
 
-        subarraySums = [0] * len(nums)
-        subarraySums[0] = nums[0]
+        subarrSums = [0] * len(nums)
+        subarrSums[0] = nums[0]
         for i in range(1, len(nums)):
-            subarraySums[i] = nums[i]
-            if subarraySums[i - 1] > 0:
-                subarraySums[i] += subarraySums[i - 1]
+            subarrSums[i] = nums[i]
+            if subarrSums[i - 1] > 0:
+                subarrSums[i] += subarrSums[i - 1]
 
-            if subarraySums[i] > maxSum:
-                maxSum = subarraySums[i]
+            if subarrSums[i] > maxSum:
+                maxSum = subarrSums[i]
 
         return maxSum
 

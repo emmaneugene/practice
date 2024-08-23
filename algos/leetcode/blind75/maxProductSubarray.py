@@ -1,81 +1,30 @@
 # Problem: https://leetcode.com/problems/maximum-product-subarray/
 
-from typing import List
+# Time complexity: O(n)
+# Space complexity: O(1)
 
 
-# Complexity: O(n)
 class Solution:
-    def getHighestProduct(self, nums: List[int]) -> int:
-        """Returns highest product possible from `nums`"""
-        if len(nums) == 1:
-            return nums[0]
+    def maxProduct(self, nums: list[int]) -> int:
+        out = nums[0]
+        candidatePos = nums[0]
+        candidateNeg = nums[0]
 
-        result: int = nums[0]
-
-        for i in range(1, len(nums)):
-            result *= nums[i]
-
-        if result > 0:
-            return result
-
-        # Find smallest negative divisor from left/right
-        leftNeg: int = nums[0]
-        idx: int = 1
-
-        while leftNeg > 0:
-            leftNeg *= nums[idx]
-            idx += 1
-
-        rightNeg: int = nums[-1]
-        idx = len(nums) - 2
-
-        while rightNeg > 0:
-            rightNeg *= nums[idx]
-            idx -= 1
-
-        divisor = max(leftNeg, rightNeg)
-        return int(result / divisor)
-
-    def maxProduct(self, nums: List[int]) -> int:
-        if len(nums) == 1:
-            return nums[0]
-
-        result: int = max(nums)
-
-        # Strip leading and trailing 0s
-        stripStart: int = 0
-        while nums[stripStart] == 0:
-            stripStart += 1
-        stripEnd: int = len(nums)
-        while nums[stripEnd - 1] == 0:
-            stripEnd -= 1
-
-        nums = nums[stripStart:stripEnd]
-
-        # Split array where 0s are encountered
-        # [2,0,1,4,0,8] becomes [[2], [1,4], [8]]
-        subarrs: List[List[int]] = []
-        start: int = 0
-        reset: bool = nums[0] == 0
-
-        for i in range(1, len(nums)):
-            if nums[i] == 0:
-                if not reset and i > start:
-                    subarrs.append(nums[start:i])
-                reset = True
+        for n in nums[1:]:
+            if n < 0:
+                tmp = candidatePos
+                candidatePos = candidateNeg * n
+                candidateNeg = tmp * n
+                candidateNeg = min(candidateNeg, n)
+            elif n > 0:
+                candidatePos *= n
+                candidateNeg *= n
+                candidatePos = max(candidatePos, n)
             else:
-                if reset:
-                    start = i
-                    reset = False
+                candidatePos = candidateNeg = n
+            out = max(out, candidatePos)
 
-        subarrs.append(nums[start:])
-
-        for arr in subarrs:
-            temp: int = self.getHighestProduct(arr)
-            if result < temp:
-                result = temp
-
-        return result
+        return out
 
 
 def main():

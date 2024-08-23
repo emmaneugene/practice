@@ -1,9 +1,8 @@
 # Problem: https://leetcode.com/problems/climbing-stairs
 
-# Effectively computing fibonacci
-
 # Time complexity: O(n)
 # Space complexity: O(n)
+# Effectively computing fibonacci
 
 
 class Solution:

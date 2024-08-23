@@ -1,13 +1,9 @@
 # Problem: https://leetcode.com/problems/longest-common-subsequence/
 
-# Dynamic programming, starting from first character of first string and iteratively
-# storing the longest subsequences that end with that character
-
-# Somewhat similar to longestIncrSubsequence
-from typing import List, Dict
-
 # Time complexity: O(n^2)
 # Space complexity: O(n)
+# Dynamic programming, starting from first character of first string and iteratively
+# storing the longest subsequences that end with that character.  similar to longestIncrSubsequence
 
 
 class Match:
@@ -29,7 +25,7 @@ class Solution:
         if text1 in text2 or text2 in text1:
             return min(len(text1), len(text2))
 
-        occurrences: Dict[str, List[int]] = {}
+        occurrences: dict[str, list[int]] = {}
 
         for i2, ch2 in enumerate(text2):
             if ch2 in occurrences:
@@ -38,16 +34,13 @@ class Solution:
                 occurrences[ch2] = [i2]
 
         # Stores the best match at each character of text2
-        matches: List[Match] = []
-
-        for i2 in range(len(text2)):
-            matches.append(Match())
+        matches: list[Match] = [Match() for _ in text2]
 
         for i1, ch1 in enumerate(text1):
             if ch1 in occurrences:
                 # Create new set of matches
-                newMatches: Dict[int, Match] = {}
-                i2s: List[int] = occurrences[ch1]
+                newMatches: dict[int, Match] = {}
+                i2s: list[int] = occurrences[ch1]
 
                 for i2 in i2s:
                     newLength = 1
@@ -61,8 +54,6 @@ class Solution:
                 for k, v in newMatches.items():
                     matches[k] = v
 
-        # for match in matches:
-        #     print(match)
         return max(matches, key=lambda x: x.length).length
 
 

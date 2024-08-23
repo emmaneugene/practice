@@ -6,11 +6,13 @@
 
 class Solution:
     def canJump(self, nums: list[int]) -> bool:
-        furthest: int = 0
+        furthest = 0
 
         for idx, n in enumerate(nums):
-            if idx <= furthest and idx + n > furthest:
-                furthest = idx + n
+            if idx <= furthest:
+                furthest = max(idx + n, furthest)
+            else:
+                break
 
         return furthest >= len(nums) - 1
 

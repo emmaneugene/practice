@@ -1,10 +1,8 @@
 # Problem: https://leetcode.com/problems/decode-ways/
 
-# General approach: Iteratively process string from right to left
 # Time complexity: O(n)
 # Space complexity: O(n) (can be made smaller by throwing away old values)
-
-from typing import List, Set
+# General approach: Iteratively process string from right to left
 
 
 class Solution:
@@ -16,7 +14,7 @@ class Solution:
         if sLen == 1:
             return 1
 
-        charEncodings: Set[str] = {
+        charEncodings: set[str] = {
             "1",
             "2",
             "3",
@@ -45,7 +43,7 @@ class Solution:
             "26",
         }
 
-        tracker: List[int] = [0] * sLen
+        tracker: list[int] = [0] * sLen
 
         # Process counts for last and second last character substrings
         if s[sLen - 1] in charEncodings:
