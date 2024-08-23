@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/subtree-of-another-tree/
+# Problem: https://leetcode.com/problems/subtree-of-another-tree
 
 # Time complexity: O(n)
 # Space complexity: O(n)

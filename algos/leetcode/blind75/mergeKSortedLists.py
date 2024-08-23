@@ -1,7 +1,8 @@
-#  Problem: https://leetcode.com/problems/merge-k-sorted-lists/
+#  Problem: https://leetcode.com/problems/merge-k-sorted-lists
 
+# Time complexity: O(kn)
+# Space complexity: O(kn)
 
-# Complexity: O(k * n)
 from typing import Optional
 
 
@@ -19,7 +20,7 @@ class Solution:
         and advances the corresponding pointer. If the next element is null,
         this function pops the empty linked list
         """
-        idxMin: int = 0
+        idxMin = 0
 
         for i in range(len(lists)):
             if lists[i].val < lists[idxMin].val:
@@ -42,8 +43,8 @@ class Solution:
         # One iteration to get head
         val = self.getSmallest(lists)
 
-        head: ListNode = ListNode(val)
-        current: ListNode = head
+        head = ListNode(val)
+        current = head
 
         while len(lists) > 0:
             val = self.getSmallest(lists)

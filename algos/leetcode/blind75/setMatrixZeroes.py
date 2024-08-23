@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/set-matrix-zeroes/
+# Problem: https://leetcode.com/problems/set-matrix-zeroes
 
 # Time complexity: O(n^2)
 # Space complexity: O(n)
@@ -7,7 +7,7 @@
 class Solution:
     def setZeroes(self, matrix: list[list[int]]) -> None:
         """
-        Do not return anything, modify matrix in-place instead.
+        Do not return anything, modify matrix in-place instead
         """
 
         markedRows: set[int] = set()

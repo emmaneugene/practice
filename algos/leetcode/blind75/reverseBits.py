@@ -1,13 +1,16 @@
-# Problem: https://leetcode.com/problems/reverse-bits/
+# Problem: https://leetcode.com/problems/reverse-bits
+
+# Time complexity: O(1)
+# Space complexity: O(1)
 
 
 class Solution:
     def reverseBits(self, n: int) -> int:
-        reversed: int = 0
+        reversed = 0
 
-        isPositive: bool = n >= 0
+        isPositive = n >= 0
 
-        for i in range(32):
+        for _ in range(32):
             reversed *= 2
             if n % 2 == 1:
                 reversed += 1

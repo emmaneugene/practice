@@ -1,21 +1,15 @@
-# Problem: https://leetcode.com/problems/minimum-window-substring/
+# Problem: https://leetcode.com/problems/minimum-window-substring
 
-from typing import Dict, List
-
-# General idea: Come up with set of char Idxs that minimize window length
-# Sliding window technique (again)
-# Given I have to start at this idx, what is the smallest idx I can stop at?
-
-# TODO: Complexity analysis
 # Time complexity:
 # Space complexity:
 
 
+# TODO: Optimize
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         # Check if characters in t are present and have correct quantities in s
-        tChCounts: Dict[str, int] = {}
-        sChIdxs: Dict[str, List[int]] = {}
+        tChCounts: dict[str, int] = {}
+        sChIdxs: dict[str, list[int]] = {}
 
         for i, ch in enumerate(s):
             if ch not in sChIdxs:
@@ -34,7 +28,7 @@ class Solution:
                 return ""
 
         # DP: Sliding window
-        idxs: List[int] = []
+        idxs: list[int] = []
 
         for ch in tChCounts.keys():
             idxs.extend(sChIdxs[ch])
@@ -43,7 +37,7 @@ class Solution:
 
         currStartIdx: int = 0
         currEndIdx: int = 0
-        currWindow: Dict[str, int] = {ch: 0 for ch in tChCounts.keys()}
+        currWindow: dict[str, int] = {ch: 0 for ch in tChCounts.keys()}
 
         self.addCounts(currWindow, s[idxs[currStartIdx] : idxs[currEndIdx] + 1])
 
@@ -89,19 +83,19 @@ class Solution:
 
         return s[minStart:minEnd]
 
-    def validWindow(self, window: Dict[str, int], chCounts: Dict[str, int]) -> bool:
+    def validWindow(self, window: dict[str, int], chCounts: dict[str, int]) -> bool:
         for k in chCounts.keys():
             if window[k] < chCounts[k]:
                 return False
 
         return True
 
-    def addCounts(self, window: Dict[str, int], s: str) -> None:
+    def addCounts(self, window: dict[str, int], s: str) -> None:
         for ch in s:
             if ch in window:
                 window[ch] += 1
 
-    def removeCounts(self, window: Dict[str, int], s: str) -> None:
+    def removeCounts(self, window: dict[str, int], s: str) -> None:
         for ch in s:
             if ch in window:
                 window[ch] -= 1

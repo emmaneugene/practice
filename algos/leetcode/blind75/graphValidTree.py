@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/graph-valid-tree/
+# Problem: https://leetcode.com/problems/graph-valid-tree
 
 # Time complexity: O(mn) for m nodes, n edges
 # Space complexity: O(mn) for m nodes, n edges

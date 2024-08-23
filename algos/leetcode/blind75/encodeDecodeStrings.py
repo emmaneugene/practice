@@ -1,4 +1,4 @@
-# Problem:
+# Problem: https://leetcode.com/problems/encode-and-decode-strings
 
 # Time complexity:
 # Space complexity:

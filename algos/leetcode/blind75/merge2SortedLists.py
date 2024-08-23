@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/merge-two-sorted-lists/
+# Problem: https://leetcode.com/problems/merge-two-sorted-lists
 
 # Time complexity: O(m+n)
 # Space complexity: O(m+n)
@@ -25,37 +25,34 @@ class Solution:
         elif list2 is None:
             return list1
 
-        track1 = list1
-        track2 = list2
+        t1 = list1
+        t2 = list2
 
         result = None
 
-        if track1.val < track2.val:
-            result = ListNode(track1.val, None)
-            track1 = track1.next
+        if t1.val < t2.val:
+            result = ListNode(t1.val, None)
+            t1 = t1.next
         else:
-            result = ListNode(track2.val, None)
-            track2 = track2.next
+            result = ListNode(t2.val, None)
+            t2 = t2.next
 
-        track3 = result
+        curr = result
 
-        while track1 is not None and track2 is not None:
-            if track1.val < track2.val:
-                track3.next = ListNode(track1.val, None)
-                track1 = track1.next
+        while t1 is not None and t2 is not None:
+            if t1.val < t2.val:
+                curr.next = ListNode(t1.val, None)
+                t1 = t1.next
             else:
-                track3.next = ListNode(track2.val, None)
-                track2 = track2.next
-            track3 = track3.next
+                curr.next = ListNode(t2.val, None)
+                t2 = t2.next
+            curr = curr.next
 
-        while track1 is not None:
-            track3.next = ListNode(track1.val, None)
-            track3 = track3.next
-            track1 = track1.next
-        while track2 is not None:
-            track3.next = ListNode(track2.val, None)
-            track3 = track3.next
-            track2 = track2.next
+        t3 = t1 if t2 is None else t2
+        while t3 is not None:
+            curr.next = ListNode(t3.val, None)
+            curr = curr.next
+            t3 = t3.next
 
         return result
 

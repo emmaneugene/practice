@@ -1,26 +1,25 @@
-# Problem: https://leetcode.com/problems/valid-anagram/
+# Problem: https://leetcode.com/problems/valid-anagram
 
-# Complexity: O(n)
-from typing import Dict
+# Time complexity: O(n)
+# Space complexity: O(n)
 
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        tracker: Dict[str, int] = {}
+        tracker: dict[str, int] = {}
 
-        # Accumulate for s
         for ch in s:
             if ch not in tracker:
                 tracker[ch] = 1
             else:
                 tracker[ch] += 1
-        # Remove for t
+
         for ch in t:
             if ch not in tracker:
                 return False
             tracker[ch] -= 1
 
-        for _, count in tracker.items():
+        for count in tracker.values():
             if count != 0:
                 return False
         return True

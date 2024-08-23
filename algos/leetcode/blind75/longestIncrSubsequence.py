@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/longest-increasing-subsequence/
+# Problem: https://leetcode.com/problems/longest-increasing-subsequence
 
 # Time complexity: O(nlogn)
 # Space complexity: O(n)

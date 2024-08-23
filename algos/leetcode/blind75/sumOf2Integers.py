@@ -1,7 +1,8 @@
-# Problem:
+# Problem: https://leetcode.com/problems/sum-of-two-integers
 
 # Time complexity:
 # Space complexity:
+# Bit shifting stuff?
 
 
 class Solution:

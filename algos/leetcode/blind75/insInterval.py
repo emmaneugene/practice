@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/insert-interval/
+# Problem: https://leetcode.com/problems/insert-interval
 
 # Time complexity: O(n)
 # Space complexity: O(n)

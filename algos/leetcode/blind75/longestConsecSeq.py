@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/longest-consecutive-sequence/
+# Problem: https://leetcode.com/problems/longest-consecutive-sequence
 
 # Time complexity: O(n)
 # Space complexity: O(n)

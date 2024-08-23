@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/pacific-atlantic-water-flow/
+# Problem: https://leetcode.com/problems/pacific-atlantic-water-flow
 
 # Time complexity: O()
 # Space complexity: O()

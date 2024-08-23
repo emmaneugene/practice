@@ -1,8 +1,9 @@
-# Problem: https://leetcode.com/problems/same-tree/
-from typing import Optional
+# Problem: https://leetcode.com/problems/same-tree
 
-# Time complexity - O(n)
-# Space complexity - O(n)
+# Time complexity: O(n)
+# Space complexity: O(n)
+
+from typing import Optional
 
 
 class TreeNode:
@@ -26,8 +27,8 @@ class Solution:
         qToVisit: list[TreeNode] = [q]
 
         while len(pToVisit) > 0 and len(qToVisit) > 0:
-            nextP: TreeNode = pToVisit.pop(0)
-            nextQ: TreeNode = qToVisit.pop(0)
+            nextP = pToVisit.pop(0)
+            nextQ = qToVisit.pop(0)
 
             if nextP.val != nextQ.val:
                 return False

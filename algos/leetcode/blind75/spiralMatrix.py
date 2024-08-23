@@ -1,15 +1,13 @@
-# Problem: https://leetcode.com/problems/spiral-matrix/
+# Problem: https://leetcode.com/problems/spiral-matrix
 
 # Time complexity: O(mn)
 # Space complexity: O(mn)
 
-from typing import List
-
 
 class Solution:
-    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        rows: int = len(matrix)
-        cols: int = len(matrix[0])
+    def spiralOrder(self, matrix: list[list[int]]) -> list[int]:
+        rows = len(matrix)
+        cols = len(matrix[0])
 
         # Edge cases:
         if rows == 1:
@@ -19,7 +17,7 @@ class Solution:
 
         numIters = min(rows // 2, cols // 2)
 
-        output: List[int] = []
+        output: list[int] = []
         for i in range(numIters):
             # Top (left-right)
             for k in range(i, cols - i):

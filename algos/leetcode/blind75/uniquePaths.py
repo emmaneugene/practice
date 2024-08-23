@@ -1,9 +1,9 @@
-# Problem: https://leetcode.com/problems/unique-paths/
+# Problem: https://leetcode.com/problems/unique-paths
 
 # Time complexity: O(1)
 # Space complexity: O(1)
 
-import itertools, math
+import math
 
 
 class Solution:

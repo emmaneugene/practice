@@ -1,23 +1,16 @@
-# Problem: https://leetcode.com/problems/search-in-rotated-sorted-array/
+# Problem: https://leetcode.com/problems/search-in-rotated-sorted-array
 
 # Time complexity: O(log(n))
-# Space complexity: O(1)
+# Space complexity: O(n)
 
 
+# TODO: Refactor
 class Solution:
     def search(self, nums: list[int], target: int) -> int:
-        """
-        We need to find the two elements a,b that are not in ascending order, as the
-        right element will be at index n - k. We can then derive k trivially.
+        """Perform binary search for circular adjacent numbers (a, b) which are
+        not in ascending order. Index of b is equivalent to offset k
 
-        The index of target in nums_o will simply be its index in (nums + k) % n.
-
-        This would be easy with O(n), but we need O(logn).
-
-        We could do a binary search for the two elements a,b.
-
-        Once we have k, we can do another binary search for the element, with the
-        indices circularly offset by k before lookup.
+        Then perform another binary search for the target, taking k into account.
         """
         n = len(nums)
         if n == 1:
@@ -62,7 +55,11 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution
+    s: Solution = Solution()
+
+    print(s.search([4, 5, 6, 7, 0, 1, 2], 0))  # 4
+    print(s.search([4, 5, 6, 7, 0, 1, 2], 3))  # -1
+    print(s.search([1], 0))  # -1
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/jump-game/
+# Problem: https://leetcode.com/problems/jump-game
 
 # Time complexity: O(n)
 # Space complexity: O(1)

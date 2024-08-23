@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/meeting-rooms-ii/
+# Problem: https://leetcode.com/problems/meeting-rooms-ii
 
 # Time complexity: O(nlog(n))
 # Space complexity: O(n)
@@ -17,8 +17,8 @@ class Solution:
 
         heapq.heappush(rooms, intervals[0][1])
         for i in intervals[1:]:
-            # No overlap, next meeting can use current room
             if rooms[0] <= i[0]:
+                # No overlap
                 heapq.heappop(rooms)
             heapq.heappush(rooms, i[1])
         return len(rooms)

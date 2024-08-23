@@ -1,21 +1,17 @@
-# Problem: https://leetcode.com/problems/product-of-array-except-self/
+# Problem: https://leetcode.com/problems/product-of-array-except-self
 
 # Constraints: Cannot use division, algo must run in O(n) time
 
-# Solution: Cached computations from left and right
-
 # Time complexity: O(n)
-# Space complexity: O(1) (excludes output array)
-
-from typing import List
+# Space complexity: O(n)
 
 
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        out: List[int] = [1] * len(nums)
+    def productExceptSelf(self, nums: list[int]) -> list[int]:
+        out: list[int] = [1] * len(nums)
 
         # Multiply from left
-        pdt: int = 1
+        pdt = 1
         for i in range(len(nums) - 1):
             pdt *= nums[i]
             out[i + 1] *= pdt

@@ -1,4 +1,9 @@
-# Problem: https://leetcode.com/problems/reverse-linked-list/
+# Problem: https://leetcode.com/problems/reverse-linked-list
+
+# Time complexity: O(n)
+# Space complexity: O(n)
+
+
 from typing import Optional
 
 
@@ -10,9 +15,6 @@ class ListNode:
         self.next = next
 
 
-# Complexity: O(n)
-
-
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         reversedHead: Optional[ListNode] = None
@@ -20,19 +22,7 @@ class Solution:
             return reversedHead
 
         while head.next is not None:
-            temp = ListNode(head.val, reversedHead)
-            reversedHead = temp
+            reversedHead = ListNode(head.val, reversedHead)
             head = head.next
 
         return ListNode(head.val, reversedHead)
-
-
-def main():
-    s = Solution()
-
-    print("Expected: [1,2,3,4,5]")
-    print("Output  : ")
-
-
-if __name__ == "__main__":
-    main()

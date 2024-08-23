@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/house-robber/
+# Problem: https://leetcode.com/problems/house-robber
 
 # Time complexity: O(n)
 # Space complexity: O(1)

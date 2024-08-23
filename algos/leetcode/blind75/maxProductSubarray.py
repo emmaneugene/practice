@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/maximum-product-subarray/
+# Problem: https://leetcode.com/problems/maximum-product-subarray
 
 # Time complexity: O(n)
 # Space complexity: O(1)

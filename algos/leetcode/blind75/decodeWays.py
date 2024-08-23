@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/decode-ways/
+# Problem: https://leetcode.com/problems/decode-ways
 
 # Time complexity: O(n)
 # Space complexity: O(n) (can be made smaller by throwing away old values)

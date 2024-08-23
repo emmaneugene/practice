@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/longest-common-subsequence/
+# Problem: https://leetcode.com/problems/longest-common-subsequence
 
 # Time complexity: O(n^2)
 # Space complexity: O(n)

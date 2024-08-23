@@ -1,9 +1,11 @@
-# Problem: https://leetcode.com/problems/serialize-and-deserialize-bst/
+# Problem: https://leetcode.com/problems/serialize-and-deserialize-bst
 
-# Breadth-first search solution
 # Time complexity: O(n)
-# Space complexity: O(depth)
-from typing import List, Optional
+# Space complexity: O(n)
+# Serialize to array representation with BFS
+
+
+from typing import Optional
 
 
 # Definition for a binary tree node.
@@ -19,9 +21,10 @@ class Codec:
         """Encodes a tree to a string"""
         if root is None or root.val is None:
             return ""
+
         # Parse to array
-        treeArr: List[int] = []
-        toExplore: List[TreeNode] = [root]
+        treeArr: list[int] = []
+        toExplore: list[TreeNode] = [root]
 
         while len(toExplore) > 0:
             node: TreeNode = toExplore.pop(0)

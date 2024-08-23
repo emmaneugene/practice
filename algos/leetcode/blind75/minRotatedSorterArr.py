@@ -1,18 +1,16 @@
-# Problem: https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+# Problem: https://leetcode.com/problems/find-minimum-in-rotated-sorted-array
 
+# Time complexity: O(logn)
+# Space: O(n)
 # Recursive bisect with additional conditions
-# Time: O(logn)
-# Space: O(logn)
-
-from typing import List
 
 
 class Solution:
-    def findMin(self, nums: List[int]) -> int:
+    def findMin(self, nums: list[int]) -> int:
         if len(nums) == 1:
             return nums[0]
 
-        mid: int = len(nums) // 2
+        mid = len(nums) // 2
 
         if nums[mid - 1] > nums[mid]:
             return nums[mid]

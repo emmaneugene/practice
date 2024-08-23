@@ -1,11 +1,9 @@
-# Problem: https://leetcode.com/problems/longest-repeating-character-replacement/
+# Problem: https://leetcode.com/problems/longest-repeating-character-replacement
 
 
 # Time complexity: O(n^2)
 # Space complexity: O(n^2)
 # Sliding window technique
-# for each index:
-#    for sequences starting at this string index, what is the max available length?
 
 
 class Tracker:

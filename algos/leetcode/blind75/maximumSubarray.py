@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/maximum-subarray/
+# Problem: https://leetcode.com/problems/maximum-subarray
 
 # Time complexity: O(n)
 # Space complexity: O(n)

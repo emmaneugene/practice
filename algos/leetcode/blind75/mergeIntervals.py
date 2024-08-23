@@ -1,21 +1,19 @@
-# Problem: https://leetcode.com/problems/merge-intervals/
+# Problem: https://leetcode.com/problems/merge-intervals
 
 # Time complexity: O(nlogn)
 # Space complexity: O(n)
 
-from typing import List
-
 
 class Solution:
-    def combine(self, i1: List[int], i2: List[int]) -> List[int]:
+    def combine(self, i1: list[int], i2: list[int]) -> list[int]:
         return [min(i1[0], i2[0]), max(i1[1], i2[1])]
 
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+    def merge(self, intervals: list[list[int]]) -> list[list[int]]:
         # Sort intervals by increasing start time
         intervals.sort(key=lambda x: x[0])
 
-        result: List[List[int]] = []
-        current: List[int] = intervals[0]
+        result: list[list[int]] = []
+        current: list[int] = intervals[0]
         for i in range(1, len(intervals)):
             if current[1] >= intervals[i][0]:
                 current = self.combine(current, intervals[i])

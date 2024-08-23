@@ -1,14 +1,9 @@
-# Problem: https://leetcode.com/problems/longest-consecutive-sequence/
+# Problem: https://leetcode.com/problems/longest-palindromic-substring
 
-# Time complexity: O(n)
+# Time complexity: O(n^2)
 # Space complexity: O(n)
 
-# General idea: Loop over all characters in the string
-
-# That character can either be the middle of an odd-count palindrome, or middle-left of an
-# even palindrome. In both cases, we can write functions that perform an O(n) search for the
-# palindrome
-
+# Loop over all chars and look for odd/even length palindromes
 # Odd:
 # abcba
 #   ^
@@ -16,49 +11,51 @@
 # abba
 #  ^
 
-# Therefore, we should be able to find every single palindrome in the string with just
-# one loop
-
 
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        result: str = s[0]
+        result = s[0]
 
         for i in range(len(s)):
-            oddPalindrome: str = self.getLongestOddPalindrome(s, i)
-            evenPalindrome: str = self.getLongestEvenPalindrome(s, i)
-
-            result = oddPalindrome if len(oddPalindrome) > len(result) else result
-            result = evenPalindrome if len(evenPalindrome) > len(result) else result
+            result = max(result, self.getSubPalindrome(s, i), key=lambda s: len(s))
 
         return result
 
-    # Return the longest odd-counted palindrome of <s> with <i> as its centre
-    def getLongestOddPalindrome(self, s: str, i: int) -> str:
-        result = s[i]
-        count: int = 1
-        matching: bool = True
+    def getSubPalindrome(self, s: str, i: int) -> str:
+        """Returns the longest even or odd palindrome of with s[i] at its centre"""
 
-        while i - count >= 0 and i + count < len(s) and matching:
-            if s[i - count] == s[i + count]:
-                result = s[i - count : i + count + 1]
-            else:
-                matching = False
-            count += 1
+        oddOffset = 0
+        evenOffset = 0
 
-        return result
+        while (
+            i - oddOffset - 1 >= 0
+            and i + oddOffset + 1 < len(s)
+            and s[i - oddOffset - 1] == s[i + oddOffset + 1]
+        ):
+            oddOffset += 1
 
-    # Return the longest even-counted palindrome of <s> with <i> as the centre-left character
-    def getLongestEvenPalindrome(self, s: str, i: int) -> str:
-        result = s[i]
-        count: int = 0
-        matching: bool = True
+        if i + 1 == len(s) or s[i] != s[i + 1]:
+            return s[i - oddOffset : i + oddOffset + 1]
 
-        while i - count >= 0 and i + count + 1 < len(s) and matching:
-            if s[i - count] == s[i + count + 1]:
-                result = s[i - count : i + count + 2]
-            else:
-                matching = False
-            count += 1
+        while (
+            i - evenOffset - 1 >= 0
+            and i + evenOffset + 2 < len(s)
+            and s[i - evenOffset - 1] == s[i + evenOffset + 2]
+        ):
+            evenOffset += 1
 
-        return result
+        return max(
+            s[i - oddOffset : i + oddOffset + 1],
+            s[i - evenOffset : i + evenOffset + 2],
+            key=lambda s: len(s),
+        )
+
+
+def main():
+    s = Solution()
+    print(s.longestPalindrome("babad"))  # "bab" OR "aba"
+    print(s.longestPalindrome("cbbd"))  # "bb"
+
+
+if __name__ == "__main__":
+    main()

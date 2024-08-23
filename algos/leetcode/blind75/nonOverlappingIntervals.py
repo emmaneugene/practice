@@ -1,8 +1,6 @@
-# Problem: https://leetcode.com/problems/non-overlapping-intervals/
+# Problem: https://leetcode.com/problems/non-overlapping-intervals
 
 # Dynamic programming, sort and binary search
-
-from typing import List
 
 
 class Grouping:
@@ -15,8 +13,9 @@ class Grouping:
         self.count = count
 
 
+# TODO: Refactor
 class Solution:
-    def lookup(self, groupings: List[Grouping], startTime: int) -> int:
+    def lookup(self, groupings: list[Grouping], startTime: int) -> int:
         """Uses binary search to look for the index `i` such that `grouping[:i].end <= startTime` and
         `grouping[i:].end > startTime`
         """
@@ -43,7 +42,7 @@ class Solution:
 
         return lo if groupings[lo].end > startTime else lo + 1
 
-    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+    def eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:
         result: int = 0
 
         # O(nlogn)
@@ -51,7 +50,7 @@ class Solution:
 
         # Remove intervals with equal start time (greedy)
         # O(n)
-        processed: List[List[int]] = [intervals[0]]
+        processed: list[list[int]] = [intervals[0]]
         prevStart: int = intervals[0][0]
 
         for i in range(1, len(intervals)):
@@ -67,10 +66,10 @@ class Solution:
         # x[0] -> number of intervals, x[1] = end time
 
         maxIntervals: int = 1
-        groupings: List[Grouping] = [Grouping(intervals[0][1], 1)]
+        groupings: list[Grouping] = [Grouping(intervals[0][1], 1)]
 
         for i in range(1, len(intervals)):
-            tmp: List[int] = intervals[i]
+            tmp: list[int] = intervals[i]
             count: int = 1
             insIdx: int = 0
 
@@ -100,7 +99,7 @@ class Solution:
             else:
                 groupings.insert(insIdx, toAdd)
 
-            filtered: List[Grouping] = []
+            filtered: list[Grouping] = []
             for g in groupings:
                 if g.end < toAdd.end or g.count >= toAdd.count:
                     filtered.append(g)

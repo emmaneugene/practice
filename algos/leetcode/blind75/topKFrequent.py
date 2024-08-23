@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/top-k-frequent-elements/
+# Problem: https://leetcode.com/problems/top-k-frequent-elements
 
 # Time complexity: O(nlogn)
 # Space complexity: O(n)

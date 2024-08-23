@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/implement-trie-prefix-tree/
+# Problem: https://leetcode.com/problems/implement-trie-prefix-tree
 
 # Time complexity: O(n) lookup, insert
 # Space complexity: O(n)

@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/3sum/
+# Problem: https://leetcode.com/problems/3sum
 
 
 # Time complexity: O(n^2)

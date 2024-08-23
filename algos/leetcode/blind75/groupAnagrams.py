@@ -1,4 +1,4 @@
-# Problem:  https://leetcode.com/problems/group-anagrams/description/
+# Problem:  https://leetcode.com/problems/group-anagrams
 
 # Time complexity: O(nmlog(m))
 # Space complexity: O(n)

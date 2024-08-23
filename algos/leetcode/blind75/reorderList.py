@@ -1,11 +1,9 @@
 # Problem: https://leetcode.com/problems/reorder-list
 
-# Constraints: Do not modify node values, only nodes themselves
-
 # Time complexity: O(n)
 # Space complexity: O(n)
 
-from typing import List, Optional
+from typing import Optional
 
 
 class ListNode:
@@ -23,28 +21,27 @@ class Solution:
         if head is None:
             return
 
-        nodes: List[ListNode] = []
+        nodes: list[ListNode] = []
 
-        tmp: ListNode = head
+        tmp = head
         while tmp is not None:
             nodes.append(tmp)
             tmp = tmp.next
 
-        # Insert (n, n-1, n-2, n // 2 + 1) nodes after (1, 2, 3, ... n // 2)
-        curr: ListNode = head
+        track = head
+        sliceEnd = len(nodes) // 2
 
-        sliceEnd: int = len(nodes) // 2
-
+        # Stitch nodes
         for node in nodes[len(nodes) - 1 : sliceEnd : -1]:
-            tmp = curr.next
-            curr.next = node
+            tmp = track.next
+            track.next = node
             node.next = tmp
-            curr = tmp
+            track = tmp
 
         if len(nodes) % 2 == 0:
-            curr.next.next = None
+            track.next.next = None
         else:
-            curr.next = None
+            track.next = None
 
 
 def llToString(head: Optional[ListNode]) -> str:
@@ -63,7 +60,7 @@ def llToString(head: Optional[ListNode]) -> str:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     head = ListNode(1, ListNode(2, ListNode(3, ListNode(4))))
     print(f"Original : {llToString(head)}")

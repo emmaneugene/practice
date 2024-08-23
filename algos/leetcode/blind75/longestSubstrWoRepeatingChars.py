@@ -1,5 +1,4 @@
-# Problem: https://leetcode.com/problems/longest-substring-without-repeating-characters/
-# Given a string s, find the length of the longest substring without repeating characters.
+# Problem: https://leetcode.com/problems/longest-substring-without-repeating-characters
 
 # Time complexity: O(n)
 # Space complexity: O(n)

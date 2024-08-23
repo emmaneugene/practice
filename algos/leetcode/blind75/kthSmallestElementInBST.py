@@ -1,9 +1,10 @@
-# Problem: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+# Problem: https://leetcode.com/problems/kth-smallest-element-in-a-bst
 
 # Time complexity: O(n) - but shorter in practice
 # Space complexity: O(n) - but shorter in practice
+# Perform inorder traversal while appending to an array, but break once array
+# length reaches k
 
-# Perform inorder traversal, select array index
 
 from typing import Optional
 
@@ -40,15 +41,13 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
-    tree1: TreeNode = TreeNode(3, TreeNode(1, None, TreeNode(2)), TreeNode(4))
+    tree1 = TreeNode(3, TreeNode(1, None, TreeNode(2)), TreeNode(4))
 
     print(s.kthSmallest(tree1, 1))  # 1
 
-    tree2: TreeNode = TreeNode(
-        5, TreeNode(3, TreeNode(2, TreeNode(1)), TreeNode(4)), TreeNode(6)
-    )
+    tree2 = TreeNode(5, TreeNode(3, TreeNode(2, TreeNode(1)), TreeNode(4)), TreeNode(6))
 
     print(s.kthSmallest(tree2, 3))  # 3
 

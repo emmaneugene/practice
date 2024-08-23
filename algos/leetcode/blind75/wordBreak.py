@@ -1,31 +1,29 @@
-# Problem: https://leetcode.com/problems/word-break/
+# Problem: https://leetcode.com/problems/word-break
 
-# Dynamic programming
-# Time: O(n)
+# Time: O(mn) for m words and n chars
 # Space: O(n)
-
-from typing import List
+# Dynamic programming
 
 
 class Solution:
-    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+    def wordBreak(self, s: str, wordDict: list[str]) -> bool:
         wordDict.sort(key=lambda x: len(x))
-        matchedToChar: List[bool] = [False] * len(s)
+        matchTracker: list[bool] = [False] * len(s)
 
         for word in wordDict:
             if len(word) > len(s):
                 break
             if s.startswith(word):
-                matchedToChar[len(word) - 1] = True
+                matchTracker[len(word) - 1] = True
 
         for i in range(1, len(s)):
             for word in wordDict:
-                if len(word) > len(s):
+                if len(word) > len(s[i:]):
                     break
-                if matchedToChar[i - 1] and s[i:].startswith(word):
-                    matchedToChar[i + len(word) - 1] = True
+                if matchTracker[i - 1] and s[i:].startswith(word):
+                    matchTracker[i + len(word) - 1] = True
 
-        return matchedToChar[-1]
+        return matchTracker[-1]
 
 
 def main():
@@ -33,8 +31,9 @@ def main():
 
     print(s.wordBreak("leetcode", ["leet", "code"]))  # Expected: True
     print(s.wordBreak("applepenapple", ["apple", "pen"]))  # Expected: True
-    # Expected: False
-    print(s.wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"]))
+    print(
+        s.wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"])
+    )  # Expected: False
 
 
 if __name__ == "__main__":

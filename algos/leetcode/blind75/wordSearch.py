@@ -1,10 +1,8 @@
-# Problem: https://leetcode.com/problems/word-search/
+# Problem: https://leetcode.com/problems/word-search
 
 # Time complexity: O(m^2n^2)
 # Space complexity: O(mn)
-
-# Create a hashmap of character-coordinates
-# Perform BFS/DFS to find valid sequence
+# Create a hashmap of character-coordinates, BFS/DFS to find sequence
 
 from copy import deepcopy
 
@@ -13,13 +11,13 @@ class Solution:
     def exist(self, board: list[list[str]], word: str) -> bool:
         tracker: dict[str, list[tuple[int, int]]] = {}
 
-        rows: int = len(board)
-        cols: int = len(board[0])
+        rows = len(board)
+        cols = len(board[0])
 
         # Create hashmap O(mn)
         for i in range(rows):
             for j in range(cols):
-                ch: str = board[i][j]
+                ch = board[i][j]
                 if ch in tracker:
                     tracker[ch].append((i, j))
                 else:
@@ -29,7 +27,7 @@ class Solution:
             if ch not in tracker:
                 return False
 
-        toSearch: list[tuple(int, int)] = tracker[word[0]]
+        toSearch: list[tuple[int, int]] = tracker[word[0]]
 
         # Search
         for coord in toSearch:
@@ -78,7 +76,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(
         s.exist(

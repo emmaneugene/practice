@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/maximum-depth-of-binary-tree/
+# Problem: https://leetcode.com/problems/maximum-depth-of-binary-tree
 
 # Time complexity: O(n)
 # Space complexity: O(1)

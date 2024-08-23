@@ -1,15 +1,13 @@
-# Problem: https://leetcode.com/problems/find-median-from-data-stream/
+# Problem: https://leetcode.com/problems/find-median-from-data-stream
 
 # TODO: How would you optimize the solution if all integers are in the range (0,100)?
 # TODO: How would you optimize the solution if 99% of integers are in the range (0,100)?
-
-from typing import List
 
 
 class MedianFinder:
     def __init__(self):
         # Using an array, could be improved with a heap instead
-        self.vals: List[int] = []
+        self.vals: list[int] = []
 
     def addNum(self, num: int) -> None:
         if len(self.vals) == 0:

@@ -1,4 +1,4 @@
-# Problem: https://leetcode.com/problems/design-add-and-search-words-data-structure/
+# Problem: https://leetcode.com/problems/design-add-and-search-words-data-structure
 
 # Time complexity: O(n^2)
 # Space complexity: O(n)
