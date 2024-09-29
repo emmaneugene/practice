@@ -2,7 +2,10 @@ import sys
 import bisect
 
 # Conversion is a process of taking inputs -> outputs continuously for each ruleset
-# sepcified within the input file
+# specified within the input file
+
+# TODO: Optimize
+# Parse rules into a set of ranges
 
 
 class ruleSet:
