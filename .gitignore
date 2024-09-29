@@ -1,5 +1,8 @@
 .idea/
 
+# Test files
+*.txt
+
 # Compiled objects
 *.o
 *.class
