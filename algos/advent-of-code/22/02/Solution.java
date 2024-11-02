@@ -8,6 +8,7 @@ public class Solution {
     public static void main(String[] args) {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
+            return;
         }
 
         Map<String, Integer> shapeVals = Map.ofEntries(
@@ -29,25 +30,25 @@ public class Solution {
                 Map.entry("BZ", 6), // paper - scissors
                 Map.entry("CX", 6), // scissors - rock
                 Map.entry("CY", 0), // scissors - paper
-                Map.entry("CZ", 3) // scissors - scissors
+                Map.entry("CZ", 3)  // scissors - scissors
         );
 
         Map<String, Integer> endingVals = Map.ofEntries(
                 Map.entry("X", 0), // lose
                 Map.entry("Y", 3), // draw
-                Map.entry("Z", 6) // win
+                Map.entry("Z", 6)  // win
         );
 
         Map<String, String> outcomes2 = Map.ofEntries(
                 Map.entry("AX", "scissors"), // lose(rock) = scissors
-                Map.entry("AY", "rock"), // draw(rock) =
-                Map.entry("AZ", "paper"), // win(rock) =
-                Map.entry("BX", "rock"), // lose(paper) =
-                Map.entry("BY", "paper"), // draw(paper) =
-                Map.entry("BZ", "scissors"), // win(paper) =
-                Map.entry("CX", "paper"), // lose(scissors) =
-                Map.entry("CY", "scissors"), // draw(scissors) =
-                Map.entry("CZ", "rock") // win(scissors) =
+                Map.entry("AY", "rock"),     // draw(rock) = rock
+                Map.entry("AZ", "paper"),    // win(rock) = paper
+                Map.entry("BX", "rock"),     // lose(paper) = rock
+                Map.entry("BY", "paper"),    // draw(paper) = paper
+                Map.entry("BZ", "scissors"), // win(paper) = scissors
+                Map.entry("CX", "paper"),    // lose(scissors) = paper
+                Map.entry("CY", "scissors"), // draw(scissors) = scissors
+                Map.entry("CZ", "rock")      // win(scissors) = rock
         );
 
         int score1 = 0;
