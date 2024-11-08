@@ -125,7 +125,7 @@ public class Solution {
         }
     }
 
-    public static int solution1(Directory d) {
+    private static int solution1(Directory d) {
         int result = 0;
 
         if (d.size <= 100_000) {
@@ -141,7 +141,7 @@ public class Solution {
         return result;
     }
 
-    public static int solution2(Directory d) {
+    private static int solution2(Directory d) {
         int minToFree = d.size - 40_000_000;
 
         if (minToFree < 0) {
@@ -151,7 +151,7 @@ public class Solution {
         return getSmallest(minToFree, d, d.size);
     }
 
-    public static int getSmallest(int min, Directory d, int curr) {
+    private static int getSmallest(int min, Directory d, int curr) {
         if (d.size >= min && d.size < curr) {
             curr = d.size;
         }

@@ -121,7 +121,6 @@ public class Solution {
             for (int col = 0; col < colCnt; col++) {
                 trees.get(coords(row, col)).lView = getLView(grid, row, col);
             }
-
             // Right views
             for (int col = colCnt - 1; col >= 0; col--) {
                 trees.get(coords(row, col)).rView = getRView(grid, row, col);

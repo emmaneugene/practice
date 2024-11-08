@@ -11,11 +11,11 @@ public class Solution {
             return;
         }
 
-        String line;
-        StringBuilder msg1 = new StringBuilder();
-        StringBuilder msg2 = new StringBuilder();
-
         try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
+            String line;
+            StringBuilder msg1 = new StringBuilder();
+            StringBuilder msg2 = new StringBuilder();
+
             // Process stacks
             List<String> stacksStr = new ArrayList<>();
             while ((line = reader.readLine()).length() != 0) {

@@ -3,17 +3,17 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Solution {
+
     public static void main(String[] args) {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
         }
 
-        int score1 = 0;
-        int score2 = 0;
-        String line;
-
         try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
+            String line;
+            int score1 = 0;
+            int score2 = 0;
 
             while ((line = reader.readLine()) != null) {
                 String[] assgns = line.split(",");
@@ -30,11 +30,11 @@ public class Solution {
                     score2 += 1;
                 }
             }
+
+            System.out.println("Part 1: " + score1);
+            System.out.println("Part 2: " + score2);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-
-        System.out.println("Part 1: " + score1);
-        System.out.println("Part 2: " + score2);
     }
 }

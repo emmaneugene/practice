@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class Solution {
+
     public static void main(String[] args) {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
@@ -20,9 +21,7 @@ public class Solution {
                 try {
                     currCals += Integer.parseInt(line);
                 } catch (NumberFormatException e) {
-                    if (currCals > maxCals) {
-                        maxCals = currCals;
-                    }
+                    maxCals = Integer.max(currCals, maxCals);
 
                     for (int i = 0; i < top3Cals.length; i++) {
                         if (currCals > top3Cals[i]) {
@@ -32,7 +31,6 @@ public class Solution {
                                 top3Cals[j] = currCals;
                                 currCals = tmp;
                             }
-
                             break;
                         }
                     }
@@ -41,9 +39,7 @@ public class Solution {
                 }
             }
 
-            if (currCals > maxCals) {
-                maxCals = currCals;
-            }
+            maxCals = Integer.max(currCals, maxCals);
 
             for (int i = 0; i < top3Cals.length; i++) {
                 if (currCals > top3Cals[i]) {
@@ -53,17 +49,12 @@ public class Solution {
                         top3Cals[j] = currCals;
                         currCals = tmp;
                     }
-
                     break;
                 }
             }
 
-            System.out.println("Most calories: " + maxCals);
-            System.out.print("Top 3 calories: ");
-            for (int c : top3Cals) {
-                System.out.print(c + " ");
-            }
-            System.out.println("\nTotal of top 3 calories: " + Arrays.stream(top3Cals).reduce(0, (a, b) -> a + b));
+            System.out.println("Part 1: " + maxCals);
+            System.out.println("Part 2: " + Arrays.stream(top3Cals).sum());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }

@@ -7,8 +7,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Solution {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
@@ -55,13 +55,12 @@ public class Solution {
 
             }
 
+            System.out.println("Part 1: " + score1);
+            System.out.println("Part 2: " + score2);
         } catch (IOException e) {
             System.out.println("Error processing part 1");
             System.err.println(e.getMessage());
         }
-
-        System.out.println("Part 1: " + score1);
-        System.out.println("Part 2: " + score2);
     }
 
     private static int getPriority(char c) {
