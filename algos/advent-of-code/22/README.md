@@ -1,4 +1,6 @@
-All solutions written in a single source file, using the standard library (Java 21).
+This directory contains solutions to the problem sets in [Advent of Code 2022](https://adventofcode.com/2022).
+
+All solutions written in Java 21, using the standard library.
 
 To run:
 
