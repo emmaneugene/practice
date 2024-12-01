@@ -15,7 +15,7 @@ class Coords {
     }
 }
 
-class Sol1 {
+class P1 {
 
     // Let starting position be X = 0, Y = 0
     Coords head = new Coords();
@@ -55,16 +55,16 @@ class Sol1 {
     }
 }
 
-class Sol2 {
+class P2 {
 
     List<Coords> knots;
     Set<String> visited = new HashSet<>();
 
-    public Sol2() {
+    public P2() {
         this(10);
     }
 
-    public Sol2(int size) {
+    public P2(int size) {
         knots = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             knots.add(new Coords());
@@ -117,8 +117,8 @@ public class Solution {
         try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
 
             String line;
-            Sol1 s1 = new Sol1();
-            Sol2 s2 = new Sol2();
+            P1 p1 = new P1();
+            P2 p2 = new P2();
 
             while ((line = reader.readLine()) != null) {
                 String[] toks = line.split(" ");
@@ -126,13 +126,13 @@ public class Solution {
                 int cnt = Integer.valueOf(toks[1]);
 
                 for (int i = 0; i < cnt; i++) {
-                    s1.moveHead(dir);
-                    s2.moveHead(dir);
+                    p1.moveHead(dir);
+                    p2.moveHead(dir);
                 }
             }
 
-            System.out.println("Part 1: " + s1.visited.size());
-            System.out.println("Part 2: " + s2.visited.size());
+            System.out.println("Part 1: " + p1.visited.size());
+            System.out.println("Part 2: " + p2.visited.size());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
