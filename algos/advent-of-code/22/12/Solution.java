@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-// P1: Dijkstra's algo
-
+// Dijkstra's algo
 public class Solution {
 
     public static void main(String[] args) {
