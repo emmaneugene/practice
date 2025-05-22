@@ -1,12 +1,12 @@
 # Problem: https://leetcode.com/problems/merge-two-sorted-lists
 
-# Time complexity: O(m+n)
-# Space complexity: O(m+n)
+# Assuming n elemeents in total:
+# Time complexity: O(n)
+# Space complexity: O(n)
 
 from typing import Optional
 
 
-# Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -51,8 +51,8 @@ class Solution:
         t3 = t1 if t2 is None else t2
         while t3 is not None:
             curr.next = ListNode(t3.val, None)
-            curr = curr.next
             t3 = t3.next
+            curr = curr.next
 
         return result
 
