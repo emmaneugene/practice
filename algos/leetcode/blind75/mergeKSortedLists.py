@@ -4,6 +4,7 @@
 # Time complexity: O(nlogk)
 # Space complexity: O(n)
 
+import heapq
 from typing import Optional
 
 
@@ -66,15 +67,46 @@ class Solution:
 
         return lists[0]
 
+    def mergeKLists2(self, lists: list[Optional[ListNode]]) -> Optional[ListNode]:
+        lists = list(filter(lambda x: x is not None, lists))
+
+        if len(lists) == 0:
+            return None
+
+        minHeap = []
+        result = ListNode()
+        curr = result
+
+        # Initialize heap with first element from each list
+        for i, lst in enumerate(lists):
+            if lst:
+                heapq.heappush(minHeap, (lst.val, i))
+                lists[i] = lst.next
+
+        # Process elements until heap is empty
+        while minHeap:
+            val, i = heapq.heappop(minHeap)
+            curr.next = ListNode(val)
+            curr = curr.next
+
+            # Add next element from the same list if exists
+            lst = lists[i]
+            if lst:
+                heapq.heappush(minHeap, (lst.val, i))
+                lists[i] = lst.next
+
+        return result.next
+
+
 def printList(x: Optional[ListNode]) -> None:
-    if x == None:
+    if not x:
         print("<empty list>")
         return
 
     print(f"{x.val}", end="")
     x = x.next
 
-    while x is not None:
+    while x:
         print(f", {x.val}", end="")
         x = x.next
 
@@ -91,6 +123,10 @@ def main():
     printList(s.mergeKLists([l1, l2, l3])) # Expected: 1, 1, 2, 3, 4, 4, 5, 6
     printList(s.mergeKLists([])) # Expected: <empty list>
     printList(s.mergeKLists([l4])) # Expected: <empty list>
+
+    printList(s.mergeKLists2([l1, l2, l3])) # Expected: 1, 1, 2, 3, 4, 4, 5, 6
+    printList(s.mergeKLists2([])) # Expected: <empty list>
+    printList(s.mergeKLists2([l4])) # Expected: <empty list>
 
 
 if __name__ == "__main__":
