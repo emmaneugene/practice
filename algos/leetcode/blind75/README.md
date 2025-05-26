@@ -2,7 +2,7 @@ This directory contains solutions to the Blind75 question set
 
 - [x] [2 Sum](./2Sum.py)
 - [x] [3 Sum](./3Sum.py)
-- [ ] [Alien Dictionary](./alienDictionary.py)
+- [x] [Alien Dictionary](./alienDictionary.py)
 - [x] [Best time to buy and sell stock](./bestTimeBuySell.py)
 - [ ] [Binary tree maximum path sum](./binaryTreeMaxPathSum.py)
 - [x] [Binary tree level order traversal](./bTreeLevelTraversal.py)
@@ -66,7 +66,7 @@ This directory contains solutions to the Blind75 question set
 - [x] [Set matrix zeroes](./setMatrixZeroes.py)
 - [x] [Spiral matrix](./spiralMatrix.py)
 - [x] [Subtree of another tree](./subtreeOfAnotherTree.py)
-- [ ] [Sum of 2 integers](./sumOf2Integers.py)
+- [x] [Sum of 2 integers](./sumOf2Integers.py) - SKIPPED
 - [x] [Top K frequent elements](./topKFrequent.py)
 - [x] [Unique paths](./uniquePaths.py)
 - [x] [Valid anagram](./validAnagram.py)

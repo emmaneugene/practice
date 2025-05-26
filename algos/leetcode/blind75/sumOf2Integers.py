@@ -2,7 +2,7 @@
 
 # Time complexity:
 # Space complexity:
-# Bit shifting stuff?
+# Apply bitwise operations with overflow to do addition
 
 
 class Solution:
