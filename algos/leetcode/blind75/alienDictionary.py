@@ -1,45 +1,96 @@
 # Problem: https://leetcode.com/problems/alien-dictionary
 
-# Time complexity:
-# Space complexity:
+# Time complexity: TODO
+# Space complexity: TODO
 
-# TODO - unimplemented
+# 1. Create a dict to track for each character, which characters it is smallr than
+#    e.g. {'a': {}, 'b': {'a'}, 'c': {'a', 'b'}} implies the order a -> b -> c
+# 2. Check each string in `words` to get ordering information. If a continuous sequence of strings
+#    are found which start with the same letter, take [1:] slice of each and put them in a new list
+#    to be checked. Do this until there are no more lists to check
+# 3. To build the string, grab all the entries and start with the one with the least sets
 
-# General idea: Check from 0th to nth character of each string to create a sorted order of chars
-# If a contradiction is encountered, return '' immediately
+# - for strings with no comparison information, any arbitrary ordering works?
+# - e.g. ['ak', 'bd'] can have an ordering of ['abkd', 'abdk'] and more?
+
+# If a contradiction is encountered, return "" immediately
 # Need to maintain a queue of strings to check
 
-from typing import List
+import copy
 
 
 class Solution:
-    def alienOrder(self, words: List[str]) -> str:
-        currCheck: List[str] = words
-        nextCheck: List[str] = []
-        while len(currCheck) > 0:
-            # Come up with ordering of characters
-            prevCh: str = currCheck[0][0]
-            order: List[str] = []
+    def alienOrder(self, words: list[str]) -> str:
+        ordering: dict[str, set] = {}
+        toCheck = [list(filter(lambda x: x, words))]
 
-            # for w in currCheck[1:]:
-            #     if currCh =
-            # For consecutive strings w identical characters, append to nextCheck (if there are characters remaining)
+        while toCheck:
+            toCompare = toCheck.pop(0)
+            # print(f"Comparing first characters of: {toCompare}")
+            if not any(toCompare):
+                continue
 
-            # Try to insert new order into previous order, return "" if contradiction
+            nextWrd = toCompare[0]
+            sequence = [nextWrd[0]]
+            toAdd = []
+            if nextWrd[1:]:
+                toAdd.append(nextWrd[1:])
 
-            # ordering: str = ''
-            # for w in words:
-            #     ordering += w[i]
-            # print(f'depth: {i}, order {ordering}')
+            # Build ordering
+            for word in toCompare[1:]:
+                if word[0] != sequence[-1]:
+                    if any(toAdd):
+                        toCheck.append(toAdd)
+                    sequence.append(word[0])
+                    toAdd = []
 
-        return ""
+                # Contradiction - Empty string cannot be ordered after letters
+                if not word[1:] and toAdd:
+                    return ""
+                if word[1:]:
+                    toAdd.append(word[1:])
+
+            if any(toAdd):
+                toCheck.append(toAdd)
+
+            # print(f"Got ordering: {sequence}")
+            ch = sequence[0]
+            if not ordering.get(ch):
+                ordering[ch] = set()
+
+            smallerChars = copy.deepcopy(ordering.get(ch))
+            smallerChars.add(ch)
+
+            for ch in sequence[1:]:
+                # Check for contradictions
+                for sm in smallerChars:
+                    if ordering.get(sm) and ch in ordering.get(sm):
+                        return ""
+
+                # Update for ch
+                if ordering.get(ch):
+                    ordering[ch] = ordering[ch].union(smallerChars)
+                else:
+                    ordering[ch] = smallerChars
+
+                smallerChars = copy.deepcopy(ordering.get(ch))
+                smallerChars.add(ch)
+
+        items = list(ordering.items())
+        items.sort(key=lambda x: len(x[1]))
+
+        # for ch, smaller in items:
+        #     print(f"{ch} comes after {smaller if smaller else "nothing (first in sequence)"}")
+
+        return "".join([x[0] for x in items])
 
 
 def main():
     s: Solution = Solution()
-    print(s.alienOrder(["wrt", "wrf", "er", "ett", "rftt"]))
-    print(s.alienOrder(["z", "x"]))
-    print(s.alienOrder(["z", "x", "z"]))
+    print(s.alienOrder(["wrt", "wrf", "er", "ett", "rftt"]))  # Expected: "wertf"
+    print(s.alienOrder(["z", "x"]))  # Expected: "zx"
+    print(s.alienOrder(["z", "x", "z"]))  # Expected: ""
+    print(s.alienOrder(["abc", "ab"]))  # Expected: ""
 
 
 if __name__ == "__main__":
