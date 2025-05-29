@@ -4,7 +4,7 @@ This directory contains solutions to the Blind75 question set
 - [x] [3 Sum](./3Sum.py)
 - [x] [Alien Dictionary](./alienDictionary.py)
 - [x] [Best time to buy and sell stock](./bestTimeBuySell.py)
-- [ ] [Binary tree maximum path sum](./binaryTreeMaxPathSum.py)
+- [x] [Binary tree maximum path sum](./binaryTreeMaxPathSum.py)
 - [x] [Binary tree level order traversal](./bTreeLevelTraversal.py)
 - [x] [Climbing stairs](./climbingStairs.py)
 - [x] [Clone graph](./cloneGraph.py)
