@@ -10,7 +10,7 @@ This directory contains solutions to the Blind75 question set
 - [x] [Clone graph](./cloneGraph.py)
 - [x] [Coin change](./coinChange.py)
 - [x] [Combination sum](./combinationSum.py)
-- [ ] [Construct binary tree from preorder and inorder traversal](./constructBinaryTreeFromPreInTraversal.py)
+- [x] [Construct binary tree from preorder and inorder traversal](./constructBinaryTreeFromPreInTraversal.py)
 - [x] [Container with most water](./containerWithMostWater.py)
 - [x] [Contains duplicate](./containsDuplicate.py)
 - [x] [Counting bits](./countingBits.py)
