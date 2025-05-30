@@ -17,7 +17,7 @@ This directory contains solutions to the Blind75 question set
 - [x] [Course schedule](./courseSchedule.py)
 - [x] [Decode ways](./decodeWays.py)
 - [x] [Design add and search words data structure](./designAddSearchWordsDS.py)
-- [ ] [Encode and decode strings](./encodeDecodeStrings.py)
+- [x] [Encode and decode strings](./encodeDecodeStrings.py)
 - [x] [Graph valid tree](./graphValidTree.py)
 - [x] [Group anagrams](./groupAnagrams.py)
 - [x] [Hamming weight](./hammingWeight.py)
