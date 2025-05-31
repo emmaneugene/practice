@@ -22,7 +22,7 @@ This directory contains solutions to the Blind75 question set
 - [x] [Group anagrams](./groupAnagrams.py)
 - [x] [Hamming weight](./hammingWeight.py)
 - [x] [House robber](./houseRobber.py)
-- [ ] [House robber II](./houseRobberII.py)
+- [x] [House robber II](./houseRobberII.py)
 - [x] [Implement trie](./implementTrie.py)
 - [x] [Insert interval](./insInterval.py)
 - [x] [Invert binary tree](./invertBinaryTree.py)
