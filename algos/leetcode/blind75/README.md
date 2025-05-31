@@ -40,7 +40,7 @@ This directory contains solutions to the Blind75 question set
 - [x] [Maximum depth of a binary tree](./maxDepthBTree.py)
 - [x] [Maximum subarray](./maximumSubarray.py)
 - [x] [Maximum product of a subarray](./maxProductSubarray.py)
-- [ ] [Median from data stream](./medianFromDataStream.py)
+- [x] [Median from data stream](./medianFromDataStream.py)
 - [x] [Meeting rooms](./meetingRooms.py)
 - [x] [Meeting rooms II](./meetingRoomsII.py)
 - [x] [Merge intervals](./mergeIntervals.py)
