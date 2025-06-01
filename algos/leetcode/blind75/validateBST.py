@@ -16,7 +16,7 @@ class TreeNode:
 # Space complexity: O(n) due to recursive stack frames
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        if root is None:
+        if not root:
             return True
 
         return self.checkNode(root)[0]
@@ -25,23 +25,23 @@ class Solution:
         """Recursively checks whether this node is a valid BST, and returns
         the min and max values of the BST in question
         """
-        if node.left is None and node.right is None:
+        if not node.left and not node.right:
             return True, node.val, node.val
-        elif node.right is None:
-            leftIsBST, leftMin, leftMax = self.checkNode(node.left)
-            isBST = leftIsBST and leftMax < node.val
-            return isBST, leftMin, node.val
-        elif node.left is None:
-            rightIsBST, rightMin, rightMax = self.checkNode(node.right)
-            isBST = rightIsBST and rightMin > node.val
-            return isBST, node.val, rightMax
+        elif not node.right:
+            lValid, lMin, lMax = self.checkNode(node.left)
+            isBST = lValid and lMax < node.val
+            return isBST, lMin, node.val
+        elif not node.left:
+            rValid, rMin, rMax = self.checkNode(node.right)
+            isBST = rValid and rMin > node.val
+            return isBST, node.val, rMax
         else:
-            leftIsBST, leftMin, leftMax = self.checkNode(node.left)
-            rightIsBST, rightMin, rightMax = self.checkNode(node.right)
+            lValid, lMin, lMax = self.checkNode(node.left)
+            rValid, rMin, rMax = self.checkNode(node.right)
             isBST = (
-                leftIsBST and leftMax < node.val and rightIsBST and rightMin > node.val
+                lValid and lMax < node.val and rValid and rMin > node.val
             )
-            return isBST, leftMin, rightMax
+            return isBST, lMin, rMax
 
 
 def main():

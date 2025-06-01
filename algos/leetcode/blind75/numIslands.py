@@ -29,7 +29,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     grid: list[list[int]] = [
         ["1", "1", "1", "1", "0"],

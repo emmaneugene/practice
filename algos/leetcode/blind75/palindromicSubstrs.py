@@ -28,7 +28,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.countSubstrings("abc"))  # Expected: 3
     print(s.countSubstrings("aaa"))  # Expected: 6

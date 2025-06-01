@@ -16,7 +16,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.containsDuplicate([1, 2, 3, 1]))  # True
     print(s.containsDuplicate([1, 2, 3, 4]))  # False

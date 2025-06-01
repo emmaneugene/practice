@@ -21,13 +21,13 @@ class Solution:
             forward = forward.next
 
         # Corner case - n is length of linked list
-        if forward == None:
+        if not forward:
             return head.next
 
         forward = forward.next
         track = head
 
-        while forward != None:
+        while forward:
             forward = forward.next
             track = track.next
 
@@ -37,7 +37,7 @@ class Solution:
 
 
 def printList(x: Optional[ListNode]) -> None:
-    if x == None:
+    if not x:
         print("<empty list>")
         return
 
@@ -52,7 +52,7 @@ def printList(x: Optional[ListNode]) -> None:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     l1 = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
     l1 = s.removeNthFromEnd(l1, 2)

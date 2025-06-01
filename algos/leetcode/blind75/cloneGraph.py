@@ -9,36 +9,63 @@ import collections
 
 
 class Node:
-    def __init__(self, val=0, neighbors=None) -> None:
+    def __init__(self, val: int = 0, neighbors: list["Node"] = None):
         self.val = val
         self.neighbors = neighbors if neighbors is not None else []
-        pass
 
 
 class Solution:
-    def cloneGraph(self, node: Optional[Node]) -> Node:
+    def cloneGraph(self, node: Optional[Node]) -> Optional[Node]:
         if not node:
             return node
 
+        copies: dict[int, Node] = {node.val: Node(node.val)}
         q = collections.deque([node])
-        clones: dict = {node.val: Node(node.val, [])}
 
         while q:
-            cur: Node = q.popleft()
-            cur_clone: Node = clones[cur.val]
+            n = q.popleft()
+            nCopy = copies.get(n.val, Node(n.val))
 
-            for nb in cur.neighbors:
-                if nb.val not in clones:
-                    clones[nb.val] = Node(nb.val, [])
+            for nb in n.neighbors:
+                if nb.val not in copies:
+                    copies[nb.val] = Node(nb.val)
                     q.append(nb)
 
-                cur_clone.neighbors.append(clones[nb.val])
+                nCopy.neighbors.append(copies[nb.val])
 
-        return clones[node.val]
+        return copies[node.val]
+
+
+def printAdjList(node: Optional[Node]) -> None:
+    if not node:
+        print([])
+        return
+
+    tracker: dict[int, list[int]] = {}
+    q = collections.deque([node])
+
+    while q:
+        tmp = q.popleft()
+        if tmp.val not in tracker:
+            tracker[tmp.val] = [n.val for n in tmp.neighbors]
+            q.extend([n for n in tmp.neighbors])
+
+    print([x[1] for x in sorted(list(tracker.items()))])
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
+
+    n1 = Node(1)
+    n3 = Node(3)
+    n2 = Node(2, [n1, n3])
+    n4 = Node(4, [n1, n3])
+    n1.neighbors = [n2, n4]
+    n3.neighbors = [n2, n4]
+
+    printAdjList(s.cloneGraph(n1))
+    printAdjList(s.cloneGraph(Node(1)))
+    printAdjList(s.cloneGraph(None))
 
 
 if __name__ == "__main__":

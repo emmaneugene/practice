@@ -18,7 +18,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.climbStairs(2))  # 2
     print(s.climbStairs(3))  # 3

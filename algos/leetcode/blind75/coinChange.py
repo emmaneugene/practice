@@ -29,7 +29,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.coinChange([1, 2, 5], 11))  # Expected: 3
     print(s.coinChange([2], 3))  # Expected: -1

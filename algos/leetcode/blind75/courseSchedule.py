@@ -6,13 +6,13 @@
 
 
 class Solution:
-    def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
+    def canFinish(self, numCourses: int, prereqs: list[list[int]]) -> bool:
         # j in courseMatrix[i] means course j is a prereq for i
         courseDict: dict[int, set[int]] = {}
         for i in range(numCourses):
             courseDict[i] = set()
 
-        for pair in prerequisites:
+        for pair in prereqs:
             cur: int = pair[0]
             req: int = pair[1]
 
@@ -45,7 +45,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.canFinish(2, [[1, 0]]))  # True
     print(s.canFinish(2, [[1, 0], [0, 1]]))  # False

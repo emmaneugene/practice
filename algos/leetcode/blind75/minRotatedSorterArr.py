@@ -23,7 +23,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.findMin([3, 4, 5, 1, 2]))  # Expected: 1
     print(s.findMin([4, 5, 6, 7, 0, 1, 2]))  # Expected: 0

@@ -8,26 +8,26 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: list[str]) -> bool:
         wordDict.sort(key=lambda x: len(x))
-        matchTracker: list[bool] = [False] * len(s)
+        tracker: list[bool] = [False] * len(s)
 
         for word in wordDict:
             if len(word) > len(s):
                 break
             if s.startswith(word):
-                matchTracker[len(word) - 1] = True
+                tracker[len(word) - 1] = True
 
         for i in range(1, len(s)):
             for word in wordDict:
                 if len(word) > len(s[i:]):
                     break
-                if matchTracker[i - 1] and s[i:].startswith(word):
-                    matchTracker[i + len(word) - 1] = True
+                if tracker[i - 1] and s[i:].startswith(word):
+                    tracker[i + len(word) - 1] = True
 
-        return matchTracker[-1]
+        return tracker[-1]
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.wordBreak("leetcode", ["leet", "code"]))  # Expected: True
     print(s.wordBreak("applepenapple", ["apple", "pen"]))  # Expected: True

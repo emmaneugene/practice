@@ -28,7 +28,8 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
+
     print(s.maxProduct([2, 3, -2, 4]))  # Expected: 6
     print(s.maxProduct([-2, 0, -1]))  # Expected: 0
     print(s.maxProduct([-2, -3, 0, -1]))  # Expected: 6

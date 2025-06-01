@@ -41,29 +41,28 @@ class Trie:
     def search(self, word: str) -> bool:
         node: Optional[TrieNode] = self.root.lookup(word)
 
-        return node is not None and node.isTerminal
+        return bool(node) and node.isTerminal
 
     def startsWith(self, prefix: str) -> bool:
         node: Optional[TrieNode] = self.root.lookup(prefix)
 
-        return node is not None
-
-
-def main():
-    t: Trie = Trie()
-
-    t.insert("apple")
-    print(t.search("apple"))  # true
-    print(t.search("app"))  # false
-    t.insert("app")
-    print(t.search("app"))  # true
-
-
-if __name__ == "__main__":
-    main()
+        return bool(node)
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
 # obj.insert(word)
 # param_2 = obj.search(word)
 # param_3 = obj.startsWith(prefix)
+
+def main():
+    t = Trie()
+
+    t.insert("apple")
+    print(t.search("apple"))  # True
+    print(t.search("app"))  # False
+    t.insert("app")
+    print(t.search("app"))  # True
+
+
+if __name__ == "__main__":
+    main()

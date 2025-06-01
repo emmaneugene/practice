@@ -1,11 +1,13 @@
-This directory contains solutions to the Blind75 question set
+# Blind75
+
+This directory contains solutions to the Blind75 question set.
 
 - [x] [2 Sum](./2Sum.py)
 - [x] [3 Sum](./3Sum.py)
 - [x] [Alien Dictionary](./alienDictionary.py)
 - [x] [Best time to buy and sell stock](./bestTimeBuySell.py)
 - [x] [Binary tree maximum path sum](./binaryTreeMaxPathSum.py)
-- [x] [Binary tree level order traversal](./bTreeLevelTraversal.py)
+- [x] [Binary tree level order traversal](./binaryTreeLevelTraversal.py)
 - [x] [Climbing stairs](./climbingStairs.py)
 - [x] [Clone graph](./cloneGraph.py)
 - [x] [Coin change](./coinChange.py)
@@ -36,15 +38,15 @@ This directory contains solutions to the Blind75 question set
 - [ ] [Longest repeating character replacement](./longestRepeatingCharacterReplacement.py)
 - [x] [Longest substring without repeating characters](./longestSubstrWoRepeatingChars.py)
 - [ ] [Lowest common ancestor in a BST](./lowestCommonAncestorBST.py)
-- [ ] [Lowest common ancestor in a binary tree](./lowestCommonAncestorBTree.py)
-- [x] [Maximum depth of a binary tree](./maxDepthBTree.py)
+- [ ] [Lowest common ancestor in a binary tree](./lowestCommonAncestorBinaryTree.py)
+- [x] [Maximum depth of a binary tree](./maxDepthBinaryTree.py)
 - [x] [Maximum subarray](./maximumSubarray.py)
 - [x] [Maximum product of a subarray](./maxProductSubarray.py)
 - [x] [Median from data stream](./medianFromDataStream.py)
 - [x] [Meeting rooms](./meetingRooms.py)
 - [x] [Meeting rooms II](./meetingRoomsII.py)
-- [x] [Merge intervals](./mergeIntervals.py)
 - [x] [Merge 2 sorted lists](./merge2SortedLists.py)
+- [x] [Merge intervals](./mergeIntervals.py)
 - [x] [Merge k sorted lists](./mergeKSortedLists.py)
 - [x] [Minumum in rotated sorted array](./minRotatedSorterArr.py)
 - [ ] [Minimum window substring](./minWindowSubstring.py)

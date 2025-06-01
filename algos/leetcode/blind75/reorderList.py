@@ -18,13 +18,13 @@ class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
         """Do not return anything, modify head in-place instead."""
 
-        if head is None:
+        if not head:
             return
 
         nodes: list[ListNode] = []
 
         tmp = head
-        while tmp is not None:
+        while tmp:
             nodes.append(tmp)
             tmp = tmp.next
 

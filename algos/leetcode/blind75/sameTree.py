@@ -3,6 +3,7 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+from collections import deque
 from typing import Optional
 
 
@@ -17,32 +18,54 @@ class TreeNode:
 
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        if p is None and q is None:
+        if not p and not q:
             return True
-        if p is None or q is None:
+        if not p or not q:
             return False
 
         # Perform BFS, return false if a single element doesn't match
-        pToVisit: list[TreeNode] = [p]
-        qToVisit: list[TreeNode] = [q]
+        pToVisit = deque([p])
+        qToVisit = deque([q])
 
-        while len(pToVisit) > 0 and len(qToVisit) > 0:
-            nextP = pToVisit.pop(0)
-            nextQ = qToVisit.pop(0)
+        while any(pToVisit) and any(qToVisit):
+            nextP = pToVisit.popleft()
+            nextQ = qToVisit.popleft()
 
             if nextP.val != nextQ.val:
                 return False
 
-            if nextP.left is not None or nextQ.left is not None:
-                if nextP.left is None or nextQ.left is None:
+            if nextP.left or nextQ.left:
+                if not nextP.left or not nextQ.left:
                     return False
                 pToVisit.append(nextP.left)
                 qToVisit.append(nextQ.left)
 
-            if nextP.right is not None or nextQ.right is not None:
-                if nextP.right is None or nextQ.right is None:
+            if nextP.right or nextQ.right:
+                if not nextP.right or not nextQ.right:
                     return False
                 pToVisit.append(nextP.right)
                 qToVisit.append(nextQ.right)
 
         return len(pToVisit) == len(qToVisit)
+
+
+def main():
+    s = Solution()
+
+    print(
+        s.isSameTree(
+            TreeNode(1, TreeNode(2), TreeNode(3)), TreeNode(1, TreeNode(2), TreeNode(3))
+        )
+    )  # Expected: True
+    print(
+        s.isSameTree(TreeNode(1, TreeNode(2)), TreeNode(1, None, TreeNode(2)))
+    )  # Expected: False
+    print(
+        s.isSameTree(
+            TreeNode(1, TreeNode(2), TreeNode(1)), TreeNode(1, TreeNode(1), TreeNode(2))
+        )
+    )  # Expected: False
+
+
+if __name__ == "__main__":
+    main()

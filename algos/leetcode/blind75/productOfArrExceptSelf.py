@@ -26,10 +26,10 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
-    print(s.productExceptSelf([1, 2, 3, 4]))
-    print(s.productExceptSelf([-1, 1, 0, -3, 3]))
+    print(s.productExceptSelf([1, 2, 3, 4]))  # Expected: [24, 12, 8, 6]
+    print(s.productExceptSelf([-1, 1, 0, -3, 3]))  # Expected: [0, 0, 9, 0, 0]
 
 
 if __name__ == "__main__":

@@ -47,11 +47,12 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.maxPathSum(TreeNode(2, TreeNode(1), TreeNode(3))))  # Expected: 6
     print(s.maxPathSum(TreeNode(-1, TreeNode(0), TreeNode(1))))  # Expected: 1
-    print(s.maxPathSum(
+    print(
+        s.maxPathSum(
             TreeNode(-10, TreeNode(9), TreeNode(20, TreeNode(15), TreeNode(7)))
         )
     )  # Expected: 42

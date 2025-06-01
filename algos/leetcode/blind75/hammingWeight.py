@@ -15,7 +15,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.hammingWeight(11))  # Expected: 3
     print(s.hammingWeight(128))  # Expected: 1

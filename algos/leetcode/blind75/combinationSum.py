@@ -41,7 +41,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print("Expected: [[2, 2, 3], [7]]")
     print(f"Actual  : {s.combinationSum([2, 3, 6, 7], 7)}")

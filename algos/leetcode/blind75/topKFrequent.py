@@ -14,17 +14,12 @@ class Solution:
             else:
                 counts[n] += 1
 
-        countsList: list[tuple[int, int]] = [
-            (val, count) for val, count in counts.items()
-        ]
-
-        countsList.sort(key=lambda x: x[1], reverse=True)
-
-        return [countsList[i][0] for i in range(k)]
+        countsList = sorted(list(counts.items()), reverse=True)
+        return [c[0] for c in countsList[:k]]
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.topKFrequent([1, 1, 1, 2, 2, 3], 2))  # Expected: [1,2]
     print(s.topKFrequent([1], 1))  # Expected: [1]

@@ -16,7 +16,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.uniquePaths(3, 7))  # 28
     print(s.uniquePaths(3, 2))  # 3

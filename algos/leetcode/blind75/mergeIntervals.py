@@ -9,28 +9,27 @@ class Solution:
         return [min(i1[0], i2[0]), max(i1[1], i2[1])]
 
     def merge(self, intervals: list[list[int]]) -> list[list[int]]:
-        # Sort intervals by increasing start time
-        intervals.sort(key=lambda x: x[0])
+        # Sort intervals by start time asc
+        intervals.sort()
+        res: list[list[int]] = []
+        curr: list[int] = intervals[0]
 
-        result: list[list[int]] = []
-        current: list[int] = intervals[0]
-        for i in range(1, len(intervals)):
-            if current[1] >= intervals[i][0]:
-                current = self.combine(current, intervals[i])
+        for ivl in intervals[1:]:
+            if curr[1] >= ivl[0]:
+                curr = self.combine(curr, ivl)
             else:
-                result.append(current)
-                current = intervals[i]
+                res.append(curr)
+                curr = ivl
 
-        result.append(current)
-        return result
+        res.append(curr)
+        return res
 
 
 def main():
-    s: Solution = Solution()
-    # Expected: [[1,6],[8,10],[15,18]]
-    print(s.merge([[1, 3], [2, 6], [8, 10], [15, 18]]))
-    # Expected: [[1,6],[8,10],[15,18]]
-    print(s.merge([[1, 3], [2, 6], [15, 18], [8, 10]]))
+    s = Solution()
+
+    print(s.merge([[1, 3], [2, 6], [8, 10], [15, 18]]))  # Expected: [[1,6],[8,10],[15,18]]
+    print(s.merge([[1, 3], [2, 6], [15, 18], [8, 10]]))  # Expected: [[1,6],[8,10],[15,18]]
     print(s.merge([[1, 4], [4, 5]]))  # Expected: [[1,5]]
 
 

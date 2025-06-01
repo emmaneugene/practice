@@ -14,23 +14,8 @@ class ListNode:
         self.next = next
 
 
-def printList(x: Optional[ListNode]) -> None:
-    if not x:
-        print("<empty list>")
-        return
-
-    print(f"{x.val}", end="")
-    x = x.next
-
-    while x:
-        print(f", {x.val}", end="")
-        x = x.next
-
-    print("")
-
-
 class Solution:
-    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
+    def merge2Lists(self, list1: ListNode, list2: ListNode) -> ListNode:
         t1 = list1
         t2 = list2
 
@@ -71,7 +56,7 @@ class Solution:
             tmp: list[ListNode] = []
             for i in range(0, len(lists), 2):
                 if i + 1 < len(lists):
-                    tmp.append(self.mergeTwoLists(lists[i], lists[i + 1]))
+                    tmp.append(self.merge2Lists(lists[i], lists[i + 1]))
                 else:
                     tmp.append(lists[i])
             lists = tmp
@@ -89,7 +74,7 @@ class Solution:
         result = ListNode()
         curr = result
 
-        for i, lst in enumerate(lists):
+        for lst in lists:
             while lst:
                 heapq.heappush(minHeap, lst.val)
                 lst = lst.next
@@ -102,8 +87,23 @@ class Solution:
         return result.next
 
 
+def printList(x: Optional[ListNode]) -> None:
+    if not x:
+        print("<empty list>")
+        return
+
+    print(f"{x.val}", end="")
+    x = x.next
+
+    while x:
+        print(f", {x.val}", end="")
+        x = x.next
+
+    print("")
+
+
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     l1 = ListNode(1, ListNode(4, ListNode(5)))
     l2 = ListNode(1, ListNode(3, ListNode(4)))

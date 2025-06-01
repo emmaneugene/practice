@@ -17,7 +17,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.countBits(2))  # Expected: [0,1,1]
     print(s.countBits(5))  # Expected: [0,1,1,2,1,2]

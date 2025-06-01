@@ -17,7 +17,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.twoSum([2, 7, 11, 15], 9))  # Expected: [0,1]
     print(s.twoSum([3, 2, 4], 6))  # Expected: [1,2]

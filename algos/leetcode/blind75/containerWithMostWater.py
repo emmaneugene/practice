@@ -10,7 +10,6 @@ class Solution:
         # Base case
         left = 0
         right = len(height) - 1
-
         maxArea = (right - left) * min(height[left], height[right])
 
         while left < right:
@@ -26,13 +25,10 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
-    print("Expected: 49")
-    print(f"Actual  : {s.maxArea([1,8,6,2,5,4,8,3,7])}")
-
-    print("Expected: 1")
-    print(f"Actual  : {s.maxArea([1,1])}")
+    print(s.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))  # Expected: 49
+    print(s.maxArea([1, 1]))  # Expected: 1
 
 
 if __name__ == "__main__":

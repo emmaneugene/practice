@@ -66,7 +66,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.numDecodings("12"))  # Expected: 2
     print(s.numDecodings("226"))  # Expected: 3

@@ -44,12 +44,10 @@ def main():
     s = Solution()
 
     tree1 = TreeNode(3, TreeNode(1, None, TreeNode(2)), TreeNode(4))
-
-    print(s.kthSmallest(tree1, 1))  # 1
+    print(s.kthSmallest(tree1, 1))  # Expected: 1
 
     tree2 = TreeNode(5, TreeNode(3, TreeNode(2, TreeNode(1)), TreeNode(4)), TreeNode(6))
-
-    print(s.kthSmallest(tree2, 3))  # 3
+    print(s.kthSmallest(tree2, 3))  # Expected: 3
 
 
 if __name__ == "__main__":

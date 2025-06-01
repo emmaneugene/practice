@@ -24,4 +24,17 @@ class Solution:
                 if not self.matchingBrackets(opening, ch):
                     return False
 
-        return len(open_braces) == 0
+        return not any(open_braces)
+
+
+def main():
+    s = Solution()
+
+    print(s.isValid("()")) # True
+    print(s.isValid("()[]{}")) # True
+    print(s.isValid("(]")) # False
+    print(s.isValid("([])")) # False
+
+
+if __name__ == "__main__":
+    main()

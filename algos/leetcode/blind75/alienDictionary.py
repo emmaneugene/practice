@@ -86,7 +86,8 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
+
     print(s.alienOrder(["wrt", "wrf", "er", "ett", "rftt"]))  # Expected: "wertf"
     print(s.alienOrder(["z", "x"]))  # Expected: "zx"
     print(s.alienOrder(["z", "x", "z"]))  # Expected: ""

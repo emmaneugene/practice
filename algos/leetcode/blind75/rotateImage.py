@@ -21,6 +21,7 @@ class Solution:
 
 def main():
     s = Solution()
+
     arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     s.rotate(arr)
     print("Expected: [[7, 4, 1], [8, 5, 2], [9, 6, 3]]")

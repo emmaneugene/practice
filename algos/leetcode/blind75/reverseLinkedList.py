@@ -17,12 +17,12 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        reversedHead: Optional[ListNode] = None
-        if head is None:
-            return reversedHead
+        rvsHead: Optional[ListNode] = None
+        if not head:
+            return rvsHead
 
-        while head.next is not None:
-            reversedHead = ListNode(head.val, reversedHead)
+        while head.next:
+            rvsHead = ListNode(head.val, rvsHead)
             head = head.next
 
-        return ListNode(head.val, reversedHead)
+        return ListNode(head.val, rvsHead)

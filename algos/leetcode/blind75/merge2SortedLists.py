@@ -17,18 +17,16 @@ class Solution:
     def mergeTwoLists(
         self, list1: Optional[ListNode], list2: Optional[ListNode]
     ) -> Optional[ListNode]:
-        # Corner case
-        if list1 is None and list2 is None:
+        # Corner cases
+        if not list1 and not list2:
             return None
-        elif list1 is None:
+        if not list1:
             return list2
-        elif list2 is None:
+        if not list2:
             return list1
 
-        t1 = list1
-        t2 = list2
-
-        result = None
+        t1, t2 = list1, list2
+        result: Optional[ListNode]
 
         if t1.val < t2.val:
             result = ListNode(t1.val, None)
@@ -58,14 +56,14 @@ class Solution:
 
 
 def printList(x: Optional[ListNode]) -> None:
-    if x == None:
+    if not x:
         print("<empty list>")
         return
 
     print(f"{x.val}", end="")
     x = x.next
 
-    while x is not None:
+    while x:
         print(f", {x.val}", end="")
         x = x.next
 
@@ -73,7 +71,7 @@ def printList(x: Optional[ListNode]) -> None:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     l1 = ListNode(1, ListNode(2, ListNode(4)))
     l2 = ListNode(1, ListNode(3, ListNode(4)))

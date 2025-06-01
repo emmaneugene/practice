@@ -66,13 +66,13 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
     print(s.threeSum([-1, 0, 1, 2, -1, -4]))  # Expected: [[-1,-1,2].[-1,0,1]]
     print(s.threeSum([0, 1, 1]))  # Expected: []
     print(s.threeSum([0, 0, 0]))  # Expected: [0,0,0]
-    print(
-        s.threeSum([-1, -1, -1, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4])
-    )  # Expected: [0,0,0], [-1,0,1], [-1,-1,2]
+    print(s.threeSum(
+        [-1, -1, -1, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4]
+    ))  # Expected: [0,0,0], [-1,0,1], [-1,-1,2]
 
 
 if __name__ == "__main__":

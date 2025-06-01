@@ -25,10 +25,10 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
-    print(s.minMeetingRooms([[0, 30], [5, 10], [15, 20]]))  # 2
-    print(s.minMeetingRooms([[7, 10], [2, 4]]))  # 1
+    print(s.minMeetingRooms([[0, 30], [5, 10], [15, 20]]))  # Expected: 2
+    print(s.minMeetingRooms([[7, 10], [2, 4]]))  # Expected: 1
 
 
 if __name__ == "__main__":

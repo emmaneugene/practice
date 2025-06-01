@@ -58,7 +58,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.longestCommonSubsequence("abcde", "ace"))  # Expected: 3
     print(s.longestCommonSubsequence("abc", "abd"))  # Expected: 2

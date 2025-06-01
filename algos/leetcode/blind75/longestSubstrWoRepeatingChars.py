@@ -31,18 +31,13 @@ class Solution:
 
 def main():
     s = Solution()
-    print("Expected: 3")
-    print(f'Output  : {s.lengthOfLongestSubstring("abcabcbb")}')
-    print("Expected: 1")
-    print(f'Output  : {s.lengthOfLongestSubstring("bbbbb")}')
-    print("Expected: 3")
-    print(f'Output  : {s.lengthOfLongestSubstring("pwwkew")}')
-    print("Expected: 0")
-    print(f'Output  : {s.lengthOfLongestSubstring("")}')
-    print("Expected: 2")
-    print(f'Output  : {s.lengthOfLongestSubstring("abba")}')
-    print("Expected: 2")
-    print(f'Output  : {s.lengthOfLongestSubstring("aab")}')
+
+    print(s.lengthOfLongestSubstring("abcabcbb"))  # Expected: 3
+    print(s.lengthOfLongestSubstring("bbbbb"))  # Expected: 1
+    print(s.lengthOfLongestSubstring("pwwkew"))  # Expected: 3
+    print(s.lengthOfLongestSubstring(""))  # Expected: 0
+    print(s.lengthOfLongestSubstring("abba"))  # Expected: 2
+    print(s.lengthOfLongestSubstring("aab"))  # Expected: 2
 
 
 if __name__ == "__main__":

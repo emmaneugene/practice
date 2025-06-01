@@ -3,6 +3,7 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+from collections import deque
 from typing import Optional
 
 
@@ -16,19 +17,17 @@ class TreeNode:
 
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        if subRoot is None:
+        if not subRoot:
             return True
 
-        toVisit: list[TreeNode] = [root]
+        toVisit = deque([root])
 
-        while len(toVisit) > 0:
-            n: TreeNode = toVisit.pop(0)
+        while any(toVisit):
+            n: TreeNode = toVisit.popleft()
             if n.val == subRoot.val and self.isSameTree(n, subRoot):
                 return True
-
             if n.left:
                 toVisit.append(n.left)
-
             if n.right:
                 toVisit.append(n.right)
 
@@ -36,12 +35,12 @@ class Solution:
 
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
         # Perform BFS, return false if a single element doesn't match
-        pToVisit: list[TreeNode] = [p]
-        qToVisit: list[TreeNode] = [q]
+        pToVisit = deque([p])
+        qToVisit = deque([q])
 
         while len(pToVisit) > 0 and len(qToVisit) > 0:
-            nextP: TreeNode = pToVisit.pop(0)
-            nextQ: TreeNode = qToVisit.pop(0)
+            nextP: TreeNode = pToVisit.popleft()
+            nextQ: TreeNode = qToVisit.popleft()
 
             if nextP.val != nextQ.val:
                 return False
@@ -59,3 +58,19 @@ class Solution:
                 qToVisit.append(nextQ.right)
 
         return len(pToVisit) == len(qToVisit)
+
+
+def main():
+    s = Solution()
+
+    t1 = TreeNode(3, TreeNode(4, TreeNode(1), TreeNode(2)), TreeNode(5))
+    t1s = TreeNode(4, TreeNode(1), TreeNode(2))
+    print(s.isSubtree(t1, t1s))  # Expected: True
+
+    t2 = TreeNode(3, TreeNode(4, TreeNode(1), TreeNode(2, TreeNode(0))), TreeNode(5))
+    t2s = TreeNode(4, TreeNode(1), TreeNode(2))
+    print(s.isSubtree(t2, t2s))  # Expected: False
+
+
+if __name__ == "__main__":
+    main()

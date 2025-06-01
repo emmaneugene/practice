@@ -1,5 +1,7 @@
 # Problem: https://leetcode.com/problems/graph-valid-tree
 
+import collections
+
 # Time complexity: O(mn) for m nodes, n edges
 # Space complexity: O(mn) for m nodes, n edges
 
@@ -19,11 +21,11 @@ class Solution:
             adj[x].append(y)
             adj[y].append(x)
 
-        q = []
+        q = collections.deque([])
         q.append(0)
         while q:
             # Visit next node
-            cur = q.pop(0)
+            cur = q.popleft()
 
             # Attempt to explore child nodes
             if cur not in adj:
@@ -36,7 +38,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.validTree(5, [[0, 1], [0, 2], [0, 3], [1, 4]]))  # True
     print(s.validTree(5, [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]]))  # False

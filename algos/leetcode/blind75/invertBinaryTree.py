@@ -16,11 +16,10 @@ class TreeNode:
 
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if root == None:
+        if not root:
             return root
 
         self.swapChildren(root)
-
         return root
 
     def swapChildren(self, node: TreeNode) -> None:
@@ -34,7 +33,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
 
 if __name__ == "__main__":

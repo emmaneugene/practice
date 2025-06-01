@@ -21,7 +21,7 @@ class Solution:
 
 
 def main():
-    s: Solution = Solution()
+    s = Solution()
 
     print(s.groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
     # Expected: [['bat'],['nat','tan'],['ate','eat','tea']]

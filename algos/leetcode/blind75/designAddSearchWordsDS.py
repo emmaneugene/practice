@@ -28,8 +28,8 @@ class TrieNode:
         nextCh: str = word[0]
 
         if nextCh == ".":
-            for k, v in self.children.items():
-                result: TrieNode = self.children[k].lookup(word[1:])
+            for _, v in self.children.items():
+                result: TrieNode = v.lookup(word[1:])
                 if result is not None and result.isTerminal:
                     return result
 
