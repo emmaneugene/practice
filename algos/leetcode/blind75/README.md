@@ -35,7 +35,7 @@ This directory contains solutions to the Blind75 question set.
 - [x] [Longest consecutive sequence](./longestConsecSeq.py)
 - [x] [Longest increasing subsequence](./longestIncrSubsequence.py)
 - [x] [Longest palindromic substring](./longestPalindromicSubstring.py)
-- [ ] [Longest repeating character replacement](./longestRepeatingCharacterReplacement.py)
+- [x] [Longest repeating character replacement](./longestRepeatingCharacterReplacement.py)
 - [x] [Longest substring without repeating characters](./longestSubstrWoRepeatingChars.py)
 - [x] [Lowest common ancestor in a BST](./lowestCommonAncestorBST.py)
 - [x] [Lowest common ancestor in a binary tree](./lowestCommonAncestorBinaryTree.py)
