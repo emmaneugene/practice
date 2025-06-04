@@ -38,7 +38,7 @@ This directory contains solutions to the Blind75 question set.
 - [ ] [Longest repeating character replacement](./longestRepeatingCharacterReplacement.py)
 - [x] [Longest substring without repeating characters](./longestSubstrWoRepeatingChars.py)
 - [x] [Lowest common ancestor in a BST](./lowestCommonAncestorBST.py)
-- [ ] [Lowest common ancestor in a binary tree](./lowestCommonAncestorBinaryTree.py)
+- [x] [Lowest common ancestor in a binary tree](./lowestCommonAncestorBinaryTree.py)
 - [x] [Maximum depth of a binary tree](./maxDepthBinaryTree.py)
 - [x] [Maximum subarray](./maximumSubarray.py)
 - [x] [Maximum product of a subarray](./maxProductSubarray.py)
