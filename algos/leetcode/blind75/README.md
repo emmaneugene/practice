@@ -54,7 +54,7 @@ This directory contains solutions to the Blind75 question set.
 - [ ] [Non-overapping intervals](./nonOverlappingIntervals.py)
 - [x] [Number of connected components in graph](./numConnectedComponentsGraph.py)
 - [x] [Number of islands](./numIslands.py)
-- [ ] [Pacific atlantic water flow](./pacificAtlanticWaterFlow.py)
+- [x] [Pacific atlantic water flow](./pacificAtlanticWaterFlow.py)
 - [x] [Palindromic substrings](./palindromicSubstrs.py)
 - [x] [Product of array except self](./productOfArrExceptSelf.py)
 - [x] [Remove nth node from end of list](./removeNthNodeFromEndOfList.py)
