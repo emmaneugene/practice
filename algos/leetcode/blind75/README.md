@@ -49,7 +49,7 @@ This directory contains solutions to the Blind75 question set.
 - [x] [Merge intervals](./mergeIntervals.py)
 - [x] [Merge k sorted lists](./mergeKSortedLists.py)
 - [x] [Minumum in rotated sorted array](./minRotatedSorterArr.py)
-- [ ] [Minimum window substring](./minWindowSubstring.py)
+- [x] [Minimum window substring](./minWindowSubstring.py)
 - [x] [Missing number](./missingNumber.py)
 - [ ] [Non-overapping intervals](./nonOverlappingIntervals.py)
 - [x] [Number of connected components in graph](./numConnectedComponentsGraph.py)
