@@ -4,91 +4,60 @@
 # Space complexity: O(n)
 # Serialize to array representation with BFS
 
-
+from collections import deque
 from typing import Optional
 
 
-# Definition for a binary tree node.
 class TreeNode:
-    def __init__(self, x):
+    def __init__(self, x, left=None, right=None):
         self.val = x
-        self.left = None
-        self.right = None
+        self.left = left
+        self.right = right
 
 
 class Codec:
-    def serialize(self, root: Optional[TreeNode]) -> str:
-        """Encodes a tree to a string"""
-        if root is None or root.val is None:
-            return ""
 
-        # Parse to array
-        treeArr: list[int] = []
-        toExplore: list[TreeNode] = [root]
+    def serialize(self, root):
+        """Encodes a tree to a single string."""
+        def preorder(node):
+            if not node:
+                vals.append("null")
+                return
+            vals.append(str(node.val))
+            preorder(node.left)
+            preorder(node.right)
 
-        while len(toExplore) > 0:
-            node: TreeNode = toExplore.pop(0)
-            treeArr.append(node.val)
+        vals = []
+        preorder(root)
+        return ','.join(vals)
 
-            if node.val == -1:
-                continue
-
-            if node.left is None:
-                toExplore.append(TreeNode(-1))
-            else:
-                toExplore.append(node.left)
-
-            if node.right is None:
-                toExplore.append(TreeNode(-1))
-            else:
-                toExplore.append(node.right)
-
-        serialized: str = str(treeArr)
-        return serialized.replace(" ", "")
-
-    def deserialize(self, data: str) -> Optional[TreeNode]:
+    def deserialize(self, data):
         """Decodes your encoded data to tree."""
-        if len(data) == 0:
-            return None
+        def build():
+            val = next(vals)
+            if val == "null":
+                return None
+            node = TreeNode(int(val))
+            node.left = build()
+            node.right = build()
+            return node
 
-        arr: list[int] = [int(i) for i in data[1:-1].split(",")]
-
-        rootVal = arr.pop(0)
-        return self.constructNode(arr, rootVal)
-
-    def constructNode(self, arr: list[int], val: int) -> Optional[TreeNode]:
-        """Recursive function that constructs a TreeNode given an input array
-        `arr` and node value `val`
-        """
-        node: TreeNode = TreeNode(val)
-
-        leftVal: int = arr.pop(0)
-        rightVal: int = arr.pop(0)
-
-        if leftVal != -1:
-            node.left = self.constructNode(arr, leftVal)
-
-        if rightVal != -1:
-            node.right = self.constructNode(arr, rightVal)
-
-        return node
+        vals = iter(data.split(','))
+        return build()
 
 
-def inorderTraverse(node: TreeNode) -> str:
+def inorder(node: TreeNode) -> str:
+    def inorderV(node: TreeNode, output: list[int]) -> None:
+        if not node:
+            return
+
+        inorderV(node.left, output)
+        output.append(node.val)
+        inorderV(node.right, output)
+
     output: list[int] = []
-
-    inOrderVisit(node, output)
-
+    inorderV(node, output)
     return output
-
-
-def inOrderVisit(node: TreeNode, output: list[int]) -> None:
-    if node is None:
-        return
-
-    inOrderVisit(node.left, output)
-    output.append(node.val)
-    inOrderVisit(node.right, output)
 
 
 # Your Codec object will be instantiated and called as such:
@@ -101,51 +70,36 @@ def main():
     ser = Codec()
     deser = Codec()
 
-    root: TreeNode = TreeNode(2)
-    root.left = TreeNode(1)
-    root.right = TreeNode(3)
-
     print("Test 1:")
-    # Before serialization
-    print(inorderTraverse(root))
-    # Serialization
-    print(s := ser.serialize(root))
-    # Deserialization
-    print(inorderTraverse(deser.deserialize(s)))
+    t1 = TreeNode(2, TreeNode(1), TreeNode(3))
+    print(inorder(t1))
+    print(s := ser.serialize(t1))
+    print(inorder(deser.deserialize(s)))
 
     print("Test 2")
+    print(inorder(None))
     print(s := ser.serialize(None))
-    print(inorderTraverse(deser.deserialize(s)))
+    print(inorder(deser.deserialize(s)))
 
     print("Test 3")
-
-    left: TreeNode = TreeNode(100)
-    left.left = TreeNode(50)
-    left.right = TreeNode(150)
-
-    right: TreeNode = TreeNode(300)
-
-    root: TreeNode = TreeNode(200)
-    root.left = left
-    root.right = right
-
-    print(s := ser.serialize(root))
-    print(inorderTraverse(deser.deserialize(s)))
+    t3: TreeNode = TreeNode(
+        200,
+        TreeNode(100, TreeNode(50), TreeNode(150)),
+        TreeNode(300)
+    )
+    print(inorder(t3))
+    print(s := ser.serialize(t3))
+    print(inorder(deser.deserialize(s)))
 
     print("Test 4")
-
-    left: TreeNode = TreeNode(100)
-
-    right: TreeNode = TreeNode(300)
-    right.left = TreeNode(250)
-    right.right = TreeNode(350)
-
-    root: TreeNode = TreeNode(200)
-    root.left = left
-    root.right = right
-
-    print(s := ser.serialize(root))
-    print(inorderTraverse(deser.deserialize(s)))
+    t4 = TreeNode(
+        200,
+        TreeNode(100),
+        TreeNode(300, TreeNode(250), TreeNode(350))
+    )
+    print(inorder(t4))
+    print(s := ser.serialize(t4))
+    print(inorder(deser.deserialize(s)))
 
 
 if __name__ == "__main__":

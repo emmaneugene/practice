@@ -2,115 +2,113 @@
 
 # Time complexity: O(m^2n^2)
 # Space complexity: O(mn)
-# Create a hashmap of character-coordinates, BFS/DFS to find sequence
 
-from copy import deepcopy
-
-
+# Approach 1: DFS + Backtracking (Most Common)
+# Time: O(N * 4^L) where N = cells in board, L = length of word
+# Space: O(L) for recursion stack
 class Solution:
-    def exist(self, board: list[list[str]], word: str) -> bool:
-        tracker: dict[str, list[tuple[int, int]]] = {}
 
-        rows = len(board)
-        cols = len(board[0])
-
-        # Create hashmap O(mn)
-        for i in range(rows):
-            for j in range(cols):
-                ch = board[i][j]
-                if ch in tracker:
-                    tracker[ch].append((i, j))
-                else:
-                    tracker[ch] = [(i, j)]
-
-        for ch in word:
-            if ch not in tracker:
-                return False
-
-        toSearch: list[tuple[int, int]] = tracker[word[0]]
-
-        # Search
-        for coord in toSearch:
-            visited: set = {coord}
-            if self.DFS(tracker, visited, word[1:], coord):
-                return True
-
-        return False
-
-    def DFS(
-        self,
-        tracker: dict[str, list],
-        visited: set[tuple],
-        word: str,
-        prev: tuple[int, int],
-    ) -> bool:
-        """Recursively search for next character in word, and add it to a set of visited coordinates"""
-        if len(word) == 0:
-            return True
-
-        nextCh: str = word[0]
-        if nextCh not in tracker:
+    def exist(self, board, word):
+        if not board or not board[0] or not word:
             return False
 
-        toSearch: list[tuple(int, int)] = list(
-            filter(
-                lambda x: x not in visited and self.isAdjacent(prev, x), tracker[nextCh]
-            )
-        )
+        rows, cols = len(board), len(board[0])
 
-        for coord in toSearch:
-            newVisited = deepcopy(visited)
-            newVisited.add(coord)
-            if self.DFS(tracker, newVisited, word[1:], coord):
+        def dfs(row, col, idx):
+            # Base case: found the complete word
+            if idx == len(word):
                 return True
 
+            # Check bounds and character match
+            if (row < 0 or row >= rows or
+                col < 0 or col >= cols or
+                board[row][col] != word[idx]):
+                return False
+
+            # Mark current cell as visited
+            temp = board[row][col]
+            board[row][col] = '#'  # or any marker that's not in the word
+
+            # Explore all 4 directions
+            directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+            found = False
+            for dr, dc in directions:
+                if dfs(row + dr, col + dc, idx + 1):
+                    found = True
+                    break
+
+            # Backtrack: restore the original character
+            board[row][col] = temp
+            return found
+
+        # Try starting from each cell
+        for i in range(rows):
+            for j in range(cols):
+                if dfs(i, j, 0):
+                    return True
+
         return False
-
-    def isAdjacent(self, coord1: tuple[int, int], coord2: tuple[int, int]) -> bool:
-        return (
-            coord1[0] == coord2[0]
-            and abs(coord1[1] - coord2[1]) == 1
-            or coord1[1] == coord2[1]
-            and abs(coord1[0] - coord2[0]) == 1
-        )
-
 
 def main():
     s = Solution()
 
     print(
         s.exist(
-            [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCCED"
+            [
+            ["A", "B", "C", "E"],
+            ["S", "F", "C", "S"],
+            ["A", "D", "E", "E"]
+            ], "ABCCED"
         )
     )  # Expected: True
 
     print(
         s.exist(
-            [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "SEE"
+            [
+            ["A", "B", "C", "E"],
+            ["S", "F", "C", "S"],
+            ["A", "D", "E", "E"]
+            ], "SEE"
         )
     )  # Expected: True
 
     print(
         s.exist(
-            [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCS"
+            [
+            ["A", "B", "C", "E"],
+            ["S", "F", "C", "S"],
+            ["A", "D", "E", "E"]
+            ], "ABCS"
         )
     )  # Expected: False
 
     print(
         s.exist(
-            [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCB"
+            [
+            ["A", "B", "C", "E"],
+            ["S", "F", "C", "S"],
+            ["A", "D", "E", "E"]
+            ], "ABCB"
         )
     )  # Expected: False
 
     print(
         s.exist(
-            [["A", "B", "C", "E"], ["S", "F", "E", "S"], ["A", "D", "E", "E"]],
-            "ABCESEEEFS",
+            [
+            ["A", "B", "C", "E"],
+            ["S", "F", "E", "S"],
+            ["A", "D", "E", "E"]
+            ],"ABCESEEEFS",
         )
     )  # Expected: True
 
     print(
-        s.exist([["A", "B", "C", "E"], ["S", "F", "E", "S"], ["A", "D", "E", "E"]], "Z")
+        s.exist(
+            [
+            ["A", "B", "C", "E"],
+            ["S", "F", "E", "S"],
+            ["A", "D", "E", "E"]
+            ], "Z")
     )  # Expected: False
 
 
