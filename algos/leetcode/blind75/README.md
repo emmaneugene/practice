@@ -51,7 +51,7 @@ This directory contains solutions to the Blind75 question set.
 - [x] [Minumum in rotated sorted array](./minRotatedSorterArr.py)
 - [x] [Minimum window substring](./minWindowSubstring.py)
 - [x] [Missing number](./missingNumber.py)
-- [ ] [Non-overapping intervals](./nonOverlappingIntervals.py)
+- [x] [Non-overapping intervals](./nonOverlappingIntervals.py)
 - [x] [Number of connected components in graph](./numConnectedComponentsGraph.py)
 - [x] [Number of islands](./numIslands.py)
 - [x] [Pacific atlantic water flow](./pacificAtlanticWaterFlow.py)
