@@ -30,10 +30,10 @@ class Solution:
 def main():
     s = Solution()
 
-    print(s.isValid("()")) # True
-    print(s.isValid("()[]{}")) # True
-    print(s.isValid("(]")) # False
-    print(s.isValid("([])")) # False
+    print(s.isValid("()"))  # True
+    print(s.isValid("()[]{}"))  # True
+    print(s.isValid("(]"))  # False
+    print(s.isValid("([])"))  # False
 
 
 if __name__ == "__main__":

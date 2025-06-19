@@ -6,6 +6,7 @@
 # Single loop to find sequences of identical characters, then explore all possible character
 # substitutions
 
+
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         longest = min(len(s), k + 1)
@@ -94,6 +95,7 @@ class Solution:
     #         replaced -= toRemove
 
     #     return (chunks[end][1] - chunks[start][0]) + remaining
+
 
 def main():
     s = Solution()

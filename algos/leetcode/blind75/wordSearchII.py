@@ -68,17 +68,19 @@ class Solution:
 def main():
     s = Solution()
 
-    print(s.findWords(
-        [
-            ["o", "a", "a", "n"],
-            ["e", "t", "a", "e"],
-            ["i", "h", "k", "r"],
-            ["i", "f", "l", "v"],
-        ],
-        ["oath", "pea,", "eat", "rain"],
-    )) # Expected: ["oath", "eat"]
+    print(
+        s.findWords(
+            [
+                ["o", "a", "a", "n"],
+                ["e", "t", "a", "e"],
+                ["i", "h", "k", "r"],
+                ["i", "f", "l", "v"],
+            ],
+            ["oath", "pea,", "eat", "rain"],
+        )
+    )  # Expected: ["oath", "eat"]
 
-    print(s.findWords([["a", "b"], ["c", "b"]], ["abcb"])) # Expected: []
+    print(s.findWords([["a", "b"], ["c", "b"]], ["abcb"]))  # Expected: []
 
 
 if __name__ == "__main__":
