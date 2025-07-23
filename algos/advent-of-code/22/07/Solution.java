@@ -132,11 +132,11 @@ public class Solution {
             result += d.size;
         }
 
-        result += d.children.values()
-                .stream()
-                .filter(obj -> obj instanceof Directory)
-                .mapToInt(x -> solution1((Directory) x))
-                .sum();
+        result +=
+                d.children.values().stream()
+                        .filter(obj -> obj instanceof Directory)
+                        .mapToInt(x -> solution1((Directory) x))
+                        .sum();
 
         return result;
     }
@@ -155,11 +155,11 @@ public class Solution {
         if (d.size >= min && d.size < curr) {
             curr = d.size;
         }
-        OptionalInt smallestChild = d.children.values()
-                .stream()
-                .filter(obj -> obj instanceof Directory)
-                .mapToInt(x -> getSmallest(min, (Directory) x, d.size))
-                .min();
+        OptionalInt smallestChild =
+                d.children.values().stream()
+                        .filter(obj -> obj instanceof Directory)
+                        .mapToInt(x -> getSmallest(min, (Directory) x, d.size))
+                        .min();
 
         if (smallestChild.isPresent() && smallestChild.getAsInt() >= min) {
             curr = smallestChild.getAsInt();

@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Sliding window with increment counter
- */
+/** Sliding window with increment counter */
 public class Solution {
     public static void main(String[] args) {
         if (args.length < 1) {
@@ -23,7 +21,6 @@ public class Solution {
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-
     }
 
     private static int solution(String s, int uniqueCount) {

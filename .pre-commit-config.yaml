@@ -17,4 +17,4 @@ repos:
     rev: v2.14.0
     hooks:
       - id: pretty-format-java
-        args: [--autofix]
+        args: [--aosp, --autofix]

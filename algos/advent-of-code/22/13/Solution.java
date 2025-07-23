@@ -37,7 +37,7 @@ public class Solution {
         for (int i = 0; i < pairs.size(); i++) {
             Pair p = pairs.get(i);
             if (comparePackets(p.left(), p.right()) < 0) {
-                p1 += i+1;
+                p1 += i + 1;
             }
         }
 
@@ -46,27 +46,28 @@ public class Solution {
         List<Object> divider2 = List.of(List.of(6));
         packets.add(divider1);
         packets.add(divider2);
-        packets.sort(new Comparator<Object>() {
-            @Override
-            public int compare(Object o1, Object o2) {
-                return comparePackets(o1, o2);
-            }
-        });
+        packets.sort(
+                new Comparator<Object>() {
+                    @Override
+                    public int compare(Object o1, Object o2) {
+                        return comparePackets(o1, o2);
+                    }
+                });
 
         int divider1Idx = 0;
         int divider2Idx = 0;
 
         for (int i = 0; i < packets.size(); i++) {
             if (packets.get(i).hashCode() == divider1.hashCode()) {
-                divider1Idx = i+1;
+                divider1Idx = i + 1;
             }
             if (packets.get(i).hashCode() == divider2.hashCode()) {
-                divider2Idx = i+1;
+                divider2Idx = i + 1;
             }
         }
 
         System.out.println("Part 1: " + p1);
-        System.out.println("Part 2: "+ divider1Idx * divider2Idx);
+        System.out.println("Part 2: " + divider1Idx * divider2Idx);
     }
 
     static List<Object> parseValues(String s) {
@@ -88,7 +89,7 @@ public class Solution {
                 continue;
             }
 
-            if (c == '[') scopes ++;
+            if (c == '[') scopes++;
             else if (c == ']') scopes--;
             sb.append(c);
         }
@@ -107,7 +108,7 @@ public class Solution {
 
     @SuppressWarnings("unchecked")
     static int comparePackets(Object l, Object r) {
-        if (l instanceof Integer &&  r instanceof Integer) {
+        if (l instanceof Integer && r instanceof Integer) {
             return (Integer) l - (Integer) r;
         }
 

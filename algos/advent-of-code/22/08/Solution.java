@@ -138,15 +138,11 @@ public class Solution {
             }
         }
 
-        return trees.values()
-                .stream()
-                .map(Tree::getScore)
-                .reduce(0, Integer::max);
+        return trees.values().stream().map(Tree::getScore).reduce(0, Integer::max);
     }
 
     private static int getLView(List<List<Integer>> grid, int row, int col) {
-        if (col == 0)
-            return 0;
+        if (col == 0) return 0;
 
         int curr = grid.get(row).get(col);
         int view = 1;
@@ -159,8 +155,7 @@ public class Solution {
 
     private static int getRView(List<List<Integer>> grid, int row, int col) {
         int colCnt = grid.get(0).size();
-        if (col == colCnt - 1)
-            return 0;
+        if (col == colCnt - 1) return 0;
 
         int curr = grid.get(row).get(col);
         int view = 1;
@@ -172,8 +167,7 @@ public class Solution {
     }
 
     private static int getTView(List<List<Integer>> grid, int row, int col) {
-        if (row == 0)
-            return 0;
+        if (row == 0) return 0;
 
         int curr = grid.get(row).get(col);
         int view = 1;
@@ -186,8 +180,7 @@ public class Solution {
 
     private static int getBView(List<List<Integer>> grid, int row, int col) {
         int rowCnt = grid.size();
-        if (row == rowCnt - 1)
-            return 0;
+        if (row == rowCnt - 1) return 0;
 
         int curr = grid.get(row).get(col);
         int view = 1;

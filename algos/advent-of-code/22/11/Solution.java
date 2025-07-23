@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
  * For part 2, use modulo logic to keep values from exploding. The modulo value should be divisible
  * by all test divisors
  */
-
 record Pass(int target, long value) {}
 
 class Monkey {
@@ -37,8 +36,10 @@ class Monkey {
         long operand = toks[1].equals("old") ? item : Long.valueOf(toks[1]);
 
         switch (operator) {
-            case "+": return item + operand;
-            case "*":return item * operand;
+            case "+":
+                return item + operand;
+            case "*":
+                return item * operand;
         }
 
         return item;
@@ -69,9 +70,15 @@ public class Solution {
         try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("Monkey")) {
-                    String[] itemStrs = reader.readLine().strip().substring("Starting items: ".length()).split(", ");
-                    List<Long> items = Arrays.stream(itemStrs).map(x -> Long.valueOf(x))
-                            .collect(Collectors.toList());
+                    String[] itemStrs =
+                            reader.readLine()
+                                    .strip()
+                                    .substring("Starting items: ".length())
+                                    .split(", ");
+                    List<Long> items =
+                            Arrays.stream(itemStrs)
+                                    .map(x -> Long.valueOf(x))
+                                    .collect(Collectors.toList());
                     line = reader.readLine().strip();
                     String op = line.substring(line.lastIndexOf(" ") - 1);
                     line = reader.readLine();
@@ -82,7 +89,8 @@ public class Solution {
                     int passFalse = Integer.valueOf(line.substring(line.lastIndexOf(" ") + 1));
 
                     monkeys1.add(new Monkey(items, op, testDiv, passTrue, passFalse));
-                    monkeys2.add(new Monkey(new ArrayList<>(items), op, testDiv, passTrue, passFalse));
+                    monkeys2.add(
+                            new Monkey(new ArrayList<>(items), op, testDiv, passTrue, passFalse));
                 }
             }
         } catch (IOException e) {
@@ -108,10 +116,8 @@ public class Solution {
             }
         }
 
-        List<Long> inspectCnts = monkeys1.stream()
-            .map(m -> m.inspectCnt)
-            .sorted()
-            .collect(Collectors.toList());
+        List<Long> inspectCnts =
+                monkeys1.stream().map(m -> m.inspectCnt).sorted().collect(Collectors.toList());
         long p1 = inspectCnts.removeLast() * inspectCnts.removeLast();
 
         // Part 2: Play 10,000 rounds, modulo worry level to keep it reasonable
@@ -140,10 +146,8 @@ public class Solution {
             }
         }
 
-        List<Long> inspectCnts2 = monkeys2.stream()
-            .map(m -> m.inspectCnt)
-            .sorted()
-            .collect(Collectors.toList());
+        List<Long> inspectCnts2 =
+                monkeys2.stream().map(m -> m.inspectCnt).sorted().collect(Collectors.toList());
         long p2 = inspectCnts2.removeLast() * inspectCnts2.removeLast();
 
         System.out.println("Part 1: " + p1);

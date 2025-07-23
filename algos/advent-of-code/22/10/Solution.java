@@ -60,7 +60,6 @@ class P2 {
             System.out.println(sb.substring(40 * i, 40 * (i + 1)));
         }
     }
-
 }
 
 public class Solution {

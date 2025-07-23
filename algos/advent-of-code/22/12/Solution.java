@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 // Dijkstra's algo
 public class Solution {
@@ -25,10 +25,7 @@ public class Solution {
             int rowIdx = 0;
 
             while ((line = reader.readLine()) != null) {
-                grid.add(line.chars()
-                .mapToObj(ch -> (char)ch)
-                .collect(Collectors.toList())
-                );
+                grid.add(line.chars().mapToObj(ch -> (char) ch).collect(Collectors.toList()));
 
                 if (line.contains("S")) {
                     start = new Coords(rowIdx, line.indexOf('S'), 0);
@@ -53,10 +50,12 @@ public class Solution {
             }
         }
 
-        int p2 = coords.stream()
-            .map(c -> shortestPath(c, grid))
-            .filter(i -> i > 0)
-            .min(Integer::compare).get();
+        int p2 =
+                coords.stream()
+                        .map(c -> shortestPath(c, grid))
+                        .filter(i -> i > 0)
+                        .min(Integer::compare)
+                        .get();
         System.out.println("Part 2: " + p2);
     }
 
@@ -78,28 +77,24 @@ public class Solution {
     }
 
     private static void explore(
-            Coords curr,
-            Set<String> visited,
-            Queue<Coords> toExplore,
-            List<List<Character>> grid
-    ) {
+            Coords curr, Set<String> visited, Queue<Coords> toExplore, List<List<Character>> grid) {
         List.of(
-            new Coords(curr.row(), curr.col()-1, curr.steps()+1),
-            new Coords(curr.row(), curr.col()+1, curr.steps()+1),
-            new Coords(curr.row()-1, curr.col(), curr.steps()+1),
-            new Coords(curr.row()+1, curr.col(), curr.steps()+1)
-        ).forEach(c -> {
-            if (!visited.contains(c.toString())
-                && c.row() >= 0
-                && c.row() < grid.size()
-                && c.col() >= 0
-                && c.col() < grid.get(0).size()
-                && climbable(curr, c, grid)
-            ) {
-                visited.add(c.toString());
-                toExplore.add(c);
-            }
-        });
+                        new Coords(curr.row(), curr.col() - 1, curr.steps() + 1),
+                        new Coords(curr.row(), curr.col() + 1, curr.steps() + 1),
+                        new Coords(curr.row() - 1, curr.col(), curr.steps() + 1),
+                        new Coords(curr.row() + 1, curr.col(), curr.steps() + 1))
+                .forEach(
+                        c -> {
+                            if (!visited.contains(c.toString())
+                                    && c.row() >= 0
+                                    && c.row() < grid.size()
+                                    && c.col() >= 0
+                                    && c.col() < grid.get(0).size()
+                                    && climbable(curr, c, grid)) {
+                                visited.add(c.toString());
+                                toExplore.add(c);
+                            }
+                        });
     }
 
     private static boolean climbable(Coords src, Coords dst, List<List<Character>> grid) {

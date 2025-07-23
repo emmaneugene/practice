@@ -13,7 +13,7 @@ public class Solution {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
             String line;
-            int[] top3Cals = { 0, 0, 0 };
+            int[] top3Cals = {0, 0, 0};
             int maxCals = 0;
             int currCals = 0;
 

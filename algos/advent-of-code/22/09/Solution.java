@@ -88,7 +88,7 @@ class P2 {
         }
 
         for (int i = 1; i < knots.size(); i++) {
-            moveKnots(knots.get(i-1), knots.get(i));
+            moveKnots(knots.get(i - 1), knots.get(i));
         }
 
         visited.add(knots.getLast().toString());

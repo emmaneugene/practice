@@ -23,7 +23,7 @@ class Grid {
 
         for (int i = 0; i + 1 < toks.length; i++) {
             String[] srcCoords = toks[i].split(",");
-            String[] dstCoords = toks[i+1].split(",");
+            String[] dstCoords = toks[i + 1].split(",");
             xSrc = Integer.parseInt(srcCoords[0]);
             ySrc = Integer.parseInt(srcCoords[1]);
             xDst = Integer.parseInt(dstCoords[0]);
@@ -49,13 +49,13 @@ class Grid {
         int yPos = 0;
 
         while (true) {
-            if (!occupiedCpy.contains(toCoords(xPos, yPos+1))) {
+            if (!occupiedCpy.contains(toCoords(xPos, yPos + 1))) {
                 yPos++;
-            } else if (!occupiedCpy.contains(toCoords(xPos-1, yPos+1))) {
+            } else if (!occupiedCpy.contains(toCoords(xPos - 1, yPos + 1))) {
                 xPos--;
                 yPos++;
                 if (xPos < xMin) break;
-            } else if (!occupiedCpy.contains(toCoords(xPos+1, yPos+1))) {
+            } else if (!occupiedCpy.contains(toCoords(xPos + 1, yPos + 1))) {
                 xPos++;
                 yPos++;
                 if (xPos > xMax) break;
@@ -75,13 +75,13 @@ class Grid {
         int yPos = 0;
 
         while (true) {
-            if (yPos+1 < floor) {
-                if (!occupiedCpy.contains(toCoords(xPos, yPos+1))) {
+            if (yPos + 1 < floor) {
+                if (!occupiedCpy.contains(toCoords(xPos, yPos + 1))) {
                     yPos++;
-                } else if (!occupiedCpy.contains(toCoords(xPos-1, yPos+1))) {
+                } else if (!occupiedCpy.contains(toCoords(xPos - 1, yPos + 1))) {
                     xPos--;
                     yPos++;
-                } else if (!occupiedCpy.contains(toCoords(xPos+1, yPos+1))) {
+                } else if (!occupiedCpy.contains(toCoords(xPos + 1, yPos + 1))) {
                     xPos++;
                     yPos++;
                 } else {

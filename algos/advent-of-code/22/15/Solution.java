@@ -4,12 +4,11 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-
 record Sensor(int x, int y, int range) {
     public Set<Integer> getExclusions(int yRow) {
         Set<Integer> excluded = new HashSet<>();
         int rem = range - Math.abs(y - yRow);
-        for (int i = x-rem; i <= x+rem; i++) {
+        for (int i = x - rem; i <= x + rem; i++) {
             excluded.add(i);
         }
         return excluded;
@@ -28,9 +27,7 @@ record Coords(int x, int y) {
     }
 }
 
-/**
- * Start inclusive, end inclusive
- */
+/** Start inclusive, end inclusive */
 class Range implements Comparable<Range> {
     int start;
     int end;
@@ -74,13 +71,8 @@ public class Solution {
         try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String s = line.substring(
-                    line.indexOf("x"),
-                    line.indexOf(":")
-                );
-                String b = line.substring(
-                    line.lastIndexOf("x")
-                );
+                String s = line.substring(line.indexOf("x"), line.indexOf(":"));
+                String b = line.substring(line.lastIndexOf("x"));
                 Coords beacon = createBeacon(b);
                 beacons.add(beacon);
                 sensors.add(createSensor(s, beacon));
@@ -90,36 +82,35 @@ public class Solution {
             System.err.println(e.getMessage());
         }
 
-        System.out.println("Part 1 test (y=10): " + excludedCount(sensors, beacons, 10));
-        System.out.println("Part 1 input (y=2,000,000): " + excludedCount(sensors, beacons, 2_000_000));
+        System.out.println("Part 1 test (y=10): " + getExclusions(sensors, beacons, 10));
+        System.out.println(
+                "Part 1 input (y=2,000,000): " + getExclusions(sensors, beacons, 2_000_000));
         Coords c = locateBeacon(sensors, beacons, 4_000_000);
-        System.out.println("Part 2 input: " +  (c.x() * 4_000_000 + c.y()));
+        System.out.println("Part 2 input: " + (c.x() * 4_000_000 + c.y()));
     }
 
     static Sensor createSensor(String s, Coords b) {
         String[] sToks = s.split(", ");
         int sX = Integer.parseInt(sToks[0].substring(2));
         int sY = Integer.parseInt(sToks[1].substring(2));
-        return new Sensor (sX, sY, Math.abs(sX - b.x()) + Math.abs(sY - b.y()));
+        return new Sensor(sX, sY, Math.abs(sX - b.x()) + Math.abs(sY - b.y()));
     }
 
     static Coords createBeacon(String b) {
         String[] toks = b.split(", ");
         return new Coords(
-            Integer.parseInt(toks[0].substring(2)),
-            Integer.parseInt(toks[1].substring(2))
-        );
+                Integer.parseInt(toks[0].substring(2)), Integer.parseInt(toks[1].substring(2)));
     }
 
     /*
      * Part 1: Get number of excluded beacon positions for a given y coordinate
      */
-    static int excludedCount(Set<Sensor> sensors, Set<Coords> beacons, int y) {
+    static int getExclusions(Set<Sensor> sensors, Set<Coords> beacons, int y) {
         Set<Integer> excludedX = new HashSet<>();
 
         sensors.stream()
-            .filter(s -> s.y() - s.range() <= y && s.y() + s.range() >= y)
-            .forEach(s -> excludedX.addAll(s.getExclusions(y)));
+                .filter(s -> s.y() - s.range() <= y && s.y() + s.range() >= y)
+                .forEach(s -> excludedX.addAll(s.getExclusions(y)));
 
         int beaconCnt = (int) beacons.stream().filter(b -> b.y() == y).count();
 
@@ -144,4 +135,6 @@ public class Solution {
 
         return new Coords(0, 0);
     }
+
+    //   static String drawGrid(Set<Sensor>)
 }
