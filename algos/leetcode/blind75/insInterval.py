@@ -8,8 +8,9 @@ from bisect import bisect
 
 class Solution:
     def overlap(self, i1: list[int], i2: list[int]) -> bool:
-        return (i1[0] <= i2[0] and i1[1] >= i2[0]) \
-            or (i2[0] <= i1[0] and i2[1] >= i1[0])
+        return (i1[0] <= i2[0] and i1[1] >= i2[0]) or (
+            i2[0] <= i1[0] and i2[1] >= i1[0]
+        )
 
     def insert(
         self, intervals: list[list[int]], interval: list[int]

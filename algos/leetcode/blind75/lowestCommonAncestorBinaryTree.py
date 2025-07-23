@@ -6,8 +6,9 @@
 
 from typing import Optional, Set
 
+
 class TreeNode:
-    def __init__(self, val: int, left: 'TreeNode' = None, right: 'TreeNode' = None):
+    def __init__(self, val: int, left: "TreeNode" = None, right: "TreeNode" = None):
         self.val = val
         self.left = left
         self.right = right
@@ -46,15 +47,13 @@ def main():
     t1 = TreeNode(
         3,
         TreeNode(5, TreeNode(6), TreeNode(2, TreeNode(7), TreeNode(4))),
-        TreeNode(1, TreeNode(0), TreeNode(8)))
-    print(s.lowestCommonAncestor(t1, TreeNode(5), TreeNode(1)).val) # Expected: 3
-    print(s.lowestCommonAncestor(t1, TreeNode(5), TreeNode(4)).val) # Expected: 5
-
+        TreeNode(1, TreeNode(0), TreeNode(8)),
+    )
+    print(s.lowestCommonAncestor(t1, TreeNode(5), TreeNode(1)).val)  # Expected: 3
+    print(s.lowestCommonAncestor(t1, TreeNode(5), TreeNode(4)).val)  # Expected: 5
 
     t2 = TreeNode(1, TreeNode(2))
-    print(s.lowestCommonAncestor(t2, TreeNode(1), TreeNode(2)).val) # Expected: 1
-
-
+    print(s.lowestCommonAncestor(t2, TreeNode(1), TreeNode(2)).val)  # Expected: 1
 
 
 if __name__ == "__main__":

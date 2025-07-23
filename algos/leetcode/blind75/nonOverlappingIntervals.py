@@ -3,8 +3,8 @@
 # Time complexity: O(nlogn)
 # Space complexity: O(n)
 
-class Solution:
 
+class Solution:
     def eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:
         res = 0
         if not any(intervals):
@@ -32,7 +32,24 @@ def main():
         s.eraseOverlapIntervals([[1, 9], [1, 6], [1, 3], [2, 7], [3, 5]])
     )  # Expected: 3
     print(s.eraseOverlapIntervals([[1, 9], [1, 6], [1, 3], [3, 9]]))  # Expected: 2
-    print(s.eraseOverlapIntervals([[-52,31],[-73,-26],[82,97],[-65,-11],[-62,-49],[95,99],[58,95],[-31,49],[66,98],[-63,2],[30,47],[-40,-26]]))  # Expected: 7
+    print(
+        s.eraseOverlapIntervals(
+            [
+                [-52, 31],
+                [-73, -26],
+                [82, 97],
+                [-65, -11],
+                [-62, -49],
+                [95, 99],
+                [58, 95],
+                [-31, 49],
+                [66, 98],
+                [-63, 2],
+                [30, 47],
+                [-40, -26],
+            ]
+        )
+    )  # Expected: 7
 
 
 if __name__ == "__main__":

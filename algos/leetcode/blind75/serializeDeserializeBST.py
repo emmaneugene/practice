@@ -4,9 +4,6 @@
 # Space complexity: O(n)
 # Serialize to array representation with BFS
 
-from collections import deque
-from typing import Optional
-
 
 class TreeNode:
     def __init__(self, x, left=None, right=None):
@@ -16,9 +13,9 @@ class TreeNode:
 
 
 class Codec:
-
     def serialize(self, root):
         """Encodes a tree to a single string."""
+
         def preorder(node):
             if not node:
                 vals.append("null")
@@ -29,10 +26,11 @@ class Codec:
 
         vals = []
         preorder(root)
-        return ','.join(vals)
+        return ",".join(vals)
 
     def deserialize(self, data):
         """Decodes your encoded data to tree."""
+
         def build():
             val = next(vals)
             if val == "null":
@@ -42,7 +40,7 @@ class Codec:
             node.right = build()
             return node
 
-        vals = iter(data.split(','))
+        vals = iter(data.split(","))
         return build()
 
 
@@ -83,20 +81,14 @@ def main():
 
     print("Test 3")
     t3: TreeNode = TreeNode(
-        200,
-        TreeNode(100, TreeNode(50), TreeNode(150)),
-        TreeNode(300)
+        200, TreeNode(100, TreeNode(50), TreeNode(150)), TreeNode(300)
     )
     print(inorder(t3))
     print(s := ser.serialize(t3))
     print(inorder(deser.deserialize(s)))
 
     print("Test 4")
-    t4 = TreeNode(
-        200,
-        TreeNode(100),
-        TreeNode(300, TreeNode(250), TreeNode(350))
-    )
+    t4 = TreeNode(200, TreeNode(100), TreeNode(300, TreeNode(250), TreeNode(350)))
     print(inorder(t4))
     print(s := ser.serialize(t4))
     print(inorder(deser.deserialize(s)))

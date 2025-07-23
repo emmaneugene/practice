@@ -15,10 +15,7 @@ class Solution:
         if len(nums) <= 3:
             return max(nums)
 
-        return max(
-            self.helper(nums[1:]),
-            self.helper(nums[:-1])
-        )
+        return max(self.helper(nums[1:]), self.helper(nums[:-1]))
 
     def helper(self, nums: list[int]) -> tuple[int, int]:
         if not nums or len(nums) == 0:

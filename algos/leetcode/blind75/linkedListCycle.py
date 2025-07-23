@@ -3,7 +3,7 @@
 # Time complexity: O(n)
 # Space complexity: O(1)
 
-from typing import Optional, Set
+from typing import Optional
 
 
 class ListNode:
@@ -43,15 +43,15 @@ def main():
     t1N2.next = t1N3
     t1N3.next = t1N4
     t1N4.next = t1N2
-    print(s.hasCycle(t1N1)) # Expected: True
+    print(s.hasCycle(t1N1))  # Expected: True
 
     t2N1 = ListNode(1)
     t2N2 = ListNode(2)
     t2N1.next = t2N2
     t2N2.next = t2N1
-    print(s.hasCycle(t2N1)) # Expected: True
+    print(s.hasCycle(t2N1))  # Expected: True
 
-    print(s.hasCycle(ListNode(1))) # Expected: False
+    print(s.hasCycle(ListNode(1)))  # Expected: False
 
 
 if __name__ == "__main__":

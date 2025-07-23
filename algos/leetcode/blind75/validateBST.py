@@ -38,9 +38,7 @@ class Solution:
         else:
             lValid, lMin, lMax = self.checkNode(node.left)
             rValid, rMin, rMax = self.checkNode(node.right)
-            isBST = (
-                lValid and lMax < node.val and rValid and rMin > node.val
-            )
+            isBST = lValid and lMax < node.val and rValid and rMin > node.val
             return isBST, lMin, rMax
 
 

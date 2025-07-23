@@ -20,8 +20,8 @@ class Solution:
 def main():
     s = Solution()
 
-    print(s.canJump([2, 3, 1, 1, 4])) # Expected: True
-    print(s.canJump([3, 2, 1, 0, 4])) # Expected: False
+    print(s.canJump([2, 3, 1, 1, 4]))  # Expected: True
+    print(s.canJump([3, 2, 1, 0, 4]))  # Expected: False
 
 
 if __name__ == "__main__":
