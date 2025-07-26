@@ -1,6 +1,7 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 
 class P1 {
 
@@ -64,27 +65,23 @@ class P2 {
 
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            String line;
-            P1 p1 = new P1();
-            P2 p2 = new P2();
+        P1 p1 = new P1();
+        P2 p2 = new P2();
 
-            while ((line = reader.readLine()) != null) {
-                p1.exec(line);
-                p2.exec(line);
-            }
-
-            System.out.println("Part 1: " + p1.sum);
-            System.out.println("Part 2:");
-            p2.display();
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
+        for (String line : lines) {
+            p1.exec(line);
+            p2.exec(line);
         }
+
+        System.out.println("Part 1: " + p1.sum);
+        System.out.println("Part 2:");
+        p2.display();
     }
 }

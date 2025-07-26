@@ -1,66 +1,63 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            String line;
-            StringBuilder msg1 = new StringBuilder();
-            StringBuilder msg2 = new StringBuilder();
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
 
-            // Process stacks
-            List<String> stacksStr = new ArrayList<>();
-            while ((line = reader.readLine()).length() != 0) {
-                stacksStr.add(line);
-            }
+        int idx = 0;
+        while (lines.get(idx).length() != 0) idx++;
+        List<String> stacksStr = new ArrayList<>(lines.subList(0, idx));
+        List<String> instrsStr = new ArrayList<>(lines.subList(idx + 1, lines.size()));
 
-            List<List<Character>> stacks1 = new ArrayList<>();
-            int stackCount = stacksStr.removeLast().strip().split("\\s+").length;
-            for (int i = 0; i < stackCount; i++) {
-                stacks1.add(new ArrayList<>());
-            }
+        StringBuilder msg1 = new StringBuilder();
+        StringBuilder msg2 = new StringBuilder();
 
-            for (int i = stacksStr.size() - 1; i >= 0; i--) {
-                for (int j = 0; j < stackCount; j++) {
-                    try {
-                        char c = stacksStr.get(i).charAt(getCrateIdx(j));
-                        if (c != ' ') {
-                            stacks1.get(j).add(c);
-                        }
-                    } catch (StringIndexOutOfBoundsException e) {
-                        break;
+        // Process stacks
+        List<List<Character>> stacks1 = new ArrayList<>();
+        int stackCount = stacksStr.removeLast().strip().split("\\s+").length;
+        for (int i = 0; i < stackCount; i++) {
+            stacks1.add(new ArrayList<>());
+        }
+
+        for (int i = stacksStr.size() - 1; i >= 0; i--) {
+            for (int j = 0; j < stackCount; j++) {
+                try {
+                    char c = stacksStr.get(i).charAt(getCrateIdx(j));
+                    if (c != ' ') {
+                        stacks1.get(j).add(c);
                     }
+                } catch (StringIndexOutOfBoundsException e) {
+                    break;
                 }
             }
-
-            List<List<Character>> stacks2 = new ArrayList<>();
-            for (List<Character> l : stacks1) {
-                stacks2.add(new ArrayList<>(l));
-            }
-
-            // Process instructions
-            while ((line = reader.readLine()) != null) {
-                processInstr1(line, stacks1);
-                processInstr2(line, stacks2);
-            }
-            for (int i = 0; i < stackCount; i++) {
-                msg1.append(stacks1.get(i).getLast());
-                msg2.append(stacks2.get(i).getLast());
-            }
-
-            System.out.println(msg1);
-            System.out.println(msg2);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
         }
+
+        List<List<Character>> stacks2 = new ArrayList<>();
+        for (List<Character> l : stacks1) {
+            stacks2.add(new ArrayList<>(l));
+        }
+
+        // Process instructions
+        for (String instr : instrsStr) {
+            processInstr1(instr, stacks1);
+            processInstr2(instr, stacks2);
+        }
+        for (int i = 0; i < stackCount; i++) {
+            msg1.append(stacks1.get(i).getLast());
+            msg2.append(stacks2.get(i).getLast());
+        }
+
+        System.out.println(msg1);
+        System.out.println(msg2);
     }
 
     private static int getCrateIdx(int n) {

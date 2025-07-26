@@ -1,6 +1,6 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,7 +21,7 @@ class Tree {
 
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
@@ -29,18 +29,13 @@ public class Solution {
 
         List<List<Integer>> grid = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                List<Integer> row = new ArrayList<>();
-                for (char c : line.toCharArray()) {
-                    row.add(c - '0');
-                }
-                grid.add(row);
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
+        for (String line : lines) {
+            List<Integer> row = new ArrayList<>();
+            for (char c : line.toCharArray()) {
+                row.add(c - '0');
             }
-
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+            grid.add(row);
         }
 
         System.out.println("Part 1: " + solution1(grid));

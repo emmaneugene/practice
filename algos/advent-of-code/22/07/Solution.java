@@ -1,7 +1,8 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.OptionalInt;
 
@@ -76,7 +77,7 @@ class File extends Node {
 
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Running test case:");
             test();
@@ -84,45 +85,40 @@ public class Solution {
             return;
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            String line;
-            Directory root = new Directory("/");
-            Directory currDir = root;
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
+        Directory root = new Directory("/");
+        Directory currDir = root;
 
-            // Remove first command
-            reader.readLine();
-
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith("$ ")) {
-                    // Process command
-                    String cmd = line.substring("$ ".length());
-                    if (cmd.startsWith("cd ")) {
-                        String dirName = cmd.split(" ")[1];
-                        if (dirName.equals("..")) {
-                            currDir = currDir.parent;
-                        } else {
-                            currDir = (Directory) currDir.children.get(dirName);
-                        }
-                    }
-                } else {
-                    // Process `ls` output
-                    String[] tokens = line.split(" ");
-                    if (tokens[0].equals("dir")) {
-                        currDir.addChild(new Directory(tokens[1]));
+        for (String line : lines) {
+            if (line.startsWith("$ ")) {
+                // Process command (`cd` or `ls`)
+                String cmd = line.substring("$ ".length());
+                if (cmd.startsWith("cd ")) {
+                    String dirName = cmd.split(" ")[1];
+                    if (dirName.equals("/")) {
+                        currDir = root;
+                    } else if (dirName.equals("..")) {
+                        currDir = currDir.parent;
                     } else {
-                        currDir.addChild(new File(tokens[1], Integer.parseInt(tokens[0])));
+                        currDir = (Directory) currDir.children.get(dirName);
                     }
                 }
+            } else {
+                // Process output of `ls`
+                String[] tokens = line.split(" ");
+                if (tokens[0].equals("dir")) {
+                    currDir.addChild(new Directory(tokens[1]));
+                } else {
+                    currDir.addChild(new File(tokens[1], Integer.parseInt(tokens[0])));
+                }
             }
-
-            System.out.println("Final directory tree:");
-            System.out.println(root);
-
-            System.out.println("Part 1: " + solution1(root));
-            System.out.println("Part 2: " + solution2(root));
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
         }
+
+        System.out.println("Final directory tree:");
+        System.out.println(root);
+
+        System.out.println("Part 1: " + solution1(root));
+        System.out.println("Part 2: " + solution2(root));
     }
 
     private static int solution1(Directory d) {

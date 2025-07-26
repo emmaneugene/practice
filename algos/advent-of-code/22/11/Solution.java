@@ -1,8 +1,9 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,44 +58,39 @@ class Monkey {
 
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
         }
 
-        String line;
         List<Monkey> monkeys1 = new ArrayList<>();
         List<Monkey> monkeys2 = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith("Monkey")) {
-                    String[] itemStrs =
-                            reader.readLine()
-                                    .strip()
-                                    .substring("Starting items: ".length())
-                                    .split(", ");
-                    List<Long> items =
-                            Arrays.stream(itemStrs)
-                                    .map(x -> Long.valueOf(x))
-                                    .collect(Collectors.toList());
-                    line = reader.readLine().strip();
-                    String op = line.substring(line.lastIndexOf(" ") - 1);
-                    line = reader.readLine();
-                    long testDiv = Long.valueOf(line.substring(line.lastIndexOf(" ") + 1));
-                    line = reader.readLine().strip();
-                    int passTrue = Integer.valueOf(line.substring(line.lastIndexOf(" ") + 1));
-                    line = reader.readLine().strip();
-                    int passFalse = Integer.valueOf(line.substring(line.lastIndexOf(" ") + 1));
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
+        Iterator<String> iter = lines.iterator();
+        String line;
+        while (iter.hasNext()) {
+            line = iter.next();
+            if (line.startsWith("Monkey")) {
+                String[] itemStrs =
+                        iter.next().strip().substring("Starting items: ".length()).split(", ");
+                List<Long> items =
+                        Arrays.stream(itemStrs)
+                                .map(x -> Long.valueOf(x))
+                                .collect(Collectors.toList());
+                line = iter.next().strip();
+                String op = line.substring(line.lastIndexOf(" ") - 1);
+                line = iter.next();
+                long testDiv = Long.valueOf(line.substring(line.lastIndexOf(" ") + 1));
+                line = iter.next().strip();
+                int passTrue = Integer.valueOf(line.substring(line.lastIndexOf(" ") + 1));
+                line = iter.next().strip();
+                int passFalse = Integer.valueOf(line.substring(line.lastIndexOf(" ") + 1));
 
-                    monkeys1.add(new Monkey(items, op, testDiv, passTrue, passFalse));
-                    monkeys2.add(
-                            new Monkey(new ArrayList<>(items), op, testDiv, passTrue, passFalse));
-                }
+                monkeys1.add(new Monkey(items, op, testDiv, passTrue, passFalse));
+                monkeys2.add(new Monkey(new ArrayList<>(items), op, testDiv, passTrue, passFalse));
             }
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
         }
 
         // Part 1: Play 20 rounds, divide worry level by 3

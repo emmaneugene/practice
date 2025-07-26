@@ -1,62 +1,51 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.List;
 
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            String line;
-            int[] top3Cals = {0, 0, 0};
-            int maxCals = 0;
-            int currCals = 0;
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
 
-            while ((line = reader.readLine()) != null) {
-                try {
-                    currCals += Integer.parseInt(line);
-                } catch (NumberFormatException e) {
-                    maxCals = Integer.max(currCals, maxCals);
+        int[] top3 = {0, 0, 0};
+        int max = 0;
+        int curr = 0;
 
-                    for (int i = 0; i < top3Cals.length; i++) {
-                        if (currCals > top3Cals[i]) {
-                            int tmp;
-                            for (int j = i; j < top3Cals.length; j++) {
-                                tmp = top3Cals[j];
-                                top3Cals[j] = currCals;
-                                currCals = tmp;
-                            }
-                            break;
-                        }
-                    }
-
-                    currCals = 0;
-                }
+        for (String line : lines) {
+            try {
+                curr += Integer.parseInt(line);
+            } catch (NumberFormatException e) {
+                max = Integer.max(curr, max);
+                insert(top3, curr);
+                curr = 0;
             }
+        }
 
-            maxCals = Integer.max(currCals, maxCals);
+        max = Integer.max(curr, max);
+        insert(top3, curr);
 
-            for (int i = 0; i < top3Cals.length; i++) {
-                if (currCals > top3Cals[i]) {
-                    int tmp;
-                    for (int j = i; j < top3Cals.length; j++) {
-                        tmp = top3Cals[j];
-                        top3Cals[j] = currCals;
-                        currCals = tmp;
-                    }
-                    break;
+        System.out.println("Part 1: " + max);
+        System.out.println("Part 2: " + Arrays.stream(top3).sum());
+    }
+
+    public static void insert(int[] vals, int val) {
+        for (int i = 0; i < vals.length; i++) {
+            if (val > vals[i]) {
+                int tmp;
+                for (int j = i; j < vals.length; j++) {
+                    tmp = vals[j];
+                    vals[j] = val;
+                    val = tmp;
                 }
+                break;
             }
-
-            System.out.println("Part 1: " + maxCals);
-            System.out.println("Part 2: " + Arrays.stream(top3Cals).sum());
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
         }
     }
 }

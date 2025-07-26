@@ -1,6 +1,6 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 // Dijkstra's algo
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
@@ -20,22 +20,17 @@ public class Solution {
 
         List<List<Character>> grid = new ArrayList<>();
         Coords start = new Coords(-1, -1, 0);
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            String line;
-            int rowIdx = 0;
+        int rowIdx = 0;
 
-            while ((line = reader.readLine()) != null) {
-                grid.add(line.chars().mapToObj(ch -> (char) ch).collect(Collectors.toList()));
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
+        for (String line : lines) {
+            grid.add(line.chars().mapToObj(ch -> (char) ch).collect(Collectors.toList()));
 
-                if (line.contains("S")) {
-                    start = new Coords(rowIdx, line.indexOf('S'), 0);
-                }
-
-                rowIdx++;
+            if (line.contains("S")) {
+                start = new Coords(rowIdx, line.indexOf('S'), 0);
             }
 
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+            rowIdx++;
         }
 
         System.out.println("Part 1: " + shortestPath(start, grid));

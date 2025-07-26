@@ -1,15 +1,16 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 record Pair(List<Object> left, List<Object> right) {}
 
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
@@ -18,18 +19,16 @@ public class Solution {
         List<Pair> pairs = new ArrayList<>();
         List<List<Object>> packets = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                List<Object> l1 = parseValues(line);
-                List<Object> l2 = parseValues(reader.readLine());
-                pairs.add(new Pair(l1, l2));
-                packets.add(l1);
-                packets.add(l2);
-                reader.readLine();
-            }
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
+        Iterator<String> iter = lines.iterator();
+        while (iter.hasNext()) {
+            List<Object> l1 = parseValues(iter.next());
+            List<Object> l2 = parseValues(iter.next());
+            pairs.add(new Pair(l1, l2));
+            packets.add(l1);
+            packets.add(l2);
+
+            if (iter.hasNext()) iter.next();
         }
 
         // Part 1

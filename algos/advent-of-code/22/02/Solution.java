@@ -1,11 +1,12 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
@@ -54,23 +55,17 @@ public class Solution {
                         Map.entry("CZ", "rock") // win(scissors) = rock
                         );
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            String line;
-            int score1 = 0;
-            int score2 = 0;
+        int score1 = 0;
+        int score2 = 0;
 
-            while ((line = reader.readLine()) != null) {
-                String[] vals = line.split(" ");
-                score1 +=
-                        shapeVals.get(shapeCodes.get(vals[1])) + matchupVals.get(vals[0] + vals[1]);
-
-                score2 += shapeVals.get(outcomes2.get(vals[0] + vals[1])) + endingVals.get(vals[1]);
-            }
-
-            System.out.println("Part 1: " + score1);
-            System.out.println("Part 2: " + score2);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
+        for (String line : lines) {
+            String[] vals = line.split(" ");
+            score1 += shapeVals.get(shapeCodes.get(vals[1])) + matchupVals.get(vals[0] + vals[1]);
+            score2 += shapeVals.get(outcomes2.get(vals[0] + vals[1])) + endingVals.get(vals[1]);
         }
+
+        System.out.println("Part 1: " + score1);
+        System.out.println("Part 2: " + score2);
     }
 }

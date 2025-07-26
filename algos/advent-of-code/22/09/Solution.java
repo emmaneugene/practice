@@ -1,6 +1,6 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -108,33 +108,28 @@ class P2 {
 
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
+        P1 p1 = new P1();
+        P2 p2 = new P2();
 
-            String line;
-            P1 p1 = new P1();
-            P2 p2 = new P2();
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
+        for (String line : lines) {
+            String[] toks = line.split(" ");
+            String dir = toks[0];
+            int cnt = Integer.valueOf(toks[1]);
 
-            while ((line = reader.readLine()) != null) {
-                String[] toks = line.split(" ");
-                String dir = toks[0];
-                int cnt = Integer.valueOf(toks[1]);
-
-                for (int i = 0; i < cnt; i++) {
-                    p1.moveHead(dir);
-                    p2.moveHead(dir);
-                }
+            for (int i = 0; i < cnt; i++) {
+                p1.moveHead(dir);
+                p2.moveHead(dir);
             }
-
-            System.out.println("Part 1: " + p1.visited.size());
-            System.out.println("Part 2: " + p2.visited.size());
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
         }
+
+        System.out.println("Part 1: " + p1.visited.size());
+        System.out.println("Part 2: " + p2.visited.size());
     }
 }

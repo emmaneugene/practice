@@ -1,7 +1,8 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 class Grid {
@@ -108,7 +109,7 @@ class Grid {
 
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
@@ -116,13 +117,9 @@ public class Solution {
 
         Grid g = new Grid();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                g.traceRocks(line);
-            }
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
+        for (String line : lines) {
+            g.traceRocks(line);
         }
 
         g.simulate1();
