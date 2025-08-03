@@ -3,14 +3,14 @@
 # Time complexity: O()
 # Space complexity: O()
 
-import bisect
-import collections
-import copy
-import functools
-import heapq
-import itertools
-from dataclasses import dataclass
-from typing import Optional
+# import bisect
+# import collections
+# import copy
+# import functools
+# import heapq
+# import itertools
+# from dataclasses import dataclass
+# from typing import Optional
 
 
 class Solution:
@@ -18,7 +18,8 @@ class Solution:
 
 
 def main():
-    s = Solution()
+    # s = Solution()
+    pass
 
 
 if __name__ == "__main__":
