@@ -1,7 +1,8 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 record Sensor(int x, int y, int range) {
@@ -59,7 +60,7 @@ class Range implements Comparable<Range> {
 
 public class Solution {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length < 1) {
             System.out.println("Please provide a file path");
             return;
@@ -68,18 +69,13 @@ public class Solution {
         Set<Coords> beacons = new HashSet<>();
         Set<Sensor> sensors = new HashSet<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String s = line.substring(line.indexOf("x"), line.indexOf(":"));
-                String b = line.substring(line.lastIndexOf("x"));
-                Coords beacon = createBeacon(b);
-                beacons.add(beacon);
-                sensors.add(createSensor(s, beacon));
-            }
-
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+        List<String> lines = Files.readAllLines(Path.of(args[0]));
+        for (String line : lines) {
+            String s = line.substring(line.indexOf("x"), line.indexOf(":"));
+            String b = line.substring(line.lastIndexOf("x"));
+            Coords beacon = createBeacon(b);
+            beacons.add(beacon);
+            sensors.add(createSensor(s, beacon));
         }
 
         System.out.println("Part 1 test (y=10): " + getExclusions(sensors, beacons, 10));
@@ -121,11 +117,12 @@ public class Solution {
      * Part 2: Locate distress beacon
      */
     static Coords locateBeacon(Set<Sensor> sensors, Set<Coords> beacons, int limit) {
+
         for (int y = 0; y < limit; y++) {
 
-            // Filter sensors include y
+            // Filter sensors activated for this y value
 
-            // Iterate over sensors to create sorted list of ranges
+            // Iterate over sensors to create sorted list of x ranges, merging if any overlap
 
             // Check if output range is in [0, limit]
 
@@ -136,5 +133,6 @@ public class Solution {
         return new Coords(0, 0);
     }
 
-    //   static String drawGrid(Set<Sensor>)
+    // Visualization of grid with sensor exclusions for debugging
+    static void drawGrid(Set<Sensor> sensors) {}
 }
