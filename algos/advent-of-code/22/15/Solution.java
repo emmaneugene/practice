@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 record Sensor(int x, int y, int range) {
     public Set<Integer> getExclusions(int yRow) {
@@ -13,6 +14,15 @@ record Sensor(int x, int y, int range) {
             excluded.add(i);
         }
         return excluded;
+    }
+
+    public boolean overlapsY(int y) {
+        return y >= (this.y - range) && y <= (this.y + range);
+    }
+
+    public Range getXRange(int y) {
+        int displace = range - Math.abs(this.y - y);
+        return new Range(x - displace, x + displace);
     }
 
     @Override
@@ -30,6 +40,7 @@ record Coords(int x, int y) {
 
 /** Start inclusive, end inclusive */
 class Range implements Comparable<Range> {
+
     int start;
     int end;
 
@@ -38,23 +49,23 @@ class Range implements Comparable<Range> {
         this.end = end;
     }
 
-    public boolean overlaps(Range r) {
-        return (r.start <= start && r.end >= start) || (r.end >= end && r.start <= end);
+    public boolean canMerge(Range r) {
+        return (r.start <= end && r.end >= start - 1) || (r.end >= start && r.start <= end + 1);
     }
 
-    public void insert(Range r) {
-        if (r.end >= start) {
-            start = r.start;
-        }
-
-        if (r.start <= end) {
-            end = r.end;
-        }
+    public void merge(Range r) {
+        start = Math.min(start, r.start);
+        end = Math.max(end, r.end);
     }
 
     @Override
     public int compareTo(Range r) {
-        return start != r.start ? this.start - r.start : this.end - r.end;
+        return start != r.start ? start - r.start : r.end - end;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[%d,%d]", start, end);
     }
 }
 
@@ -78,17 +89,19 @@ public class Solution {
             sensors.add(createSensor(s, beacon));
         }
 
-        System.out.println("Part 1 test (y=10): " + getExclusions(sensors, beacons, 10));
+        System.out.println("Part 1 exclusion count (test): " + getExclusions(sensors, beacons, 10));
         System.out.println(
-                "Part 1 input (y=2,000,000): " + getExclusions(sensors, beacons, 2_000_000));
-        Coords c = locateBeacon(sensors, beacons, 4_000_000);
-        System.out.println("Part 2 input: " + (c.x() * 4_000_000 + c.y()));
+                "Part 1 exclusion count (input): " + getExclusions(sensors, beacons, 2_000_000));
+
+        System.out.println("Part 2 beacon position (test): " + locateBeacon(sensors, beacons, 20));
+        System.out.println(
+                "Part 2 beacon position (input): " + locateBeacon(sensors, beacons, 4_000_000));
     }
 
     static Sensor createSensor(String s, Coords b) {
-        String[] sToks = s.split(", ");
-        int sX = Integer.parseInt(sToks[0].substring(2));
-        int sY = Integer.parseInt(sToks[1].substring(2));
+        String[] toks = s.split(", ");
+        int sX = Integer.parseInt(toks[0].substring(2));
+        int sY = Integer.parseInt(toks[1].substring(2));
         return new Sensor(sX, sY, Math.abs(sX - b.x()) + Math.abs(sY - b.y()));
     }
 
@@ -119,20 +132,24 @@ public class Solution {
     static Coords locateBeacon(Set<Sensor> sensors, Set<Coords> beacons, int limit) {
 
         for (int y = 0; y < limit; y++) {
-
+            final int yTmp = y;
             // Filter sensors activated for this y value
+            Set<Sensor> activated =
+                    sensors.stream().filter(s -> s.overlapsY(yTmp)).collect(Collectors.toSet());
 
-            // Iterate over sensors to create sorted list of x ranges, merging if any overlap
-
-            // Check if output range is in [0, limit]
-
-            // Return otherwise
-
+            // Iterate over sensors to create sorted list of x ranges
+            List<Range> ranges = activated.stream().map(s -> s.getXRange(yTmp)).sorted().toList();
+            // Merge overlapping
+            Range curr = ranges.get(0);
+            for (Range r : ranges.subList(1, ranges.size())) {
+                if (curr.canMerge(r)) {
+                    curr.merge(r);
+                } else {
+                    return new Coords(curr.end + 1, y);
+                }
+            }
         }
 
-        return new Coords(0, 0);
+        return new Coords(-1, -1);
     }
-
-    // Visualization of grid with sensor exclusions for debugging
-    static void drawGrid(Set<Sensor> sensors) {}
 }
