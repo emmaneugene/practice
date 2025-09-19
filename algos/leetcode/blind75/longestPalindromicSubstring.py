@@ -3,56 +3,36 @@
 # Time complexity: O(n^2)
 # Space complexity: O(n)
 
-# Loop over all chars and look for odd/even length palindromes
-# Odd:
-# abcba
-#   ^
-# Even:
-# abba
-#  ^
+# Decreasing window of size=len(s) to 1
 
 
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        result = s[0]
+        def isPalindrome(s: str):
+            for i in range(len(s) // 2):
+                if s[i] != s[-1-i]:
+                    return False
+            return True
 
-        for i in range(len(s)):
-            result = max(result, self.getSubPalindrome(s, i), key=lambda s: len(s))
+        if not s:
+            return ""
 
-        return result
+        size = len(s)
 
-    def getSubPalindrome(self, s: str, i: int) -> str:
-        """Returns the longest even or odd palindrome of with s[i] at its centre"""
+        while size > 1:
+            for i in range(len(s) - size + 1):
+                if isPalindrome(s[i: i+size]):
+                    return s[i: i+size]
+            size -= 1
 
-        oddOffset = 0
-        evenOffset = 0
+        return s[0]
 
-        while (
-            i - oddOffset - 1 >= 0
-            and i + oddOffset + 1 < len(s)
-            and s[i - oddOffset - 1] == s[i + oddOffset + 1]
-        ):
-            oddOffset += 1
-
-        if i + 1 == len(s) or s[i] != s[i + 1]:
-            return s[i - oddOffset : i + oddOffset + 1]
-
-        while (
-            i - evenOffset - 1 >= 0
-            and i + evenOffset + 2 < len(s)
-            and s[i - evenOffset - 1] == s[i + evenOffset + 2]
-        ):
-            evenOffset += 1
-
-        return max(
-            s[i - oddOffset : i + oddOffset + 1],
-            s[i - evenOffset : i + evenOffset + 2],
-            key=lambda s: len(s),
-        )
 
 
 def main():
     s = Solution()
+    print(s.longestPalindrome(None))  # ""
+    print(s.longestPalindrome(""))  # ""
     print(s.longestPalindrome("babad"))  # "bab" OR "aba"
     print(s.longestPalindrome("cbbd"))  # "bb"
 
