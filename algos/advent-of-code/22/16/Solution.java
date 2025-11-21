@@ -18,6 +18,13 @@ import java.util.stream.Collectors;
  */
 public class Solution {
 
+    // TODO: Create a class/record for storing, with hashcode so it can be stored as a Set
+    record Tracker (
+        String curr,
+        int time,
+        Set<String> visited
+    ) {}
+
     static Map<String, Integer> memo = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
