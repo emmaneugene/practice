@@ -1,7 +1,7 @@
 # Problem: https://leetcode.com/problems/generate-parentheses/
 
-# Time complexity:
-# Space complexity:
+# Time complexity: O(4^n / sqrt(n)) - generates all Catalan(n) valid combinations
+# Space complexity: O(4^n / sqrt(n)) - stores all result strings + O(n) recursion depth
 from typing import List
 
 

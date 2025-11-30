@@ -2,8 +2,8 @@
 
 # Dynamic programming
 
-# Time complexity:
-# Space complexity:
+# Time complexity: O(m * n) - m = len(word1), n = len(word2), each subproblem computed once
+# Space complexity: O(m * n) - memoization cache + O(m + n) recursion call stack
 
 
 class Solution:

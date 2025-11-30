@@ -1,8 +1,8 @@
 # Problem: https://leetcode.com/problems/bus-routes
 # Basically Dijkstra's algo
 
-# Time complexity:
-# Space complexity:
+# Time complexity: O(N * S) - N = number of routes, S = total stops across all routes
+# Space complexity: O(N * S) - for stopToRoutes map and visited sets
 
 from typing import Dict, List
 
