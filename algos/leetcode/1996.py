@@ -1,8 +1,10 @@
-# Problem: https://leetcode.com/problems/generate-parentheses/
+# Problem: https://leetcode.com/problems/the-number-of-weak-characters-in-the-game/
 # tags: medium
 
-# Time complexity: O(nlog(n))
-# Space complexity: O(n^2)
+# Time complexity: O(n log n) - sorting
+# Space complexity: O(n) - for characters list and track dictionary
+# Approach: Sort by attack (desc), track higher atk chars per char,
+#           then sort by defense and find intersection with higher def chars
 
 from copy import copy
 from dataclasses import dataclass
@@ -36,7 +38,7 @@ class Solution:
 
         # Compute set of characters with higher def
         characters.sort(key=lambda x: x.df, reverse=True)
-        strongerSet.clear()
+        strongerSet = set()
         currSet = set()
         currDf = characters[0].df
         for c in characters:
@@ -77,3 +79,31 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# IMPROVEMENTS:
+# The current solution is correct but can be optimized:
+#
+# 1. Space: Use O(1) extra space by sorting once and tracking max defense
+#    - Sort by attack DESC, then defense ASC (so same attack chars have lower defense first)
+#    - Track max defense seen so far
+#    - Any char with defense < max_defense is weak
+#
+# 2. Time: Still O(n log n) but with simpler logic:
+#
+# class Solution:
+#     def numberOfWeakCharacters(self, properties: List[List[int]]) -> int:
+#         # Sort by attack DESC, defense ASC
+#         # This ensures when attack ties, lower defense comes first
+#         properties.sort(key=lambda x: (-x[0], x[1]))
+#
+#         max_defense = 0
+#         weak_count = 0
+#
+#         for atk, dfs in properties:
+#             if dfs < max_defense:
+#                 weak_count += 1
+#             else:
+#                 max_defense = dfs
+#
+#         return weak_count
