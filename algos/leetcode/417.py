@@ -1,8 +1,8 @@
 # Problem: https://leetcode.com/problems/pacific-atlantic-water-flow
 # tags: blind75, medium
 
-# Time complexity: O()
-# Space complexity: O(mn)
+# Time complexity: O(mn) - visit each cell from both oceans
+# Space complexity: O(mn) - visited sets for both oceans
 
 from typing import List, Set
 

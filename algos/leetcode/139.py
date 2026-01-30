@@ -1,8 +1,8 @@
 # Problem: https://leetcode.com/problems/word-break
 # tags: blind75, medium
 
-# Time: O(mn) for m words and n chars
-# Space: O(n)
+# Time complexity: O(mn) for m words and n chars
+# Space complexity: O(n)
 # Dynamic programming
 
 

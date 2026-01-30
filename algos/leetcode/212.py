@@ -1,8 +1,8 @@
 # Problem: https://leetcode.com/problems/word-search-ii
 # tags: blind75, hard
 
-# Time complexity:
-# Space complexity:
+# Time complexity: O(M*N*4^L + W*L) - M,N=board size, L=max word length, W=word count
+# Space complexity: O(W*L) - for trie storage
 
 
 class TrieNode:

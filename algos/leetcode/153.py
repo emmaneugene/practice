@@ -2,7 +2,7 @@
 # tags: blind75, medium
 
 # Time complexity: O(logn)
-# Space: O(n)
+# Space complexity: O(log n) - recursion stack
 # Recursive bisect with additional conditions
 
 

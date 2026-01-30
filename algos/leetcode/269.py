@@ -1,8 +1,8 @@
 # Problem: https://leetcode.com/problems/alien-dictionary
 # tags: blind75, hard
 
-# Time complexity: TODO
-# Space complexity: TODO
+# Time complexity: O(C) - C = total characters across all words
+# Space complexity: O(U^2) - U = unique characters, for ordering graph
 
 # 1. Create a dict to track for each character, which characters it is smallr than
 #    e.g. {'a': {}, 'b': {'a'}, 'c': {'a', 'b'}} implies the order a -> b -> c
