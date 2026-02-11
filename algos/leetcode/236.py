@@ -5,6 +5,16 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Find paths to p and q using DFS, compare paths - DFS, arrays
+#    Time: O(n) | Space: O(n)
+# 2. Recursive postorder with set tracking - DFS, set [implemented]
+#    Time: O(n) | Space: O(n)
+# 3. Recursive postorder (classic) - DFS, return node directly
+#    Time: O(n) | Space: O(h) call stack
+# 4. Iterative with parent pointers - BFS/DFS, hashmap, ancestor set
+#    Time: O(n) | Space: O(n)
+
 from typing import Optional, Set
 
 

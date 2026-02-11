@@ -4,6 +4,12 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Simulate row-by-row - iterate and assign to rows [implemented]
+#    Time: O(n) | Space: O(n)
+# 2. Direct index mapping - compute output index per character mathematically
+#    Time: O(n) | Space: O(n)
+
 from typing import List
 
 

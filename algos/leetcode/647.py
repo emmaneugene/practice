@@ -4,6 +4,16 @@
 # Time complexity: O(n^2)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Brute force - check all substrings for palindrome
+#    Time: O(n^3) | Space: O(1)
+# 2. Dynamic programming - 2D table of palindrome substrings
+#    Time: O(n^2) | Space: O(n^2)
+# 3. Expand around center - expand from each center point [implemented]
+#    Time: O(n^2) | Space: O(1)
+# 4. Manacher's algorithm - linear palindrome detection
+#    Time: O(n) | Space: O(n)
+
 
 class Solution:
     def countSubstrings(self, s: str):

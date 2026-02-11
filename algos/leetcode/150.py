@@ -4,6 +4,12 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Stack-based evaluation - push operands, pop and compute on operators [implemented]
+#    Time: O(n) | Space: O(n)
+# 2. Recursive descent - recursively process tokens from right to left
+#    Time: O(n) | Space: O(n)
+
 
 class Solution:
     def evalRPN(self, tokens: list[str]) -> int:

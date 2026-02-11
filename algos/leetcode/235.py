@@ -4,6 +4,14 @@
 # Time complexity: O(log(n))
 # Space complexity: O(n) for storing all nodes
 
+# Alternative solutions:
+# 1. Recursive BST split - recursion, BST property [implemented]
+#    Time: O(h) | Space: O(h) call stack
+# 2. Iterative BST split - BST property, single pointer
+#    Time: O(h) | Space: O(1)
+# 3. Find paths to p and q, compare - DFS/BFS, arrays
+#    Time: O(n) | Space: O(n)
+
 
 class TreeNode:
     def __init__(self, val: int, left: "TreeNode" = None, right: "TreeNode" = None):

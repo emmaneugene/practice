@@ -4,6 +4,12 @@
 # Time complexity: O(n)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Brute force - check all subarrays
+#    Time: O(n^2) | Space: O(1)
+# 2. Track min/max product DP - maintain running min and max products [implemented]
+#    Time: O(n) | Space: O(1)
+
 
 class Solution:
     def maxProduct(self, nums: list[int]) -> int:

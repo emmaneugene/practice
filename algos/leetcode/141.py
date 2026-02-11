@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Hash set - store visited nodes in a set
+#    Time: O(n) | Space: O(n)
+# 2. Floyd's cycle detection (tortoise and hare) - slow/fast pointers
+#    Time: O(n) | Space: O(1)
+# 3. Link modification - redirect visited node pointers to head [implemented]
+#    Time: O(n) | Space: O(1)
+
 from typing import Optional
 
 

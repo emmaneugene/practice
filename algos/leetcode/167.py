@@ -4,6 +4,16 @@
 # Time complexity: O(n)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Brute force - check all pairs
+#    Time: O(n^2) | Space: O(1)
+# 2. Hash map - store complements
+#    Time: O(n) | Space: O(n)
+# 3. Binary search - for each element, binary search for complement
+#    Time: O(n log n) | Space: O(1)
+# 4. Two pointers - converge from both ends [implemented]
+#    Time: O(n) | Space: O(1)
+
 from typing import List
 
 

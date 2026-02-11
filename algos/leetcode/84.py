@@ -3,6 +3,16 @@
 
 # Time complexity: O(n)
 # Space complexity: O(n)
+#
+# Alternative solutions:
+# 1. Brute force - check all pairs of left/right boundaries, find min height
+#    Time: O(n^3) | Space: O(1)
+# 2. Better brute force - for each bar, expand left and right to find max rectangle
+#    Time: O(n^2) | Space: O(1)
+# 3. Divide and conquer - split at min height, recurse on left/right halves
+#    Time: O(n log n) | Space: O(n)
+# 4. Monotonic stack - maintain increasing stack of indices, pop to compute area [implemented]
+#    Time: O(n) | Space: O(n)
 
 from typing import List
 

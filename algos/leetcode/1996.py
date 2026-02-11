@@ -6,6 +6,16 @@
 # Approach: Sort by attack (desc), track higher atk chars per char,
 #           then sort by defense and find intersection with higher def chars
 
+# Alternative solutions:
+# 1. Brute force - compare every pair of characters
+#    Time: O(n^2) | Space: O(1)
+# 2. Sort + set intersection - dual sort with set tracking [implemented]
+#    Time: O(n log n) | Space: O(n)
+# 3. Sort by attack desc, defense asc + greedy max defense tracking
+#    Time: O(n log n) | Space: O(1)
+# 4. Monotonic stack - sort by attack asc, defense desc, track max defense
+#    Time: O(n log n) | Space: O(n)
+
 from copy import copy
 from dataclasses import dataclass
 from typing import List

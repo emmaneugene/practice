@@ -3,6 +3,16 @@
 
 # Time complexity: O(nlogn)
 # Space complexity: O(n)
+#
+# Alternative solutions:
+# 1. Sorting by frequency - hash map + sort [implemented]
+#    Time: O(nlogn) | Space: O(n)
+# 2. Min-heap of size k - hash map + heap
+#    Time: O(nlogk) | Space: O(n)
+# 3. Bucket sort - hash map + frequency buckets
+#    Time: O(n) | Space: O(n)
+# 4. Quickselect - hash map + randomized partition
+#    Time: O(n) avg, O(n²) worst | Space: O(n)
 
 
 class Solution:

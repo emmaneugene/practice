@@ -29,6 +29,19 @@ Reviews a LeetCode solution and generates missing metadata.
    # <1-2 line approach summary if non-trivial>
    ```
 
+   ### Alternative Solutions
+   After the implemented solution's complexity comments, enumerate all known approaches for the problem:
+   ```python
+   # Alternative solutions:
+   # 1. <Approach name> - <key DSAs (e.g., brute force, hash map, two pointers)>
+   #    Time: O(...) | Space: O(...)
+   # 2. <Approach name> - <key DSAs>
+   #    Time: O(...) | Space: O(...)
+   ```
+   - Include the implemented approach in the list (mark it with `[implemented]`)
+   - Order from least to most optimal
+   - Cover all well-known approaches (brute force through optimal)
+
    ### Test Cases in main()
    ```python
    def main():

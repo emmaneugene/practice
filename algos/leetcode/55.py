@@ -4,6 +4,16 @@
 # Time complexity: O(n)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Brute force (backtracking) - try all jump paths recursively
+#    Time: O(2^n) | Space: O(n)
+# 2. Top-down DP (memoization) - cache reachability from each index
+#    Time: O(n^2) | Space: O(n)
+# 3. Bottom-up DP - iterate right to left, mark good/bad indices
+#    Time: O(n^2) | Space: O(n)
+# 4. Greedy (track furthest reachable) - single pass updating max reach [implemented]
+#    Time: O(n) | Space: O(1)
+
 
 class Solution:
     def canJump(self, nums: list[int]) -> bool:

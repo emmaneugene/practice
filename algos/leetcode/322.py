@@ -5,6 +5,16 @@
 # Space complexity: O(m+n)
 # Dynamic programming, find optimal selection of m possible coins for amounts (1...n)
 
+# Alternative solutions:
+# 1. Brute force - recursion, try all coin combinations
+#    Time: O(m^n) | Space: O(n)
+# 2. Top-down DP (memoization) - recursion with cache
+#    Time: O(m*n) | Space: O(n)
+# 3. Bottom-up DP (tabulation) - iterative DP array [implemented]
+#    Time: O(m*n) | Space: O(n)
+# 4. BFS - treat as shortest path, level-order search
+#    Time: O(m*n) | Space: O(n)
+
 
 class Solution:
     def coinChange(self, coins: list[int], amount: int) -> int:

@@ -4,6 +4,12 @@
 # Time complexity: O(nlog(n))
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Brute force - compare all pairs for overlap
+#    Time: O(n^2) | Space: O(1)
+# 2. Sorting - sort by start time, check adjacent overlaps [implemented]
+#    Time: O(n log n) | Space: O(1)
+
 
 class Solution:
     def canAttendMeetings(self, intervals: list[list[int]]) -> bool:

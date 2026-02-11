@@ -5,6 +5,12 @@
 # Space complexity: O(1)
 # Double pointers
 
+# Alternative solutions:
+# 1. Brute force - nested loops, check all pairs
+#    Time: O(n^2) | Space: O(1)
+# 2. Two pointers - shrink from both ends, move shorter side [implemented]
+#    Time: O(n) | Space: O(1)
+
 
 class Solution:
     def maxArea(self, height: list[int]) -> int:

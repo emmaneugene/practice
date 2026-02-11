@@ -4,6 +4,12 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - enumerate all paths between every pair of nodes, DFS/BFS
+#    Time: O(n^3) | Space: O(n^2)
+# 2. DFS with global max - post-order traversal tracking max gain per subtree [implemented]
+#    Time: O(n) | Space: O(n)
+
 from typing import Optional
 
 

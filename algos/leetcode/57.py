@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Insert + sort + merge intervals - reduce to LC 56 (Merge Intervals)
+#    Time: O(n log n) | Space: O(n)
+# 2. Linear scan with merge - iterate once, collect left/merged/right segments [implemented]
+#    Time: O(n) | Space: O(n)
+# 3. Binary search + merge - use bisect to find overlap bounds, merge in place
+#    Time: O(n) | Space: O(n)
+
 from bisect import bisect
 
 

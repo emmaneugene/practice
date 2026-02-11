@@ -4,6 +4,12 @@
 # Time complexity: O(nlogn)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - compare all pairs, merge overlapping, repeat until stable
+#    Time: O(n^2) | Space: O(n)
+# 2. Sort + linear merge - sort by start, merge consecutive overlapping intervals [implemented]
+#    Time: O(n log n) | Space: O(n)
+
 
 class Solution:
     def combine(self, i1: list[int], i2: list[int]) -> list[int]:

@@ -8,6 +8,16 @@
 # EXTRA: How would you optimize the solution if all integers are in the range (0,100)? -> Use a count
 # EXTRA: How would you optimize the solution if 99% of integers are in the range (0,100)? -> Still use a count
 
+# Alternative solutions:
+# 1. Brute force sorted array - insert and sort each time
+#    Time: O(n log n) addNum, O(1) findMedian | Space: O(n)
+# 2. Insertion sort (sorted list with bisect) - binary search for insert position
+#    Time: O(n) addNum, O(1) findMedian | Space: O(n)
+# 3. Two heaps (max-heap + min-heap) - heapq, rebalancing [implemented]
+#    Time: O(log n) addNum, O(1) findMedian | Space: O(n)
+# 4. Self-balancing BST / multiset - e.g. SortedList, red-black tree
+#    Time: O(log n) addNum, O(log n) findMedian | Space: O(n)
+
 import heapq
 
 

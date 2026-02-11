@@ -3,6 +3,14 @@
 
 # Time complexity: O(n^2)
 # Space complexity: O(n^2)
+#
+# Alternative solutions:
+# 1. Extra matrix - copy to new matrix with rotated indices
+#    Time: O(n^2) | Space: O(n^2)
+# 2. Transpose + reverse rows - two-pass in-place
+#    Time: O(n^2) | Space: O(1)
+# 3. Four-way swap (rotate groups of 4) - single-pass in-place [implemented]
+#    Time: O(n^2) | Space: O(1)
 
 
 class Solution:

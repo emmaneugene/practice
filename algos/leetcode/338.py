@@ -3,6 +3,16 @@
 
 # Time Complexity: O(nlog(n))
 # Space Complexity: O(n)
+#
+# Alternative solutions:
+# 1. Brute force - count bits for each number individually [implemented]
+#    Time: O(nlog(n)) | Space: O(n)
+# 2. DP with most significant bit - i & (i-1) to clear lowest set bit
+#    Time: O(n) | Space: O(n)
+# 3. DP with least significant bit - dp[i] = dp[i >> 1] + (i & 1)
+#    Time: O(n) | Space: O(n)
+# 4. DP with offset - dp[i] = dp[i - offset] + 1, offset is largest power of 2 <= i
+#    Time: O(n) | Space: O(n)
 
 
 class Solution:

@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - check all substrings, frequency count
+#    Time: O(n^3) | Space: O(n)
+# 2. Sliding window with two pointers - hash map, character counting [implemented]
+#    Time: O(n) | Space: O(n)
+# 3. Optimized sliding window (filtered) - hash map, skip irrelevant chars
+#    Time: O(n) | Space: O(n)
+
 from typing import Dict
 
 

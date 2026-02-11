@@ -3,6 +3,15 @@
 
 # Time complexity: O(n)
 # Space complexity: O(n)
+
+# Alternative solutions:
+# 1. DFS (recursive) - track max value on path from root [implemented]
+#    Time: O(n) | Space: O(n)
+# 2. DFS (iterative with stack) - track max value on path from root
+#    Time: O(n) | Space: O(n)
+# 3. BFS (iterative with queue) - track max value on path from root
+#    Time: O(n) | Space: O(n)
+
 from typing import Optional
 
 

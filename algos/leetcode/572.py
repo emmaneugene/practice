@@ -4,6 +4,18 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. BFS + BFS comparison - BFS to find candidates, BFS to compare subtrees [implemented]
+#    Time: O(m * n) | Space: O(m + n)
+# 2. DFS + DFS comparison - recursive DFS traversal, recursive tree matching
+#    Time: O(m * n) | Space: O(m + n)
+# 3. Tree serialization - serialize both trees (preorder with nulls), substring check
+#    Time: O(m + n) | Space: O(m + n)
+# 4. Tree hashing - Merkle-style hash each subtree, compare hash values
+#    Time: O(m + n) | Space: O(m + n)
+# 5. KMP on serialized trees - serialize both, use KMP for substring matching
+#    Time: O(m + n) | Space: O(m + n)
+
 from collections import deque
 from typing import Optional
 

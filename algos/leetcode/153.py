@@ -5,6 +5,14 @@
 # Space complexity: O(log n) - recursion stack
 # Recursive bisect with additional conditions
 
+# Alternative solutions:
+# 1. Linear scan - iterate through array
+#    Time: O(n) | Space: O(1)
+# 2. Iterative binary search - two pointers narrowing on pivot
+#    Time: O(log n) | Space: O(1)
+# 3. Recursive binary search - divide and conquer [implemented]
+#    Time: O(log n) | Space: O(log n)
+
 
 class Solution:
     def findMin(self, nums: list[int]) -> int:

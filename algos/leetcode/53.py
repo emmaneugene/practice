@@ -3,6 +3,16 @@
 
 # Time complexity: O(n)
 # Space complexity: O(n)
+#
+# Alternative solutions:
+# 1. Brute force - enumerate all subarrays
+#    Time: O(n^2) | Space: O(1)
+# 2. Divide and conquer - recursion, merge
+#    Time: O(n log n) | Space: O(log n)
+# 3. Kadane's algorithm (DP with array) [implemented]
+#    Time: O(n) | Space: O(n)
+# 4. Kadane's algorithm (optimized) - single variable instead of array
+#    Time: O(n) | Space: O(1)
 
 
 class Solution:

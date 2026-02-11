@@ -4,6 +4,14 @@
 # Time complexity: O(log(m+n))
 # Space complexity: NA
 
+# Alternative solutions:
+# 1. Brute force - linear scan of all elements
+#    Time: O(m * n) | Space: O(1)
+# 2. Row binary search + column binary search - two binary searches [implemented]
+#    Time: O(log m + log n) | Space: O(1)
+# 3. Single binary search on virtual 1D array - index mapping
+#    Time: O(log(m * n)) | Space: O(1)
+
 import bisect
 
 

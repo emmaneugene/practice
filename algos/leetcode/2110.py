@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Brute force - enumerate all subarrays, check each for smooth descent
+#    Time: O(n^2) | Space: O(1)
+# 2. Dynamic programming - DP array tracking descent length at each index
+#    Time: O(n) | Space: O(n)
+# 3. Greedy with math - track consecutive descent length, sum contributions [implemented]
+#    Time: O(n) | Space: O(1)
+
 from typing import List
 
 class Solution:

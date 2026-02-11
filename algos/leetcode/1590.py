@@ -6,6 +6,14 @@
 # Approach: Brute force sliding window to find smallest subarray with sum % p == target
 # NOTE: Can be optimized to O(n) using prefix sum + hashmap (see solution below)
 
+# Alternative solutions:
+# 1. Brute force - check all subarrays
+#    Time: O(n^3) | Space: O(1)
+# 2. Sliding window with modular sum [implemented]
+#    Time: O(n^2) | Space: O(n)
+# 3. Prefix sum + hashmap - track prefix mod remainders
+#    Time: O(n) | Space: O(n)
+
 from typing import List
 
 

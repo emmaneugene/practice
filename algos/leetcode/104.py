@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Recursive DFS - recursion [implemented]
+#    Time: O(n) | Space: O(h)
+# 2. Iterative BFS - queue, level-by-level processing
+#    Time: O(n) | Space: O(n)
+# 3. Iterative DFS - stack
+#    Time: O(n) | Space: O(h)
+
 from typing import Optional
 
 

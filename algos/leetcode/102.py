@@ -4,6 +4,12 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. BFS with queue - deque, level-by-level processing [implemented]
+#    Time: O(n) | Space: O(n)
+# 2. DFS with recursion - recursion, depth tracking
+#    Time: O(n) | Space: O(n)
+
 from typing import Optional, List
 
 

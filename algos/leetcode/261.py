@@ -6,6 +6,14 @@ import collections
 # Time complexity: O(mn) for m nodes, n edges
 # Space complexity: O(mn) for m nodes, n edges
 
+# Alternative solutions:
+# 1. BFS - build adjacency list, BFS to check connectivity + edge count [implemented]
+#    Time: O(V + E) | Space: O(V + E)
+# 2. DFS - build adjacency list, DFS to check connectivity + edge count
+#    Time: O(V + E) | Space: O(V + E)
+# 3. Union-Find - union nodes by edges, check single component + edge count
+#    Time: O(E * α(V)) | Space: O(V)
+
 
 class Solution:
     # cycle detection

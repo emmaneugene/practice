@@ -5,6 +5,14 @@
 # Space complexity: O(1)
 # Dynamic programming with sliding window technique
 
+# Alternative solutions:
+# 1. Brute force - nested loops, check all pairs
+#    Time: O(n^2) | Space: O(1)
+# 2. One-pass with min tracking - track min price and max profit [implemented]
+#    Time: O(n) | Space: O(1)
+# 3. Kadane's algorithm variant - max subarray on price differences
+#    Time: O(n) | Space: O(1)
+
 
 class Solution:
     def maxProfit(self, prices: list[int]) -> int:

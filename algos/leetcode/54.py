@@ -4,6 +4,14 @@
 # Time complexity: O(mn)
 # Space complexity: O(mn)
 
+# Alternative solutions:
+# 1. Simulation with direction vectors - use dx/dy arrays, turn on boundary/visited
+#    Time: O(mn) | Space: O(mn)
+# 2. Layer-by-layer (boundary shrinking) - traverse top/right/bottom/left, shrink bounds [implemented]
+#    Time: O(mn) | Space: O(mn)
+# 3. Simulation with mark visited in-place - modify matrix to mark visited cells
+#    Time: O(mn) | Space: O(1) extra (O(mn) output)
+
 
 class Solution:
     def spiralOrder(self, matrix: list[list[int]]) -> list[int]:

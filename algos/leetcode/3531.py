@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - for each building, scan all others for coverage in 4 directions
+#    Time: O(n^2) | Space: O(1)
+# 2. Sorting - sort by x then y (and vice versa), check neighbors
+#    Time: O(n log n) | Space: O(n)
+# 3. Hash map - track min/max per row and column, single pass check [implemented]
+#    Time: O(n) | Space: O(n)
+
 from typing import List
 
 

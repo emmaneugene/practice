@@ -4,6 +4,12 @@
 # Time complexity: O(1) for every operation
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. OrderedDict - Python's built-in ordered dictionary
+#    Time: O(1) | Space: O(n)
+# 2. Hashmap + doubly-linked list - manual DLL for ordering [implemented]
+#    Time: O(1) | Space: O(n)
+
 # Use a doubly-linked list to keep track of most recent units
 from typing import Optional
 

@@ -4,6 +4,14 @@
 # Time complexity: O(mn)
 # Space complexity: O(mn)
 
+# Alternative solutions:
+# 1. DFS (recursive) - flood fill to mark visited cells [implemented]
+#    Time: O(mn) | Space: O(mn) recursion stack
+# 2. BFS (iterative) - flood fill with queue
+#    Time: O(mn) | Space: O(min(m,n))
+# 3. Union-Find (Disjoint Set) - union adjacent land cells
+#    Time: O(mn * α(mn)) ≈ O(mn) | Space: O(mn)
+
 
 class Solution:
     def numIslands(self, grid):

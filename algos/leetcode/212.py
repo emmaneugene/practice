@@ -4,6 +4,14 @@
 # Time complexity: O(M*N*4^L + W*L) - M,N=board size, L=max word length, W=word count
 # Space complexity: O(W*L) - for trie storage
 
+# Alternative solutions:
+# 1. Brute force DFS per word - backtracking search for each word independently
+#    Time: O(W*M*N*4^L) | Space: O(L)
+# 2. Trie + DFS backtracking - build trie from words, search all words simultaneously [implemented]
+#    Time: O(M*N*4^L + W*L) | Space: O(W*L)
+# 3. Trie + DFS with pruning - remove matched trie nodes to reduce redundant searches
+#    Time: O(M*N*4^L + W*L) amortized better | Space: O(W*L)
+
 
 class TrieNode:
     def __init__(self):

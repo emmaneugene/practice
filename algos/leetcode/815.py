@@ -5,6 +5,12 @@
 # Time complexity: O(N * S) - N = number of routes, S = total stops across all routes
 # Space complexity: O(N * S) - for stopToRoutes map and visited sets
 
+# Alternative solutions:
+# 1. BFS on stops - treat each stop as a node, expand via routes [implemented]
+#    Time: O(N * S) | Space: O(N * S)
+# 2. BFS on routes - build route-to-route graph via shared stops
+#    Time: O(N^2 * S) build + O(N) BFS | Space: O(N^2 + N * S)
+
 from typing import Dict, List
 
 

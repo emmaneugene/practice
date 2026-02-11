@@ -3,6 +3,14 @@
 
 # Time complexity: O(log(n))
 # Space complexity: O(n)
+#
+# Alternative solutions:
+# 1. Linear scan - iterate through array to find target
+#    Time: O(n) | Space: O(1)
+# 2. Two-pass binary search - find pivot, then binary search with offset [implemented]
+#    Time: O(log n) | Space: O(1)
+# 3. One-pass binary search - determine sorted half, narrow search range
+#    Time: O(log n) | Space: O(1)
 
 
 # TODO: Refactor

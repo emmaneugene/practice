@@ -3,6 +3,10 @@
 
 # Time complexity: O(m^2n^2)
 # Space complexity: O(mn)
+#
+# Alternative solutions:
+# 1. DFS + backtracking - explore 4 directions, mark visited, restore on backtrack [implemented]
+#    Time: O(m * n * 4^L) | Space: O(L)
 
 # Approach 1: DFS + Backtracking (Most Common)
 # Time: O(N * 4^L) where N = cells in board, L = length of word

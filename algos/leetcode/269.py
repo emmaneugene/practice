@@ -17,6 +17,12 @@
 # If a contradiction is encountered, return "" immediately
 # Need to maintain a queue of strings to check
 
+# Alternative solutions:
+# 1. BFS topological sort (Kahn's algorithm) - graph, BFS, indegree tracking [implemented]
+#    Time: O(C) | Space: O(U + min(U^2, N))
+# 2. DFS topological sort - graph, DFS, cycle detection via coloring
+#    Time: O(C) | Space: O(U + min(U^2, N))
+
 import copy
 
 

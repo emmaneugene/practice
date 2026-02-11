@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 # Iterate over each edge to create a list of components
+#
+# Alternative solutions:
+# 1. DFS/BFS from each unvisited node - graph traversal
+#    Time: O(V + E) | Space: O(V + E)
+# 2. Union-Find (Disjoint Set Union) - union-find with rank and path compression
+#    Time: O(V + E * α(V)) ≈ O(V + E) | Space: O(V)
+# 3. Edge iteration with group merging - set merging [implemented]
+#    Time: O(n) | Space: O(n)
 
 
 class Solution:

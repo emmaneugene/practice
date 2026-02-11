@@ -5,6 +5,12 @@
 # Space complexity: O(V)
 # Clone using BFS
 
+# Alternative solutions:
+# 1. DFS (recursive) - depth-first traversal, hash map for visited clones
+#    Time: O(V+E) | Space: O(V)
+# 2. BFS (iterative) - breadth-first traversal, hash map for visited clones [implemented]
+#    Time: O(V+E) | Space: O(V)
+
 from typing import Optional
 import collections
 

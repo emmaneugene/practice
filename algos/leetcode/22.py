@@ -3,6 +3,16 @@
 
 # Time complexity: O(4^n / sqrt(n)) - generates all Catalan(n) valid combinations
 # Space complexity: O(4^n / sqrt(n)) - stores all result strings + O(n) recursion depth
+#
+# Alternative solutions:
+# 1. Brute force - generate all 2^(2n) sequences, filter valid ones
+#    Time: O(2^(2n) * n) | Space: O(2^(2n) * n)
+# 2. Iterative insertion - insert "()" at every position, deduplicate with set [implemented]
+#    Time: O(4^n / sqrt(n)) | Space: O(4^n / sqrt(n))
+# 3. Backtracking - track open/close counts, prune invalid branches [implemented]
+#    Time: O(4^n / sqrt(n)) | Space: O(4^n / sqrt(n))
+# 4. Dynamic programming - build from smaller subproblems using Catalan recurrence
+#    Time: O(4^n / sqrt(n)) | Space: O(4^n / sqrt(n))
 from typing import List
 
 

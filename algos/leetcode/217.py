@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - check every pair
+#    Time: O(n^2) | Space: O(1)
+# 2. Sorting - sort then check adjacent elements
+#    Time: O(n log n) | Space: O(1)
+# 3. Hash set - track seen elements [implemented]
+#    Time: O(n) | Space: O(n)
+
 
 class Solution:
     def containsDuplicate(self, nums: list[int]) -> bool:

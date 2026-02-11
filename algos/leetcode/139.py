@@ -5,6 +5,18 @@
 # Space complexity: O(n)
 # Dynamic programming
 
+# Alternative solutions:
+# 1. Brute force recursion - try every partition, backtracking
+#    Time: O(2^n) | Space: O(n)
+# 2. Recursion with memoization - top-down DP, hash map
+#    Time: O(n^2 * m) | Space: O(n)
+# 3. Bottom-up DP - boolean DP array, word matching [implemented]
+#    Time: O(n^2 * m) | Space: O(n)
+# 4. BFS - treat indices as graph nodes, BFS over reachable positions
+#    Time: O(n^2 * m) | Space: O(n)
+# 5. Trie + DP - trie for dictionary, DP for segmentation
+#    Time: O(n^2 + m * k) | Space: O(n + m * k)
+
 
 class Solution:
     def wordBreak(self, s: str, wordDict: list[str]) -> bool:

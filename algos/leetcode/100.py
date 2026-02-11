@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Recursive DFS - recursion
+#    Time: O(n) | Space: O(n)
+# 2. Iterative BFS - queue [implemented]
+#    Time: O(n) | Space: O(n)
+# 3. Iterative DFS - stack
+#    Time: O(n) | Space: O(n)
+
 from collections import deque
 from typing import Optional
 

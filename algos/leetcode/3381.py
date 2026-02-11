@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - check all subarrays with length divisible by k
+#    Time: O(n^2) | Space: O(1)
+# 2. Prefix sums with min tracking by index mod k
+#    Time: O(n) | Space: O(k)
+# 3. Sliding window of size k with Kadane-style DP [implemented]
+#    Time: O(n) | Space: O(n)
+
 from typing import List
 
 class Solution:

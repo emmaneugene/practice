@@ -3,6 +3,13 @@
 
 # Time complexity: O(n^2)
 # Space complexity: O(n^2)
+#
+# Alternative solutions:
+# 1. Backtracking - recursion, pruning
+#    Time: O(n^(t/m)) | Space: O(t/m)
+#    where t = target, m = min candidate
+# 2. DP iterative - hash map, deep copy [implemented]
+#    Time: O(n^2) | Space: O(n^2)
 
 import copy
 

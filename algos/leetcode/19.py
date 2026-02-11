@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Two-pass - first pass to count length, second pass to remove
+#    Time: O(n) | Space: O(1)
+# 2. One-pass with two pointers - offset fast pointer by n steps [implemented]
+#    Time: O(n) | Space: O(1)
+# 3. Recursion - recurse to end, count back on return
+#    Time: O(n) | Space: O(n)
+
 from typing import Optional
 
 

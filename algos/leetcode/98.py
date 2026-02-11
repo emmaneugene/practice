@@ -15,6 +15,15 @@ class TreeNode:
 
 # Time complexity: O(n)
 # Space complexity: O(n) due to recursive stack frames
+#
+# Alternative solutions:
+# 1. Recursive with min/max bounds - pass valid range down to each node
+#    Time: O(n) | Space: O(n)
+# 2. Recursive returning subtree min/max - bubble up min/max values to validate [implemented]
+#    Time: O(n) | Space: O(n)
+# 3. In-order traversal (iterative) - BST in-order must be strictly increasing
+#    Time: O(n) | Space: O(n)
+
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         if not root:

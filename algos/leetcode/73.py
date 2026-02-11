@@ -4,6 +4,14 @@
 # Time complexity: O(n^2)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force (copy matrix) - extra matrix
+#    Time: O(m * n) | Space: O(m * n)
+# 2. Hash sets for rows and columns - two sets [implemented]
+#    Time: O(m * n) | Space: O(m + n)
+# 3. In-place using first row/column as markers - constant space
+#    Time: O(m * n) | Space: O(1)
+
 
 class Solution:
     def setZeroes(self, matrix: list[list[int]]) -> None:

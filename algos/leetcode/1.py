@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - nested loops
+#    Time: O(n^2) | Space: O(1)
+# 2. Sort + two pointers - sorting, two pointers
+#    Time: O(n log n) | Space: O(n)
+# 3. Hash map - single pass hash map [implemented]
+#    Time: O(n) | Space: O(n)
+
 
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:

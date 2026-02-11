@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Built-in function - bin() and count()
+#    Time: O(n) | Space: O(n)
+# 2. Bit shift and modulo - check LSB, right shift [implemented]
+#    Time: O(n) | Space: O(1)
+# 3. Brian Kernighan's algorithm - n & (n-1) clears lowest set bit
+#    Time: O(k) where k = number of set bits | Space: O(1)
+
 
 class Solution:
     def hammingWeight(self, n: int) -> int:

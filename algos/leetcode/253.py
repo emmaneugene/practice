@@ -4,6 +4,14 @@
 # Time complexity: O(nlog(n))
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - try all assignments, track max overlap
+#    Time: O(n^2) | Space: O(n)
+# 2. Chronological ordering - separate start/end arrays, two pointers
+#    Time: O(n log n) | Space: O(n)
+# 3. Min heap - sort by start, use heap to track earliest ending room [implemented]
+#    Time: O(n log n) | Space: O(n)
+
 import heapq
 
 

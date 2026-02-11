@@ -4,6 +4,12 @@
 # Time complexity: O(n)
 # Space complexity: O(nlogn)
 
+# Alternative solutions:
+# 1. Binary search on y-coordinate - compute area above/below for each candidate
+#    Time: O(n log(max_coord)) | Space: O(1)
+# 2. Sweep line with sorted events - accumulate width changes, find split point [implemented]
+#    Time: O(n log n) | Space: O(n)
+
 from typing import List
 
 

@@ -5,6 +5,14 @@
 # Space complexity: O(n)
 # Sorting each word of average length m is mlog(m), iterating n words gives overall time complexity
 # of O(nmlog(m))
+#
+# Alternative solutions:
+# 1. Brute force - compare every pair of strings
+#    Time: O(n^2 * m) | Space: O(n * m)
+# 2. Sorted string as key - hash map, sorting [implemented]
+#    Time: O(n * m log m) | Space: O(n * m)
+# 3. Character frequency as key - hash map, counting
+#    Time: O(n * m) | Space: O(n * m)
 
 
 class Solution:

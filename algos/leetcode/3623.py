@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - check all 4-point subsets for parallel side pairs
+#    Time: O(n^4) | Space: O(1)
+# 2. Slope-based grouping - group all point pairs by slope, count valid pair combinations
+#    Time: O(n^2) | Space: O(n^2)
+# 3. Group by y-coordinate, count pairs per line, combine with combinatorics [implemented]
+#    Time: O(n) | Space: O(n)
+
 from typing import Dict, List
 import math
 

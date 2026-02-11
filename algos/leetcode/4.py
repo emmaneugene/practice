@@ -4,6 +4,14 @@
 # Time complexity: O(log(min(m,n)))
 # Space complexity: O(m+n)
 
+# Alternative solutions:
+# 1. Merge and find median - merge two sorted arrays
+#    Time: O(m+n) | Space: O(m+n)
+# 2. Two pointers count to median - two pointers
+#    Time: O(m+n) | Space: O(1)
+# 3. Binary search on partitions - binary search [implemented]
+#    Time: O(log(min(m,n))) | Space: O(1)
+
 from typing import List
 
 

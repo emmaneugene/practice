@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Iterative with new nodes - build reversed list by copying [implemented]
+#    Time: O(n) | Space: O(n)
+# 2. Recursive - reverse rest of list, fix pointers
+#    Time: O(n) | Space: O(n) recursion stack
+# 3. Iterative in-place - three pointers (prev, curr, next), reverse links
+#    Time: O(n) | Space: O(1)
+
 
 from typing import Optional
 

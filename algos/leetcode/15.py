@@ -5,6 +5,16 @@
 # Time complexity: O(n^2)
 # Space complexity: O(n^2)
 
+# Alternative solutions:
+# 1. Brute force - three nested loops with set for dedup
+#    Time: O(n^3) | Space: O(n)
+# 2. Hash set - for each pair, look up complement in hash set
+#    Time: O(n^2) | Space: O(n)
+# 3. Counting with partitioning - separate pos/neg/zero, enumerate pairs [implemented]
+#    Time: O(n^2) | Space: O(n)
+# 4. Sort + two pointers - sort, fix one element, two-pointer scan
+#    Time: O(n^2) | Space: O(1)
+
 
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:

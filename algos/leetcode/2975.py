@@ -12,6 +12,12 @@
 
 # Space complexity: O(H^2 + V^2) in storing all possible lengths
 
+# Alternative solutions:
+# 1. Brute force - try all subsets of fences to remove, check each configuration
+#    Time: O(2^(H+V) * max(H,V)) | Space: O(H + V)
+# 2. Enumerate all pairwise distances, set intersection for common lengths [implemented]
+#    Time: O(H^2 + V^2) | Space: O(H^2 + V^2)
+
 from typing import List, Set
 
 

@@ -2,6 +2,16 @@
 # tags: hard
 # Time complexity: O(n)
 # Space complexity: O(n)
+#
+# Alternative solutions:
+# 1. Recursion - reverse first k nodes, recurse on remainder
+#    Time: O(n) | Space: O(n/k) recursion stack
+# 2. Iterative in-place reversal - reverse each k-group with pointer manipulation [implemented]
+#    Time: O(n) | Space: O(1)
+# 3. Stack-based - use stack to collect k nodes, then pop to reverse
+#    Time: O(n) | Space: O(k)
+# 4. Deque/list conversion - convert to list, reverse slices, rebuild
+#    Time: O(n) | Space: O(n)
 
 from typing import Optional, List
 

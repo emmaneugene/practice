@@ -6,6 +6,16 @@
 # Use an escape character. But take note to handle the escape character itself during
 # serialization and deserialization
 
+# Alternative solutions:
+# 1. Delimiter with escape character - string processing [implemented]
+#    Time: O(n) | Space: O(n)
+# 2. Length-prefixed encoding - prefix each string with its length and a delimiter
+#    Time: O(n) | Space: O(n)
+# 3. Chunked transfer encoding - encode length as fixed-width or with separator (e.g. "4#abcd")
+#    Time: O(n) | Space: O(n)
+# 4. Non-ASCII delimiter - use a character outside printable ASCII as separator
+#    Time: O(n) | Space: O(n)
+
 
 class Codec:
     def encode(self, strs: list[str]) -> str:

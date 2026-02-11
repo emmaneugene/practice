@@ -4,6 +4,14 @@
 # Time complexity: O(n) lookup, insert
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Hash map of words - store full words in a set, prefix check by iterating all words
+#    Time: O(1) insert, O(n*m) startsWith | Space: O(n*m)
+# 2. Trie with hash map children [implemented]
+#    Time: O(n) insert/search/startsWith | Space: O(n*m)
+# 3. Trie with fixed-size array children (26 slots) - slightly faster lookups
+#    Time: O(n) insert/search/startsWith | Space: O(n*m*26)
+
 from typing import Optional
 
 

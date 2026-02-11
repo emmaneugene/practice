@@ -3,6 +3,14 @@
 
 # Time complexity: O(mn) - visit each cell from both oceans
 # Space complexity: O(mn) - visited sets for both oceans
+#
+# Alternative solutions:
+# 1. Brute force DFS/BFS from each cell - check if cell reaches both oceans
+#    Time: O((mn)²) | Space: O(mn)
+# 2. Reverse DFS from ocean borders - DFS from edges, intersect reachable sets [implemented]
+#    Time: O(mn) | Space: O(mn)
+# 3. Reverse BFS from ocean borders - BFS from edges, intersect reachable sets
+#    Time: O(mn) | Space: O(mn)
 
 from typing import List, Set
 

@@ -8,6 +8,14 @@
 #    - s(nums[:-1])
 #    - s(nums[1:])
 
+# Alternative solutions:
+# 1. Recursion with memoization - try rob/skip for each house, two passes for circular
+#    Time: O(n) | Space: O(n)
+# 2. DP array - two DP arrays (exclude first house, exclude last house)
+#    Time: O(n) | Space: O(n)
+# 3. DP with constant space - two passes of House Robber I with O(1) variables [implemented]
+#    Time: O(n) | Space: O(1)
+
 
 class Solution:
     def rob(self, nums: list[int]) -> int:

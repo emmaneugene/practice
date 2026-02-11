@@ -6,6 +6,14 @@
 # Recursive function call to find max left and right depth of each node, build a lookup dictionary,
 # then search from root, navigating to deeper child, until left and right depths match
 
+# Alternative solutions:
+# 1. Two-pass DFS - compute depths then find LCA of deepest nodes [implemented]
+#    Time: O(n) | Space: O(n)
+# 2. Single-pass DFS - return (node, depth) pair, merge at each node
+#    Time: O(n) | Space: O(h)
+# 3. BFS + LCA - find deepest level via BFS, then find LCA of those nodes
+#    Time: O(n) | Space: O(n)
+
 from typing import Dict, Optional
 
 

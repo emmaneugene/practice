@@ -5,6 +5,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Iterative merge with new nodes - compare and build new list [implemented]
+#    Time: O(n) | Space: O(n)
+# 2. Iterative merge in-place - reuse existing nodes with dummy head
+#    Time: O(n) | Space: O(1)
+# 3. Recursive merge - recursively pick smaller head
+#    Time: O(n) | Space: O(n)
+
 from typing import Optional
 
 

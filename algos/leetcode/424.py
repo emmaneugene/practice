@@ -7,6 +7,16 @@
 # Single loop to find sequences of identical characters, then explore all possible character
 # substitutions
 
+# Alternative solutions:
+# 1. Brute force - check all substrings, count most frequent char
+#    Time: O(n^3) | Space: O(1)
+# 2. Sliding window (shrinking) - expand right, shrink left when window - maxFreq > k
+#    Time: O(26 * n) | Space: O(1)
+# 3. Chunk-based expansion - group consecutive chars, expand with replacements [implemented]
+#    Time: O(n) | Space: O(n^2)
+# 4. Sliding window (non-shrinking) - track global maxFreq, only grow or slide window
+#    Time: O(n) | Space: O(1)
+
 
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:

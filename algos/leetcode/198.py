@@ -5,6 +5,16 @@
 # Space complexity: O(1)
 # DP with memoization (only last 2 results needed)
 
+# Alternative solutions:
+# 1. Brute force recursion - try all rob/skip combinations
+#    Time: O(2^n) | Space: O(n)
+# 2. Recursion with memoization - top-down DP, hashmap/array cache
+#    Time: O(n) | Space: O(n)
+# 3. Bottom-up DP with array - tabulation
+#    Time: O(n) | Space: O(n)
+# 4. Bottom-up DP with two variables - space-optimized tabulation [implemented]
+#    Time: O(n) | Space: O(1)
+
 
 class Solution:
     def rob(self, nums: list[int]) -> int:

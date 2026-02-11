@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. Recursive DFS (preorder/postorder) - recursion, tree traversal [implemented]
+#    Time: O(n) | Space: O(h) call stack, where h = tree height
+# 2. Iterative BFS - queue, level-order traversal
+#    Time: O(n) | Space: O(n)
+# 3. Iterative DFS - stack
+#    Time: O(n) | Space: O(n)
+
 from typing import Optional
 
 

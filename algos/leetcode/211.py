@@ -4,6 +4,14 @@
 # Time complexity: O(n^2)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - store words in a list, match each word character-by-character
+#    Time: O(n*m) search, O(1) add | Space: O(n*m)
+# 2. Hash map bucketed by word length - group words by length, regex or manual match
+#    Time: O(n) search worst case | Space: O(n*m)
+# 3. Trie with DFS for wildcard '.' matching [implemented]
+#    Time: O(m) add, O(26^m) search worst case, O(m) without wildcards | Space: O(n*m)
+
 from typing import Optional
 
 

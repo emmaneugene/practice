@@ -3,6 +3,14 @@
 
 # Time complexity: O(n!)
 # Space complexity: O(n!)
+#
+# Alternative solutions:
+# 1. Backtracking - recursion, visited set
+#    Time: O(n * n!) | Space: O(n * n!)
+# 2. Heap's algorithm - recursion, swaps
+#    Time: O(n * n!) | Space: O(n * n!)
+# 3. Iterative insertion - insert element at each position [implemented]
+#    Time: O(n * n!) | Space: O(n * n!)
 
 import copy
 

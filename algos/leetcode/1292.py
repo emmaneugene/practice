@@ -5,6 +5,16 @@
 # Space complexity: O(m * n) - tracker matrix copy
 # Incrementally expands squares, tracking cumulative sums. Breaks early when no valid square of current size exists.
 
+# Alternative solutions:
+# 1. Brute force - compute sum for every possible square independently
+#    Time: O(m * n * min(m,n)^3) | Space: O(1)
+# 2. Incremental square expansion with early termination [implemented]
+#    Time: O(m * n * min(m,n)^2) | Space: O(m * n)
+# 3. 2D prefix sum + linear scan over side lengths
+#    Time: O(m * n * min(m,n)) | Space: O(m * n)
+# 4. 2D prefix sum + binary search on side length
+#    Time: O(m * n * log(min(m,n))) | Space: O(m * n)
+
 import copy
 from typing import List
 

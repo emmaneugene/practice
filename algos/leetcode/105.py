@@ -4,6 +4,14 @@
 # Time complexity: O(n^2)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Recursive with list slicing - recursion, array slicing [implemented]
+#    Time: O(n^2) | Space: O(n)
+# 2. Recursive with hashmap + indices - recursion, hashmap for inorder index lookup
+#    Time: O(n) | Space: O(n)
+# 3. Iterative with stack - stack, pointer tracking
+#    Time: O(n) | Space: O(n)
+
 from typing import Optional
 
 

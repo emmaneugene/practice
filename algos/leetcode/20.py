@@ -4,6 +4,12 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Stack - push opening brackets, pop and match on closing [implemented]
+#    Time: O(n) | Space: O(n)
+# 2. Repeated string replacement - replace "()", "[]", "{}" until none remain
+#    Time: O(n^2) | Space: O(n)
+
 
 class Solution:
     def matchingBrackets(self, opening: str, closing: str):

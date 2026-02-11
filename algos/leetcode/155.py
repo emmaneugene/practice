@@ -7,6 +7,14 @@
 # Time complexity: O(1) per operations
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Single stack storing (value, current_min) tuples
+#    Time: O(1) per op | Space: O(n)
+# 2. Two stacks - value stack + min stack [implemented]
+#    Time: O(1) per op | Space: O(n)
+# 3. Single stack with min variable - store encoded diff from min
+#    Time: O(1) per op | Space: O(n)
+
 
 class MinStack:
     def __init__(self) -> None:

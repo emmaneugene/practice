@@ -6,6 +6,18 @@
 # Dynamic programming, starting from first character of first string and iteratively
 # storing the longest subsequences that end with that character.  similar to longestIncrSubsequence
 
+# Alternative solutions:
+# 1. Recursive brute force - enumerate all subsequences
+#    Time: O(2^(m+n)) | Space: O(m + n)
+# 2. Recursion with memoization (top-down DP) - 2D memo table
+#    Time: O(m * n) | Space: O(m * n)
+# 3. Bottom-up DP (2D table) - tabulation
+#    Time: O(m * n) | Space: O(m * n)
+# 4. Bottom-up DP (space-optimized, 1D array) - rolling array
+#    Time: O(m * n) | Space: O(min(m, n))
+# 5. Match-based DP with occurrence tracking [implemented]
+#    Time: O(n^2) | Space: O(n)
+
 
 class Match:
     """For a reference text (text2), tracks the index of a matched character in the source text (text1) which gives the

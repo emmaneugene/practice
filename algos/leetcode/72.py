@@ -6,6 +6,16 @@
 # Time complexity: O(m * n) - m = len(word1), n = len(word2), each subproblem computed once
 # Space complexity: O(m * n) - memoization cache + O(m + n) recursion call stack
 
+# Alternative solutions:
+# 1. Brute force recursion - recursion, three-way branching
+#    Time: O(3^(m+n)) | Space: O(m + n)
+# 2. Top-down DP (memoized recursion) - recursion, hash map [implemented]
+#    Time: O(m * n) | Space: O(m * n)
+# 3. Bottom-up DP (2D table) - tabulation
+#    Time: O(m * n) | Space: O(m * n)
+# 4. Bottom-up DP (space-optimized, two rows) - tabulation, rolling array
+#    Time: O(m * n) | Space: O(min(m, n))
+
 
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:

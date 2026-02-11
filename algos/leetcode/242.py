@@ -4,6 +4,12 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Sorting - sort both strings, compare
+#    Time: O(n log n) | Space: O(n)
+# 2. Hash map / frequency count - count chars in each string [implemented]
+#    Time: O(n) | Space: O(n)
+
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:

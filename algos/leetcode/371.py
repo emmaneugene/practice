@@ -4,6 +4,10 @@
 # Time complexity: O(1) - constant 32-bit operations
 # Space complexity: O(1)
 # Apply bitwise operations with overflow to do addition
+#
+# Alternative solutions:
+# 1. Bit manipulation with carry - XOR for sum, AND+shift for carry [implemented]
+#    Time: O(1) | Space: O(1)
 
 
 class Solution:

@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Array of nodes - store all nodes, stitch from both ends [implemented]
+#    Time: O(n) | Space: O(n)
+# 2. Recursion - use call stack to access nodes from end
+#    Time: O(n) | Space: O(n)
+# 3. Find middle + reverse second half + merge - slow/fast pointers, in-place reversal
+#    Time: O(n) | Space: O(1)
+
 from typing import Optional
 
 

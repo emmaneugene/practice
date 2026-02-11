@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Filter + reverse comparison - string filtering, reverse
+#    Time: O(n) | Space: O(n)
+# 2. Filter + two-pointer comparison - string filtering, iteration [implemented]
+#    Time: O(n) | Space: O(n)
+# 3. In-place two pointers - two pointers, no extra string
+#    Time: O(n) | Space: O(1)
+
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:

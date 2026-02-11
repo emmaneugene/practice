@@ -4,6 +4,14 @@
 # Time complexity: O(nlog(n))
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - for each day, scan forward for warmer day
+#    Time: O(n^2) | Space: O(1)
+# 2. Min-heap - track unresolved temperatures in priority queue [implemented]
+#    Time: O(n log(n)) | Space: O(n)
+# 3. Monotonic stack - decreasing stack of indices
+#    Time: O(n) | Space: O(n)
+
 import heapq
 
 

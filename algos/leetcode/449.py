@@ -5,6 +5,16 @@
 # Space complexity: O(n)
 # Serialize to array representation with BFS
 
+# Alternative solutions:
+# 1. BFS level-order - serialize as level-order array with nulls, rebuild with queue
+#    Time: O(n) | Space: O(n)
+# 2. Preorder with null markers - DFS preorder with nulls, rebuild recursively [implemented]
+#    Time: O(n) | Space: O(n)
+# 3. Preorder without null markers (BST property) - use value bounds to determine structure
+#    Time: O(n) | Space: O(n)
+# 4. Postorder without null markers (BST property) - reverse postorder to rebuild with bounds
+#    Time: O(n) | Space: O(n)
+
 
 class TreeNode:
     def __init__(self, x, left=None, right=None):

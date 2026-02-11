@@ -4,6 +4,16 @@
 # Time complexity: O(nlogn)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - try all subsets, find largest non-overlapping set
+#    Time: O(2^n) | Space: O(n)
+# 2. Greedy (sort by start) - sort by start, keep interval with smaller end on overlap
+#    Time: O(nlogn) | Space: O(n)
+# 3. Greedy (sort by end) - sort by end, skip intervals overlapping previous kept [implemented]
+#    Time: O(nlogn) | Space: O(n)
+# 4. DP with sorting - sort by end, use binary search + DP for max non-overlapping count
+#    Time: O(nlogn) | Space: O(n)
+
 
 class Solution:
     def eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:

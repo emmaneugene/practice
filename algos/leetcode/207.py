@@ -5,6 +5,14 @@
 # Space complexity: O(n^3)
 # Use a 2D array(adjacency matrix) to store courses and their dependencies/dependents
 
+# Alternative solutions:
+# 1. Eager prerequisite propagation - adjacency matrix with transitive closure [implemented]
+#    Time: O(n^2) per edge, O(n^2 * E) total | Space: O(n^3)
+# 2. DFS cycle detection - adjacency list, 3-color marking (white/gray/black)
+#    Time: O(V + E) | Space: O(V + E)
+# 3. BFS topological sort (Kahn's algorithm) - in-degree tracking, queue
+#    Time: O(V + E) | Space: O(V + E)
+
 
 class Solution:
     def canFinish(self, numCourses: int, prereqs: list[list[int]]) -> bool:

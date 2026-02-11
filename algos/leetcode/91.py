@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n) (can be made smaller by throwing away old values)
 # General approach: Iteratively process string from right to left
+#
+# Alternative solutions:
+# 1. Recursion with memoization - top-down, try decoding 1 or 2 chars at each position
+#    Time: O(n) | Space: O(n)
+# 2. DP array (bottom-up) - iterate right to left, store counts in array [implemented]
+#    Time: O(n) | Space: O(n)
+# 3. DP with constant space - only keep two previous values instead of full array
+#    Time: O(n) | Space: O(1)
 
 
 class Solution:

@@ -5,6 +5,12 @@
 # Space complexity: O(n)
 # Create a custom comparator
 
+# Alternative solutions:
+# 1. Brute force - generate all permutations, pick largest
+#    Time: O(n! * n) | Space: O(n)
+# 2. Custom comparator sort - compare a+b vs b+a [implemented]
+#    Time: O(kn log n) | Space: O(n)
+
 from functools import cmp_to_key
 
 

@@ -4,6 +4,14 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - for each number, search for consecutive elements
+#    Time: O(n^3) | Space: O(1)
+# 2. Sorting - sort then scan for consecutive runs
+#    Time: O(n log n) | Space: O(1)
+# 3. HashSet with sequence start detection - set, linear scan [implemented]
+#    Time: O(n) | Space: O(n)
+
 
 class Solution:
     def longestConsecutive(self, nums: list[int]) -> int:

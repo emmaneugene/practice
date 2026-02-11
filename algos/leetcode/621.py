@@ -6,6 +6,14 @@
 # Space complexity: O(n)
 # - For storing n tasks in waiting queue
 
+# Alternative solutions:
+# 1. Simulation with max-heap + cooldown queue - greedily pick most frequent task [implemented]
+#    Time: O(m * n) | Space: O(n)
+# 2. Sorting each round - sort tasks by frequency each cycle, pick greedily
+#    Time: O(m * n * log(n)) | Space: O(n)
+# 3. Math/greedy formula - compute (maxFreq - 1) * (n + 1) + countOfMaxFreq, take max with len
+#    Time: O(m) | Space: O(1)
+
 import heapq
 from collections import deque
 from typing import List

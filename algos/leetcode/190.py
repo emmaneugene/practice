@@ -4,6 +4,16 @@
 # Time complexity: O(1)
 # Space complexity: O(1)
 
+# Alternative solutions:
+# 1. String reversal - convert to binary string, reverse, convert back
+#    Time: O(1) | Space: O(1)
+# 2. Bit-by-bit with multiply/divide [implemented]
+#    Time: O(1) | Space: O(1)
+# 3. Bit-by-bit with bitwise shift and mask
+#    Time: O(1) | Space: O(1)
+# 4. Divide and conquer - swap halves recursively (16, 8, 4, 2, 1 bits)
+#    Time: O(1) | Space: O(1)
+
 
 class Solution:
     def reverseBits(self, n: int) -> int:

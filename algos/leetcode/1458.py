@@ -9,6 +9,17 @@
 #      nums1[i] * nums2[j],  # start fresh with this pair
 #      dp[i-1][j-1] + nums1[i] * nums2[j]  # extend previous
 #  )
+
+# Alternative solutions:
+# 1. Recursive brute force - enumerate all subsequence pairs
+#    Time: O(2^(m+n)) | Space: O(m + n)
+# 2. Recursion with memoization (top-down DP) - 2D memo table
+#    Time: O(m * n) | Space: O(m * n)
+# 3. Bottom-up DP (2D table) - tabulation
+#    Time: O(m * n) | Space: O(m * n)
+# 4. Bottom-up DP (space-optimized, 1D array) - rolling array [implemented]
+#    Time: O(m * n) | Space: O(n)
+
 from typing import List
 
 

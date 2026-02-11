@@ -7,6 +7,12 @@
 # 0 as well. Even numbers will never work, and for values with all bits set to 1, you can drop
 # the MSB
 
+# Alternative solutions:
+# 1. Brute force - for each num, try all values from 0 upward until (ans OR (ans+1)) == num
+#    Time: O(n * max(nums)) | Space: O(n)
+# 2. Bit manipulation - find lowest 0-bit, clear the bit below it [implemented]
+#    Time: O(n) | Space: O(n)
+
 from typing import List
 
 

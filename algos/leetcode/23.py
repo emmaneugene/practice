@@ -4,6 +4,18 @@
 # Assumign n total elements, k lists:
 # Time complexity: O(nlogk)
 # Space complexity: O(n)
+#
+# Alternative solutions:
+# 1. Brute force - collect all values, sort, build new list
+#    Time: O(n log n) | Space: O(n)
+# 2. Sequential merging - merge lists one by one
+#    Time: O(nk) | Space: O(n)
+# 3. Min-heap (all elements) - push all elements, pop to build result [implemented]
+#    Time: O(n log n) | Space: O(n)
+# 4. Min-heap (k elements) - maintain heap of k list heads
+#    Time: O(n log k) | Space: O(k)
+# 5. Divide and conquer - pairwise merge lists like merge sort [implemented]
+#    Time: O(n log k) | Space: O(n)
 
 import heapq
 from typing import Optional

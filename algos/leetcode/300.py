@@ -4,6 +4,14 @@
 # Time complexity: O(nlogn)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - recursion, generate all subsequences
+#    Time: O(2^n) | Space: O(n)
+# 2. Dynamic programming - DP array, nested loops
+#    Time: O(n^2) | Space: O(n)
+# 3. Patience sorting - greedy with binary search (bisect) [implemented]
+#    Time: O(n log n) | Space: O(n)
+
 from bisect import bisect_left
 
 

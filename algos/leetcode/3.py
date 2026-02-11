@@ -5,6 +5,14 @@
 # Space complexity: O(n)
 # Sliding window technique
 
+# Alternative solutions:
+# 1. Brute force - check all substrings with set
+#    Time: O(n^3) | Space: O(n)
+# 2. Sliding window with set - two pointers, hash set [implemented]
+#    Time: O(n) | Space: O(n)
+# 3. Sliding window with hash map - two pointers, hash map (jump left pointer)
+#    Time: O(n) | Space: O(n)
+
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:

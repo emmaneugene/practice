@@ -3,6 +3,14 @@
 
 # Time complexity: O(1)
 # Space complexity: O(1)
+#
+# Alternative solutions:
+# 1. Brute force (3 separate passes) - check rows, cols, boxes independently [implemented]
+#    Time: O(1) | Space: O(1)
+# 2. Single pass with hash sets - one pass using row/col/box sets keyed by index
+#    Time: O(1) | Space: O(1)
+# 3. Single pass with bitmask - use bitmasks instead of sets for each row/col/box
+#    Time: O(1) | Space: O(1)
 
 from typing import Dict, List, Set
 

@@ -4,6 +4,12 @@
 # Time complexity: O(log(n))
 # Space complexity: NA
 
+# Alternative solutions:
+# 1. Linear scan - iterate through array
+#    Time: O(n) | Space: O(1)
+# 2. Binary search - iterative divide and conquer [implemented]
+#    Time: O(log(n)) | Space: O(1)
+
 
 class Solution:
     def search(self, nums: list[int], target: int) -> int:

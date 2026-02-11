@@ -6,6 +6,16 @@
 # Time complexity: O(n)
 # Space complexity: O(n)
 
+# Alternative solutions:
+# 1. Brute force - nested loops, multiply all except self
+#    Time: O(n^2) | Space: O(1)
+# 2. Division - total product / each element (fails with zeros)
+#    Time: O(n) | Space: O(1)
+# 3. Prefix and suffix product arrays - two extra arrays
+#    Time: O(n) | Space: O(n)
+# 4. Left-right running product in single output array - two passes [implemented]
+#    Time: O(n) | Space: O(1) excluding output
+
 
 class Solution:
     def productExceptSelf(self, nums: list[int]) -> list[int]:
